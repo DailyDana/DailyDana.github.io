@@ -20,8 +20,8 @@ CACHE = ROOT / "tools" / ".cache"
 MAX_W = 1200
 
 MANIFEST: dict[str, str] = {
-    "spc-analyzer": r"C:\Users\bilge\spc-analyzer\docs\images\example_imr_chart.png",
-    "aniflow": r"C:\Users\bilge\Documents\Aniflow v2\docs\screenshot.png",
+    "spc-analyzer": "https://raw.githubusercontent.com/DailyDana/process-capability-analyzer/main/docs/images/example_imr_chart.png",
+    "aniflow": "https://raw.githubusercontent.com/DailyDana/Aniflow/main/docs/screenshot.png",
     "hoffmann-line-balancing": "https://raw.githubusercontent.com/DailyDana/hoffmann-line-balancing/main/docs/images/streamlit_app.png",
 }
 
