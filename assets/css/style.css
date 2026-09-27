@@ -396,6 +396,9 @@ code { font-family: var(--mono); font-size: .8em; }
 .contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: end; }
 .contact-title { font-size: clamp(36px, 4.6vw, 60px); line-height: 1.06; font-weight: 400; letter-spacing: -1px; }
 .contact-side p { font-size: 19px; color: var(--ink-2); }
+.contact-mail { margin-top: 14px; font-size: clamp(20px, 2.2vw, 26px); overflow-wrap: anywhere; }
+.contact-mail a { color: var(--link); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.contact-mail a:hover { color: var(--ink); }
 .contact-actions { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; }
 
 /* ---------- alt bilgi (editoryal) ---------- */

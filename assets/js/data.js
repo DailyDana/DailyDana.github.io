@@ -11,6 +11,7 @@ window.PORTFOLIO = {
     links: {
       github: 'https://github.com/DailyDana',
       linkedin: 'https://www.linkedin.com/in/ismailbilgehankazanci',
+      email: 'bilgehankazanci@gmail.com',
       cvTr: '',
       cvEn: ''
     }
