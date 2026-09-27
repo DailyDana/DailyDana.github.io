@@ -1,7 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#16171B"/>
-  <path d="M8 18H56M8 46H56" stroke="#9C9CA5" stroke-width="2" stroke-dasharray="4 4"/>
-  <path d="M8 32H56" stroke="#ECEAE4" stroke-width="2"/>
-  <polyline points="10,34 18,28 26,36 34,30 42,12 50,33 58,29" fill="none" stroke="#ECEAE4" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-  <circle cx="42" cy="12" r="5" fill="#F2A33A"/>
+  <!-- İBK monogramı, pafta çerçevesi içinde. Harfler çizgiyle çizildi: favicon'da web fontu yüklenmez. -->
+  <style>
+    .bg { fill: #FCFCFA; } .ink { stroke: #1C1C1C; fill: none; } .dot { fill: #1C1C1C; } .red { stroke: #C8102E; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #141414; } .ink { stroke: #ECEAE4; } .dot { fill: #ECEAE4; } .red { stroke: #F0707A; }
+    }
+  </style>
+  <rect class="bg" width="64" height="64"/>
+  <rect class="ink" x="2" y="2" width="60" height="60" stroke-width="3"/>
+  <rect class="ink" x="7.5" y="7.5" width="49" height="49" stroke-width="1.2"/>
+  <g class="ink" stroke-width="4.2" stroke-linejoin="miter" stroke-linecap="butt">
+    <path d="M16 22V47"/>
+    <path d="M25 22V47M23 24H31a5 5 0 0 1 0 10H25M25 33H32a6.5 6.5 0 0 1 0 12H23"/>
+    <path d="M44 22V47M52.5 22 45 34.5 53 47"/>
+  </g>
+  <rect class="dot" x="13.9" y="14" width="4.2" height="4.2"/>
+  <path class="red" d="M12 51.5H52" stroke-width="1.4"/>
 </svg>

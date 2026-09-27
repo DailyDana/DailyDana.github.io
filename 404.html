@@ -6,39 +6,45 @@
   <title>Sayfa bulunamadı · İsmail Bilgehan Kazancı</title>
   <meta name="robots" content="noindex">
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-  <!-- 404 sayfası tek başına çalışır: stiller burada, dış dosyaya bağımlı değil -->
+  <script>
+    (function(){var d=document.documentElement;d.classList.add('js');try{var q=new URLSearchParams(location.search).get('lang'),l=q||localStorage.getItem('lang');if(l==='en'||l==='tr')d.lang=l;var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.dataset.theme=t;}catch(e){d.dataset.theme='light';}})();
+  </script>
+  <!-- Kök-göreli yol: 404 hangi klasör derinliğinde açılırsa açılsın stil yüklenir -->
+  <link rel="stylesheet" href="/assets/css/style.css">
   <style>
-    :root { color-scheme: light; --bg: #F4F2ED; --bg-2: #FBFAF7; --ink: #16171B; --mute: #5F626B; --line: rgba(22,23,27,.14); --accent: #A04F00; --accent-ink: #FFFFFF; }
-    @media (prefers-color-scheme: dark) {
-      :root { color-scheme: dark; --bg: #111216; --bg-2: #17181D; --ink: #ECEAE4; --mute: #9C9CA5; --line: rgba(236,234,228,.13); --accent: #F2A33A; --accent-ink: #1A1000; }
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      min-height: 100vh; display: grid; place-items: center; padding: 32px 16px;
-      background: var(--bg); color: var(--ink); font-family: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
-      background-image: linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 120px 100%;
-    }
-    .box { width: min(640px, 100%); }
-    .brand { font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace; font-weight: 700; font-size: 14px; letter-spacing: 1px; }
-    .brand b { background: var(--ink); color: var(--bg); padding: 6px 8px; margin-right: 10px; }
-    h1 { margin-top: 28px; font-size: clamp(96px, 24vw, 180px); line-height: 1; font-weight: 800; letter-spacing: -6px; }
-    h1 span { color: var(--accent); }
-    .code { margin-top: 20px; padding: 16px 18px; background: var(--bg-2); border: 1px solid var(--line); font-family: ui-monospace, Consolas, monospace; font-size: 14px; line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--mute); }
-    .code b { color: var(--accent); font-weight: 700; }
-    p { margin-top: 26px; font-size: 18px; color: var(--mute); }
-    a.btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; padding: 14px 22px; background: var(--accent); color: var(--accent-ink); font-weight: 700; text-decoration: none; }
-    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    .nf { min-height: 100svh; padding: var(--sheet) 0; display: flex; }
+    .nf .sheet-hero { flex: 1; min-height: 0; padding: 72px 0 calc(var(--sheet) + 150px); }
+    .nf .sheet-frame { inset: 0 var(--sheet); }
+    .nf-code { margin-top: 16px; font: 500 clamp(110px, 18vw, 220px)/.9 var(--cond); letter-spacing: -2px; }
+    .nf-code span { color: var(--accent); }
+    .nf .titleblock { bottom: 14px; right: calc(var(--sheet) + 14px); width: 420px; grid-template-columns: 1fr 1fr; }
+    @media (max-width: 640px) { .nf .titleblock > div:last-child { grid-column: auto; } }
+    @media (max-width: 920px) { .nf .titleblock { position: relative; right: auto; bottom: auto; width: auto; margin: 32px var(--gutter) 0; } .nf .sheet-hero { padding-bottom: 28px; } }
   </style>
 </head>
 <body>
-  <main class="box">
-    <div class="brand"><b>İBK</b>İSMAİL BİLGEHAN KAZANCI</div>
-    <h1>404<span>.</span></h1>
-    <div class="code"><b>ölçüm:</b> <span id="path">/aranan-sayfa</span>
-<b>sonuç:</b> spesifikasyon dışı — böyle bir sayfa yok
-<b>öneri:</b> ana sayfadan devam et</div>
-    <p>Aradığın sayfa taşınmış ya da hiç var olmamış olabilir.</p>
-    <a class="btn" href="/">Ana sayfaya dön →</a>
+  <main class="nf">
+    <section class="sheet-hero">
+      <div class="sheet-frame" aria-hidden="true"><div class="sheet-top"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></div><div class="sheet-left"><i>A</i><i>B</i><i>C</i><i>D</i><i>E</i></div></div>
+      <div class="wrap">
+        <div class="dimline"><span><span data-lang="tr">ÖLÇÜM: SPESİFİKASYON DIŞI</span><span data-lang="en">MEASUREMENT: OUT OF SPEC</span></span></div>
+        <div class="sheet-label"><span data-lang="tr">SAYFA BULUNAMADI</span><span data-lang="en">PAGE NOT FOUND</span></div>
+        <h1 class="nf-code">404<span>.</span></h1>
+        <p class="sheet-lead">
+          <span data-lang="tr">Aradığınız sayfa taşınmış ya da hiç var olmamış olabilir.</span>
+          <span data-lang="en">The page you are looking for may have moved or never existed.</span>
+        </p>
+        <div class="sheet-cta">
+          <a class="btn btn-accent" href="/"><span data-lang="tr">ANA SAYFAYA DÖN</span><span data-lang="en">BACK TO HOME</span></a>
+          <a class="btn btn-line" href="/#projeler"><span data-lang="tr">PROJELER</span><span data-lang="en">PROJECTS</span></a>
+        </div>
+      </div>
+      <div class="titleblock">
+        <div class="wide"><small><span data-lang="tr">AD SOYAD</span><span data-lang="en">NAME</span></small><span class="tb-name" lang="tr">İSMAİL BİLGEHAN KAZANCI</span></div>
+        <div><small><span data-lang="tr">İSTENEN</span><span data-lang="en">REQUESTED</span></small><span id="path">/</span></div>
+        <div><small><span data-lang="tr">DURUM</span><span data-lang="en">STATUS</span></small>404</div>
+      </div>
+    </section>
   </main>
   <script>
     (function () { var p = document.getElementById('path'); if (p) { try { p.textContent = decodeURIComponent(location.pathname) || '/'; } catch (e) { p.textContent = location.pathname; } } })();
