@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>OG şablonu</title>
+<!-- og.py bu sayfayı 1200×630'da render eder. ?title=&sub=&m1=&m2=&m3=&url= ile doldurulur. -->
+<link rel="stylesheet" href="/assets/css/style.css">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body { background: var(--ink); color: var(--bg); font-family: var(--sans); position: relative; }
+  body::after { display: none; }
+  .chart { position: absolute; inset: 0; width: 1200px; height: 630px; opacity: .35; }
+  .chart .lim { stroke: var(--line-strong); stroke-width: 1.5; stroke-dasharray: 8 10; }
+  .chart .cl { stroke: var(--line-strong); stroke-width: 1.5; }
+  .chart .run { fill: none; stroke: var(--bg); stroke-width: 2; opacity: .5; }
+  .chart .pt { fill: var(--ink); stroke: var(--bg); stroke-width: 2; }
+  .chart .ooc { fill: var(--accent); stroke: var(--accent); }
+  .box { position: absolute; inset: 0; padding: 64px 72px; display: flex; flex-direction: column; justify-content: space-between; }
+  .top { display: flex; align-items: center; gap: 16px; font-family: var(--mono); font-size: 20px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+  .mark { background: var(--bg); color: var(--ink); padding: 10px 12px; letter-spacing: 1px; font-size: 22px; }
+  h1 { font-size: 76px; line-height: 1.02; letter-spacing: -3px; font-weight: 800; margin: 0; max-width: 1000px; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .sub { margin-top: 22px; font-size: 27px; line-height: 1.4; color: var(--bg); opacity: .8; max-width: 900px; }
+  .bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; }
+  .metrics { display: flex; gap: 12px; }
+  .metric { background: transparent; border-color: var(--line-strong); color: var(--bg); font-size: 18px; padding: 10px 14px; }
+  .metric b { color: var(--bg); font-size: 22px; }
+  .url { font-family: var(--mono); font-size: 20px; color: var(--bg); opacity: .7; letter-spacing: 1px; }
+</style>
+</head>
+<body data-theme="dark">
+<svg class="chart" viewBox="0 0 1200 630" preserveAspectRatio="none" aria-hidden="true">
+  <path class="lim" d="M0 150H1200"/><path class="cl" d="M0 330H1200"/><path class="lim" d="M0 510H1200"/>
+  <polyline class="run" points="0,320 60,350 120,300 180,360 240,335 300,290 360,345 420,325 480,370 540,310 600,340 660,300 720,335 780,360 840,320 900,110 960,330 1020,365 1080,315 1140,340 1200,325"/>
+  <g class="pt"><circle cx="60" cy="350" r="5"/><circle cx="180" cy="360" r="5"/><circle cx="300" cy="290" r="5"/><circle cx="420" cy="325" r="5"/><circle cx="540" cy="310" r="5"/><circle cx="660" cy="300" r="5"/><circle cx="780" cy="360" r="5"/><circle cx="1020" cy="365" r="5"/><circle cx="1140" cy="340" r="5"/><circle class="ooc" cx="900" cy="110" r="8"/></g>
+</svg>
+<div class="box">
+  <div class="top"><span class="mark">İBK</span><span id="kicker">İsmail Bilgehan Kazancı</span></div>
+  <div>
+    <h1 id="title">İmalat mühendisliği <em>+</em> çalışan yazılım.</h1>
+    <div class="sub" id="sub">SPC ve süreç yeterliliği analizini Python'la araca dönüştürüyorum; CAD/CAM'den kodlamaya, üretim problemlerini ölçerek çözüyorum.</div>
+  </div>
+  <div class="bottom">
+    <div class="metrics" id="metrics">
+      <span class="metric"><b>776</b> test · SPC</span>
+      <span class="metric"><b>8</b> açık kaynak depo</span>
+      <span class="metric"><b>2</b> canlı demo</span>
+    </div>
+    <div class="url" id="url">dailydana.github.io</div>
+  </div>
+</div>
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search);
+    var set = function (id, v, html) { var el = document.getElementById(id); if (el && v != null) { if (html) el.innerHTML = v; else el.textContent = v; } };
+    if (q.get('kicker')) set('kicker', q.get('kicker'));
+    if (q.get('title')) set('title', q.get('title').replace(/\+/g, '<em>+</em>'), true);
+    if (q.get('sub')) set('sub', q.get('sub'));
+    if (q.get('url')) set('url', q.get('url'));
+    var ms = ['m1', 'm2', 'm3'].map(function (k) { return q.get(k); }).filter(Boolean);
+    if (ms.length) {
+      document.getElementById('metrics').innerHTML = ms.map(function (m) {
+        var i = m.indexOf(' ');
+        var v = i > 0 ? m.slice(0, i) : m, l = i > 0 ? m.slice(i + 1) : '';
+        return '<span class="metric"><b></b> </span>'.replace('<b></b>', '<b>' + v.replace(/</g, '&lt;') + '</b>').replace(' </span>', ' ' + l.replace(/</g, '&lt;') + '</span>');
+      }).join('');
+    }
+  })();
+</script>
+</body>
+</html>

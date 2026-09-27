@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-tr="İsmail Bilgehan Kazancı · İmalat mühendisliği, SPC ve Python" data-en="İsmail Bilgehan Kazancı · Manufacturing engineering, SPC &amp; Python">İsmail Bilgehan Kazancı · İmalat mühendisliği, SPC ve Python</title>
+  <meta name="description" content="Gazi Üniversitesi imalat mühendisliği, Bursa. Açık kaynak SPC/Cpk analiz aracı, Hoffmann hat dengeleme, video işleme araçları ve CAD çalışmaları; Python, PowerShell, SolidWorks, Siemens NX.">
+  <meta name="author" content="İsmail Bilgehan Kazancı">
+  <link rel="canonical" href="https://dailydana.github.io/">
+  <link rel="alternate" hreflang="tr" href="https://dailydana.github.io/">
+  <link rel="alternate" hreflang="en" href="https://dailydana.github.io/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://dailydana.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="İsmail Bilgehan Kazancı">
+  <meta property="og:title" content="İsmail Bilgehan Kazancı · Manufacturing Engineering · SPC · Python · CAD/CAM">
+  <meta property="og:description" content="İmalat mühendisliği ve çalışan yazılım: açık kaynak SPC/Cpk aracı (776 test), Hoffmann hat dengeleme, video işleme araçları, SolidWorks ve Siemens NX çalışmaları.">
+  <meta property="og:url" content="https://dailydana.github.io/">
+  <meta property="og:image" content="https://dailydana.github.io/assets/img/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="İsmail Bilgehan Kazancı · İmalat mühendisliği + çalışan yazılım">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#F4F2ED">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/archivo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Tema ve dil, stil yüklenmeden önce belirlenir: yanlış temada/dilde flaş olmaz. Sitedeki tek satır içi betik. -->
+  <script>
+    (function(){var d=document.documentElement;d.classList.add('js');try{var q=new URLSearchParams(location.search).get('lang'),l=q||localStorage.getItem('lang');if(l==='en'||l==='tr'){d.lang=l;if(q)localStorage.setItem('lang',l);}var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.dataset.theme=t;}catch(e){d.dataset.theme='light';}})();
+  </script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "İsmail Bilgehan Kazancı",
+    "url": "https://dailydana.github.io/",
+    "jobTitle": "Manufacturing Engineering",
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Gazi Üniversitesi" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Bursa", "addressCountry": "TR" },
+    "sameAs": ["https://github.com/DailyDana", "https://www.linkedin.com/in/ismailbilgehankazanci"],
+    "knowsAbout": ["Statistical Process Control", "Process Capability", "Cpk", "Assembly Line Balancing", "Python", "PowerShell", "SolidWorks", "Siemens NX", "Mastercam", "AutoCAD"]
+  }
+  </script>
+</head>
+<body>
+
+<a class="skip" href="#hakkimda"><span data-lang="tr">İçeriğe geç</span><span data-lang="en">Skip to content</span></a>
+
+<!-- chrome:nav -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="brand" aria-label="İsmail Bilgehan Kazancı · ana sayfa">
+      <span class="brand-mark" aria-hidden="true">İBK</span>
+      <span class="brand-name">İsmail Bilgehan Kazancı</span>
+    </a>
+    <div class="nav-right">
+      <nav class="nav-links" id="navLinks" aria-label="Ana menü">
+        <a href="#hakkimda" data-nav><span data-lang="tr">Hakkımda</span><span data-lang="en">About</span></a>
+        <a href="#projeler" data-nav><span data-lang="tr">Projeler</span><span data-lang="en">Projects</span></a>
+        <a href="#beceriler" data-nav><span data-lang="tr">Beceriler</span><span data-lang="en">Skills</span></a>
+        <a href="#deneyim" data-nav><span data-lang="tr">Deneyim</span><span data-lang="en">Experience</span></a>
+        <a href="#iletisim" data-nav><span data-lang="tr">İletişim</span><span data-lang="en">Contact</span></a>
+      </nav>
+      <div class="toggles">
+        <div class="lang" role="group" aria-label="Dil / Language">
+          <button type="button" data-lang-set="tr" aria-pressed="true" lang="tr">TR</button>
+          <button type="button" data-lang-set="en" aria-pressed="false" lang="en">EN</button>
+        </div>
+        <button type="button" class="theme" id="themeToggle" aria-pressed="false" aria-label="Koyu temaya geç">
+          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menüyü aç" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+</header>
+<!-- /chrome:nav -->
+
+<main id="top">
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="hero">
+    <!-- Arka plan: bir kontrol grafiği; UCL/CL/LCL çizgileri ve limit dışı tek nokta -->
+    <svg class="hero-chart" viewBox="0 0 1400 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g class="grid">
+        <path d="M100 0V520M200 0V520M300 0V520M400 0V520M500 0V520M600 0V520M700 0V520M800 0V520M900 0V520M1000 0V520M1100 0V520M1200 0V520M1300 0V520"/>
+      </g>
+      <path class="lim" d="M40 110H1300"/>
+      <path class="cl" d="M40 260H1300"/>
+      <path class="lim" d="M40 410H1300"/>
+      <text class="lbl" x="1312" y="114">UCL</text>
+      <text class="lbl" x="1312" y="264">CL</text>
+      <text class="lbl" x="1312" y="414">LCL</text>
+      <polyline class="run" points="60,250 107,275 155,240 202,290 250,262 297,230 345,280 392,255 440,300 487,245 535,270 582,235 630,265 677,285 725,250 772,300 820,240 867,275 915,225 962,80 1010,260 1057,290 1105,245 1152,270 1200,255 1247,235 1295,280"/>
+      <g class="pt">
+        <circle cx="60" cy="250" r="3.5"/><circle cx="107" cy="275" r="3.5"/><circle cx="155" cy="240" r="3.5"/><circle cx="202" cy="290" r="3.5"/><circle cx="250" cy="262" r="3.5"/><circle cx="297" cy="230" r="3.5"/><circle cx="345" cy="280" r="3.5"/><circle cx="392" cy="255" r="3.5"/><circle cx="440" cy="300" r="3.5"/><circle cx="487" cy="245" r="3.5"/><circle cx="535" cy="270" r="3.5"/><circle cx="582" cy="235" r="3.5"/><circle cx="630" cy="265" r="3.5"/><circle cx="677" cy="285" r="3.5"/><circle cx="725" cy="250" r="3.5"/><circle cx="772" cy="300" r="3.5"/><circle cx="820" cy="240" r="3.5"/><circle cx="867" cy="275" r="3.5"/><circle cx="915" cy="225" r="3.5"/><circle cx="1010" cy="260" r="3.5"/><circle cx="1057" cy="290" r="3.5"/><circle cx="1105" cy="245" r="3.5"/><circle cx="1152" cy="270" r="3.5"/><circle cx="1200" cy="255" r="3.5"/><circle cx="1247" cy="235" r="3.5"/><circle cx="1295" cy="280" r="3.5"/>
+        <circle class="pt-ooc" cx="962" cy="80" r="5"/>
+      </g>
+    </svg>
+
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <div class="kicker"><span data-lang="tr">İmalat mühendisliği · Bursa</span><span data-lang="en">Manufacturing engineering · Bursa</span></div>
+        <h1 class="hero-title">
+          <span data-lang="tr">İmalat mühendisliği <em>+</em> çalışan yazılım.</span>
+          <span data-lang="en">Manufacturing engineering <em>+</em> software that works.</span>
+        </h1>
+        <p class="lead">
+          <span data-lang="tr">SPC ve süreç yeterliliği analizini Python'la araca dönüştürüyorum; CAD/CAM'den kodlamaya, üretim problemlerini ölçerek çözüyorum.</span>
+          <span data-lang="en">I turn SPC and process-capability analysis into Python tools; from CAD/CAM to code, I solve manufacturing problems by measuring them.</span>
+        </p>
+        <div class="hero-metrics" aria-label="Özet sayılar">
+          <span class="metric"><b>776</b><span data-lang="tr">test · SPC analiz aracı</span><span data-lang="en">tests · SPC analyzer</span></span>
+          <span class="metric"><b>8</b><span data-lang="tr">açık kaynak depo</span><span data-lang="en">open-source repos</span></span>
+          <span class="metric"><b>2</b><span data-lang="tr">canlı demo</span><span data-lang="en">live demos</span></span>
+        </div>
+        <div class="hero-cta">
+          <a href="#projeler" class="btn btn-accent"><span data-lang="tr">Projeleri gör</span><span data-lang="en">See projects</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="https://www.linkedin.com/in/ismailbilgehankazanci" class="btn btn-line" target="_blank" rel="noopener"><span data-lang="tr">LinkedIn'de bağlan</span><span data-lang="en">Connect on LinkedIn</span> <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+
+      <div class="portrait">
+        <div class="portrait-ph" aria-hidden="true">
+          <span class="portrait-ini">İBK</span>
+        </div>
+        <span class="portrait-cap" aria-hidden="true">İsmail Bilgehan Kazancı</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 01 Hakkımda ===== -->
+  <section class="sec" id="hakkimda">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-no">01</span><span class="sec-label"><span data-lang="tr">Hakkımda</span><span data-lang="en">About</span></span></div>
+      <div class="about-grid">
+        <h2 class="h2 reveal">
+          <span data-lang="tr">Ölçmeden karar vermem; ölçtüğümü de <em>araca</em> çeviririm.</span>
+          <span data-lang="en">I don't decide without measuring, and I turn what I measure into <em>tools</em>.</span>
+        </h2>
+        <div class="about-text reveal">
+          <div data-lang="tr">
+            <p>Eğitimim Gazi Üniversitesi Teknoloji Fakültesi'nde imalat mühendisliği; Bursa'da yaşıyorum. İlgim iki alanın kesişiminde: kalite mühendisliğinin ölçme disiplini ve bu ölçümleri tekrarlanabilir araçlara dönüştüren yazılım.</p>
+            <p>Excel'de elle yapılan Cpk ve kontrol grafiği işini, <strong>kararlılığı yeterlilikten önce denetleyen</strong> açık kaynak bir SPC aracına çevirdim; ders ödevi olarak başlayan hat dengeleme problemini Hoffmann yöntemiyle yeniden yazıp brute-force çözücüyle doğruladım. Her projede aynı ilke geçerli: iddia değil, ölçüm.</p>
+            <p>CAD/CAM tarafında SolidWorks, Siemens NX, Mastercam ve AutoCAD ile parça, montaj ve teknik resim çalışmaları yaptım. HUAWEI Student Developers Türkiye'de Denetim Kurulu Başkanı olarak görev alıyorum.</p>
+          </div>
+          <div data-lang="en">
+            <p>I studied manufacturing engineering at Gazi University's Faculty of Technology and live in Bursa. My interest sits where two fields meet: the measurement discipline of quality engineering, and the software that turns those measurements into repeatable tools.</p>
+            <p>I turned the Cpk and control-chart work usually done by hand in Excel into an open-source SPC tool that <strong>checks stability before capability</strong>; I rewrote a line-balancing coursework problem with Hoffmann's method and verified it against a brute-force solver. The same principle runs through every project: measurement, not claims.</p>
+            <p>On the CAD/CAM side I have built parts, assemblies and drawings in SolidWorks, Siemens NX, Mastercam and AutoCAD. I serve as Chair of the Audit Board at HUAWEI Student Developers Türkiye.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pillars">
+        <article class="pillar reveal">
+          <span class="pillar-no">01</span>
+          <h3><span data-lang="tr">Ölç</span><span data-lang="en">Measure</span></h3>
+          <p><span data-lang="tr">Kontrol limitleri yayınlanan sabitlerden, eşikler ölçülmüş veriden. Tahmin yerine veri.</span><span data-lang="en">Control limits from published constants, thresholds from measured data. Data instead of guesses.</span></p>
+        </article>
+        <article class="pillar reveal">
+          <span class="pillar-no">02</span>
+          <h3><span data-lang="tr">Araçlaştır</span><span data-lang="en">Build tools</span></h3>
+          <p><span data-lang="tr">Bir kez elle yapılan işi test edilmiş, belgelenmiş ve başkasının da kullanabileceği bir araca dönüştür.</span><span data-lang="en">Turn work done once by hand into a tested, documented tool others can use.</span></p>
+        </article>
+        <article class="pillar reveal">
+          <span class="pillar-no">03</span>
+          <h3><span data-lang="tr">Doğrula</span><span data-lang="en">Verify</span></h3>
+          <p><span data-lang="tr">Yayınlanmış veri setleri, ikinci bir çözücü, sürekli entegrasyon. Sonuç doğrulanmadan bitmiş sayılmaz.</span><span data-lang="en">Published datasets, a second solver, continuous integration. Nothing counts as done until it is verified.</span></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 02 Projeler ===== -->
+  <section class="sec sec-alt" id="projeler">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-no">02</span><span class="sec-label"><span data-lang="tr">Projeler</span><span data-lang="en">Projects</span></span></div>
+      <div class="sec-intro">
+        <h2 class="h2 reveal"><span data-lang="tr">Kanıtı olan <em>işler</em>.</span><span data-lang="en">Work with <em>evidence</em>.</span></h2>
+        <p class="reveal"><span data-lang="tr">Her kartta test sayısı, lisans ve canlı demo gibi doğrulanabilir bilgiler var. Kaynak kodun tamamı GitHub'da açık.</span><span data-lang="en">Every card carries verifiable facts: test counts, licence, live demo. All source code is public on GitHub.</span></p>
+      </div>
+      <div class="projects" id="projectsFeatured">
+        <noscript><p><span data-lang="tr">Bu liste JavaScript ile oluşturuluyor. Projeler GitHub'da:</span><span data-lang="en">This list is rendered with JavaScript. The projects are on GitHub:</span> <a href="https://github.com/DailyDana">github.com/DailyDana</a></p></noscript>
+      </div>
+      <div class="projects-grid-2" id="projectsMore" style="margin-top:24px"></div>
+    </div>
+  </section>
+
+  <!-- ===== 03 Araçlar ===== -->
+  <section class="sec" id="araclar">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-no">03</span><span class="sec-label"><span data-lang="tr">Araçlar ve küçük işler</span><span data-lang="en">Tools and smaller work</span></span></div>
+      <div class="sec-intro">
+        <h2 class="h2 reveal"><span data-lang="tr">Günlük işi <em>hızlandıran</em> betikler.</span><span data-lang="en">Scripts that <em>speed up</em> everyday work.</span></h2>
+        <p class="reveal"><span data-lang="tr">Kendi ihtiyacım için yazdığım, çoğu ölçümle doğrulanmış küçük araçlar.</span><span data-lang="en">Small tools written for my own needs, most of them verified by measurement.</span></p>
+      </div>
+      <div class="tools" id="tools"></div>
+    </div>
+  </section>
+
+  <!-- ===== 04 Beceriler ===== -->
+  <section class="sec sec-alt" id="beceriler">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-no">04</span><span class="sec-label"><span data-lang="tr">Beceriler</span><span data-lang="en">Skills</span></span></div>
+      <div class="sec-intro">
+        <h2 class="h2 reveal"><span data-lang="tr">Üç alan, <em>tek</em> yöntem.</span><span data-lang="en">Three fields, <em>one</em> method.</span></h2>
+        <p class="reveal"><span data-lang="tr">Yüzdelik çubuk yok; her becerinin yanında hangi projede kullanıldığı yazıyor.</span><span data-lang="en">No percentage bars; each skill lists the project it was used in.</span></p>
+      </div>
+      <div class="skills" id="skills"></div>
+    </div>
+  </section>
+
+  <!-- ===== 05 Deneyim ===== -->
+  <section class="sec" id="deneyim">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-no">05</span><span class="sec-label"><span data-lang="tr">Deneyim ve gönüllülük</span><span data-lang="en">Experience and volunteering</span></span></div>
+      <div class="timeline" id="experience"></div>
+    </div>
+  </section>
+
+  <!-- ===== 06 Eğitim ve sertifikalar ===== -->
+  <section class="sec sec-alt" id="egitim">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-no">06</span><span class="sec-label"><span data-lang="tr">Eğitim ve sertifikalar</span><span data-lang="en">Education and certificates</span></span></div>
+      <div class="edu-grid">
+        <div class="edu-block">
+          <h3><span data-lang="tr">Eğitim</span><span data-lang="en">Education</span></h3>
+          <div id="education"></div>
+          <div class="langs">
+            <h3><span data-lang="tr">Diller</span><span data-lang="en">Languages</span></h3>
+            <ul id="languages"></ul>
+          </div>
+        </div>
+        <div class="cert-block">
+          <h3><span data-lang="tr">Sertifikalar</span><span data-lang="en">Certificates</span></h3>
+          <ul class="certs" id="certs"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 07 İletişim ===== -->
+  <section class="contact" id="iletisim">
+    <div class="contact-ghost" aria-hidden="true">İBK</div>
+    <div class="wrap contact-grid">
+      <div class="reveal">
+        <div class="kicker"><span data-lang="tr">İletişim</span><span data-lang="en">Contact</span></div>
+        <h2 class="contact-title"><span data-lang="tr">Bir üretim problemini birlikte ölçelim.</span><span data-lang="en">Let's measure a manufacturing problem together.</span></h2>
+      </div>
+      <div class="contact-side reveal">
+        <p><span data-lang="tr">Kalite, proses ya da yazılım tarafında bir rol için konuşmak isterseniz LinkedIn üzerinden yazabilirsiniz. Projelerin tamamı GitHub'da açık.</span><span data-lang="en">If you'd like to talk about a quality, process or software role, LinkedIn is the place to reach me. All projects are public on GitHub.</span></p>
+        <div class="contact-actions">
+          <a class="btn btn-accent" href="https://www.linkedin.com/in/ismailbilgehankazanci" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-line" href="https://github.com/DailyDana" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="contact-note"><span data-lang="tr">E-posta ve telefon bu sayfada paylaşılmıyor; LinkedIn mesajları düzenli takip ediliyor.</span><span data-lang="en">Email and phone are not listed here; LinkedIn messages are checked regularly.</span></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- chrome:footer -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>© <span id="year">2026</span> İsmail Bilgehan Kazancı · Bursa</span>
+    <span><span data-lang="tr">Kütüphanesiz, elle yazıldı: HTML + CSS + JS</span><span data-lang="en">Hand-written, no libraries: HTML + CSS + JS</span></span>
+    <span class="footer-links">
+      <a href="https://github.com/DailyDana" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/ismailbilgehankazanci" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/DailyDana/DailyDana.github.io" target="_blank" rel="noopener"><span data-lang="tr">Kaynak</span><span data-lang="en">Source</span></a>
+    </span>
+  </div>
+</footer>
+<!-- /chrome:footer -->
+
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

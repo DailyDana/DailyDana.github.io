@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sayfa bulunamadı · İsmail Bilgehan Kazancı</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <!-- 404 sayfası tek başına çalışır: stiller burada, dış dosyaya bağımlı değil -->
+  <style>
+    :root { color-scheme: light; --bg: #F4F2ED; --bg-2: #FBFAF7; --ink: #16171B; --mute: #5F626B; --line: rgba(22,23,27,.14); --accent: #A04F00; --accent-ink: #FFFFFF; }
+    @media (prefers-color-scheme: dark) {
+      :root { color-scheme: dark; --bg: #111216; --bg-2: #17181D; --ink: #ECEAE4; --mute: #9C9CA5; --line: rgba(236,234,228,.13); --accent: #F2A33A; --accent-ink: #1A1000; }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh; display: grid; place-items: center; padding: 32px 16px;
+      background: var(--bg); color: var(--ink); font-family: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background-image: linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 120px 100%;
+    }
+    .box { width: min(640px, 100%); }
+    .brand { font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace; font-weight: 700; font-size: 14px; letter-spacing: 1px; }
+    .brand b { background: var(--ink); color: var(--bg); padding: 6px 8px; margin-right: 10px; }
+    h1 { margin-top: 28px; font-size: clamp(96px, 24vw, 180px); line-height: 1; font-weight: 800; letter-spacing: -6px; }
+    h1 span { color: var(--accent); }
+    .code { margin-top: 20px; padding: 16px 18px; background: var(--bg-2); border: 1px solid var(--line); font-family: ui-monospace, Consolas, monospace; font-size: 14px; line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--mute); }
+    .code b { color: var(--accent); font-weight: 700; }
+    p { margin-top: 26px; font-size: 18px; color: var(--mute); }
+    a.btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; padding: 14px 22px; background: var(--accent); color: var(--accent-ink); font-weight: 700; text-decoration: none; }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <main class="box">
+    <div class="brand"><b>İBK</b>İSMAİL BİLGEHAN KAZANCI</div>
+    <h1>404<span>.</span></h1>
+    <div class="code"><b>ölçüm:</b> <span id="path">/aranan-sayfa</span>
+<b>sonuç:</b> spesifikasyon dışı — böyle bir sayfa yok
+<b>öneri:</b> ana sayfadan devam et</div>
+    <p>Aradığın sayfa taşınmış ya da hiç var olmamış olabilir.</p>
+    <a class="btn" href="/">Ana sayfaya dön →</a>
+  </main>
+  <script>
+    (function () { var p = document.getElementById('path'); if (p) { try { p.textContent = decodeURIComponent(location.pathname) || '/'; } catch (e) { p.textContent = location.pathname; } } })();
+  </script>
+</body>
+</html>
