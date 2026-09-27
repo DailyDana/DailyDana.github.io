@@ -12,6 +12,8 @@
   <!-- Kök-göreli yol: 404 hangi klasör derinliğinde açılırsa açılsın stil yüklenir -->
   <link rel="stylesheet" href="/assets/css/style.css">
   <style>
+    /* 404 bir hata: pafta çizgileri burada kırmızı */
+    .nf { --draft: var(--accent); }
     .nf { min-height: 100svh; padding: var(--sheet) 0; display: flex; }
     .nf .sheet-hero { flex: 1; min-height: 0; padding: 72px 0 calc(var(--sheet) + 150px); }
     .nf .sheet-frame { inset: 0 var(--sheet); }

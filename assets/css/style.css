@@ -56,7 +56,8 @@
   --mute: #6B6B68;
   --line: rgba(28, 28, 28, .14);
   --line-strong: rgba(28, 28, 28, .75);
-  --accent: #C8102E;          /* teknik resim kırmızısı: yalnız hero'daki ölçü çizgisi */
+  --accent: #C8102E;          /* uyarı kırmızısı: 404 ve Cpk "yetersiz" */
+  --draft: #2E7556;           /* pafta çizim rengi: ilk ekrandaki ölçü çizgisi, eksenler, CAD imleci */
   --accent-ink: #FFFFFF;
   --accent-soft: rgba(200, 16, 46, .07);
   --link: #2F5D50;            /* editoryal vurgu: bağlantılar ve italik */
@@ -89,6 +90,7 @@
   --line: rgba(236, 234, 228, .14);
   --line-strong: rgba(236, 234, 228, .7);
   --accent: #F0707A;
+  --draft: #86C9AC;
   --accent-ink: #141414;
   --accent-soft: rgba(240, 112, 122, .1);
   --link: #8FC4B3;
@@ -220,18 +222,18 @@ code { font-family: var(--mono); font-size: .8em; }
 /* ölçü çizgisi */
 .dimline {
   position: relative; height: 34px; margin-bottom: 18px; max-width: 700px;
-  border-left: .75px solid var(--accent); border-right: .75px solid var(--accent);
-  color: var(--accent); font: 500 13px/1 var(--mono); letter-spacing: .5px;
+  border-left: .75px solid var(--draft); border-right: .75px solid var(--draft);
+  color: var(--draft); font: 500 13px/1 var(--mono); letter-spacing: .5px;
   display: flex; justify-content: center;
 }
-.dimline::before { content: ''; position: absolute; left: 0; right: 0; top: 22px; height: .75px; background: var(--accent); }
+.dimline::before { content: ''; position: absolute; left: 0; right: 0; top: 22px; height: .75px; background: var(--draft); }
 .dimline::after {
   content: ''; position: absolute; left: 0; right: 0; top: 18px; height: 9px;
   background:
-    linear-gradient(to top right, transparent 48%, var(--accent) 50%, var(--accent) 60%, transparent 62%) left top / 12px 4.5px no-repeat,
-    linear-gradient(to bottom right, transparent 48%, var(--accent) 50%, var(--accent) 60%, transparent 62%) left bottom / 12px 4.5px no-repeat,
-    linear-gradient(to top left, transparent 48%, var(--accent) 50%, var(--accent) 60%, transparent 62%) right top / 12px 4.5px no-repeat,
-    linear-gradient(to bottom left, transparent 48%, var(--accent) 50%, var(--accent) 60%, transparent 62%) right bottom / 12px 4.5px no-repeat;
+    linear-gradient(to top right, transparent 48%, var(--draft) 50%, var(--draft) 60%, transparent 62%) left top / 12px 4.5px no-repeat,
+    linear-gradient(to bottom right, transparent 48%, var(--draft) 50%, var(--draft) 60%, transparent 62%) left bottom / 12px 4.5px no-repeat,
+    linear-gradient(to top left, transparent 48%, var(--draft) 50%, var(--draft) 60%, transparent 62%) right top / 12px 4.5px no-repeat,
+    linear-gradient(to bottom left, transparent 48%, var(--draft) 50%, var(--draft) 60%, transparent 62%) right bottom / 12px 4.5px no-repeat;
 }
 .dimline span { position: relative; z-index: 1; background: var(--bg); padding: 0 8px; margin-top: 2px; white-space: nowrap; }
 /* görünüş (portre) */
@@ -239,13 +241,44 @@ code { font-family: var(--mono); font-size: .8em; }
 .view-frame { position: relative; aspect-ratio: 4 / 5; border: .75px solid var(--ink); background: var(--bg); overflow: hidden; }
 .view-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .view-ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-.view-ph::before, .view-ph::after { content: ''; position: absolute; background: var(--accent); }
-.view-ph::before { left: 50%; top: 10%; bottom: 10%; width: 1px; background: repeating-linear-gradient(to bottom, var(--accent) 0 14px, transparent 14px 18px, var(--accent) 18px 20px, transparent 20px 24px); }
-.view-ph::after { top: 50%; left: 10%; right: 10%; height: 1px; background: repeating-linear-gradient(to right, var(--accent) 0 14px, transparent 14px 18px, var(--accent) 18px 20px, transparent 20px 24px); }
+.view-ph::before, .view-ph::after { content: ''; position: absolute; background: var(--draft); }
+.view-ph::before { left: 50%; top: 10%; bottom: 10%; width: 1px; background: repeating-linear-gradient(to bottom, var(--draft) 0 14px, transparent 14px 18px, var(--draft) 18px 20px, transparent 20px 24px); }
+.view-ph::after { top: 50%; left: 10%; right: 10%; height: 1px; background: repeating-linear-gradient(to right, var(--draft) 0 14px, transparent 14px 18px, var(--draft) 18px 20px, transparent 20px 24px); }
 .view-ph span { position: relative; z-index: 1; font: 500 40px/1 var(--cond); letter-spacing: 2px; background: var(--bg); padding: 4px 12px; }
 .view:has(img) .view-ph { display: none; }
 .view-cap { margin-top: 10px; text-align: center; font: 500 12px var(--mono); letter-spacing: 1px; }
 .view-cap b { font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+/* CAD imleci: artı çizgileri, imleç çevresinde milimetrik ızgara, konum okuması, bölge vurgusu */
+.sheet-hero.has-cad { cursor: crosshair; }
+.sheet-hero.has-cad a, .sheet-hero.has-cad button { cursor: pointer; }
+.cad { position: absolute; inset: 14px; overflow: hidden; opacity: 0; transition: opacity .25s ease; }
+.sheet-hero.is-cad .cad { opacity: 1; }
+.cad-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--draft) 45%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--draft) 45%, transparent) 1px, transparent 1px),
+    linear-gradient(color-mix(in srgb, var(--draft) 18%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--draft) 18%, transparent) 1px, transparent 1px);
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  -webkit-mask-image: radial-gradient(circle 200px at var(--mx, -999px) var(--my, -999px), var(--ink), transparent 100%);
+  mask-image: radial-gradient(circle 200px at var(--mx, -999px) var(--my, -999px), var(--ink), transparent 100%);
+}
+.cad-x, .cad-y { position: absolute; background: var(--draft); opacity: .6; }
+.cad-x { left: 0; right: 0; height: 1px; top: var(--my, -10px); }
+.cad-y { top: 0; bottom: 0; width: 1px; left: var(--mx, -10px); }
+/* okuma kutusu içerikten sonra gelir: yazının ve antetin üstünde kalır */
+.cad-read {
+  position: absolute; z-index: 5; left: var(--hx, -999px); top: var(--hy, -999px); transform: translate(12px, 10px);
+  opacity: 0; transition: opacity .2s ease; pointer-events: none;
+  font: 500 11px/1 var(--mono); letter-spacing: .5px; color: var(--draft); background: var(--bg);
+  border: 1px solid var(--draft); padding: 4px 6px; white-space: nowrap;
+}
+.sheet-hero.is-cad .cad-read { opacity: 1; }
+.cad-read.is-flip { transform: translate(calc(-100% - 12px), 10px); }
+.sheet-top i, .sheet-left i { transition: color .15s ease, background .15s ease; }
+.sheet-top i.is-on, .sheet-left i.is-on { color: var(--draft); background: color-mix(in srgb, var(--draft) 12%, transparent); }
+
 /* antet */
 .titleblock {
   position: absolute; right: calc(var(--sheet) + 14px); bottom: calc(var(--sheet) + 14px); width: 580px;
@@ -257,7 +290,7 @@ code { font-family: var(--mono); font-size: .8em; }
 .titleblock .wide { grid-column: span 2; }
 .titleblock .tb-name { font: 500 18px/1.1 var(--cond); letter-spacing: .5px; }
 .titleblock a { text-decoration: underline; text-underline-offset: 2px; }
-.titleblock a:hover { color: var(--accent); }
+.titleblock a:hover { color: var(--draft); }
 
 /* ---------- hakkımda ---------- */
 .about-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 72px; align-items: start; }

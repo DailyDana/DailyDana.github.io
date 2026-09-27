@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <!-- İBK monogramı, pafta çerçevesi içinde. Harfler çizgiyle çizildi: favicon'da web fontu yüklenmez. -->
   <style>
-    .bg { fill: #FCFCFA; } .ink { stroke: #1C1C1C; fill: none; } .dot { fill: #1C1C1C; } .red { stroke: #C8102E; }
+    .bg { fill: #FCFCFA; } .ink { stroke: #1C1C1C; fill: none; } .dot { fill: #1C1C1C; } .red { stroke: #2E7556; }
     @media (prefers-color-scheme: dark) {
-      .bg { fill: #141414; } .ink { stroke: #ECEAE4; } .dot { fill: #ECEAE4; } .red { stroke: #F0707A; }
+      .bg { fill: #141414; } .ink { stroke: #ECEAE4; } .dot { fill: #ECEAE4; } .red { stroke: #86C9AC; }
     }
   </style>
   <rect class="bg" width="64" height="64"/>

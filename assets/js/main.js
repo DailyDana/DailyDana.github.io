@@ -316,6 +316,43 @@
     dlg.addEventListener('close', () => { img.removeAttribute('src'); });
   });
 
+  /* ---------- ilk ekran: CAD imleci (artı çizgileri, konum okuması, bölge vurgusu) ---------- */
+  safe('cad', () => {
+    const hero = $('.sheet-hero'), cad = $('.cad', hero || undefined);
+    if (!hero || !cad || reduceMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    const read = $('.cad-read', hero);
+    const cols = $$('.sheet-top i', hero), rows = $$('.sheet-left i', hero);
+    let raf = 0, x = 0, y = 0, lastC = -1, lastR = -1;
+    hero.classList.add('has-cad');
+    const paint = () => {
+      raf = 0;
+      const r = cad.getBoundingClientRect();
+      const cx = x - r.left, cy = y - r.top;
+      const inside = cx >= 0 && cy >= 0 && cx <= r.width && cy <= r.height;
+      hero.classList.toggle('is-cad', inside);
+      if (!inside) return;
+      cad.style.setProperty('--mx', `${cx}px`);
+      cad.style.setProperty('--my', `${cy}px`);
+      const h = hero.getBoundingClientRect();
+      hero.style.setProperty('--hx', `${x - h.left}px`);
+      hero.style.setProperty('--hy', `${y - h.top}px`);
+      const c = Math.min(cols.length - 1, Math.floor(cx / r.width * cols.length));
+      const rw = Math.min(rows.length - 1, Math.floor(cy / r.height * rows.length));
+      if (c !== lastC) { cols[lastC]?.classList.remove('is-on'); cols[c]?.classList.add('is-on'); lastC = c; }
+      if (rw !== lastR) { rows[lastR]?.classList.remove('is-on'); rows[rw]?.classList.add('is-on'); lastR = rw; }
+      if (read) {
+        const zone = `${rows[rw]?.textContent || ''}${cols[c]?.textContent || ''}`;
+        read.textContent = `${zone} · X ${String(Math.round(cx)).padStart(4, '0')} Y ${String(Math.round(cy)).padStart(4, '0')}`;
+        read.classList.toggle('is-flip', cx > r.width - 190);
+      }
+    };
+    hero.addEventListener('pointermove', e => { x = e.clientX; y = e.clientY; if (!raf) raf = requestAnimationFrame(paint); });
+    hero.addEventListener('pointerleave', () => {
+      hero.classList.remove('is-cad');
+      cols[lastC]?.classList.remove('is-on'); rows[lastR]?.classList.remove('is-on'); lastC = lastR = -1;
+    });
+  });
+
   /* ---------- Cpk hesaplayıcı ---------- */
   safe('cpk', () => {
     const box = $('#cpk');
