@@ -342,7 +342,9 @@
       if (rw !== lastR) { rows[lastR]?.classList.remove('is-on'); rows[rw]?.classList.add('is-on'); lastR = rw; }
       if (read) {
         const zone = `${rows[rw]?.textContent || ''}${cols[c]?.textContent || ''}`;
-        read.textContent = `${zone} · X ${String(Math.round(cx)).padStart(4, '0')} Y ${String(Math.round(cy)).padStart(4, '0')}`;
+        // CAD kuralı: orijin paftanın sol alt köşesi, Y yukarı doğru artar (ekranda Y aşağı artar)
+        const cadY = r.height - cy;
+        read.textContent = `${zone} · X ${String(Math.round(cx)).padStart(4, '0')} Y ${String(Math.round(cadY)).padStart(4, '0')}`;
         read.classList.toggle('is-flip', cx > r.width - 190);
       }
     };
