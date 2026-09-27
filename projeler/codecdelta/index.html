@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-tr="CodecDelta — Ses Kodlama Farkı Analizi · İsmail Bilgehan Kazancı" data-en="CodecDelta — Audio Codec Delta Analysis · İsmail Bilgehan Kazancı">CodecDelta — Ses Kodlama Farkı Analizi · İsmail Bilgehan Kazancı</title>
+  <meta name="description" content="Kayıplı bir kodlayıcının kayda ne yaptığını ölçen Python analiz motoru: bit akışı okuyucuları, alt-örnek hizalama, ABX istatistiği. Her tasarım kararı ölçülerek verildi ve belgelendi. 231 test, mypy --strict, GPL-3.0.">
+  <meta name="author" content="İsmail Bilgehan Kazancı">
+  <link rel="canonical" href="https://dailydana.github.io/projeler/codecdelta/">
+  <link rel="alternate" hreflang="tr" href="https://dailydana.github.io/projeler/codecdelta/">
+  <link rel="alternate" hreflang="en" href="https://dailydana.github.io/projeler/codecdelta/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://dailydana.github.io/projeler/codecdelta/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="İsmail Bilgehan Kazancı">
+  <meta property="og:title" content="CodecDelta — Audio Codec Delta Analysis · case study">
+  <meta property="og:description" content="Measure what a lossy encoder did: bitstream readers, sub-sample alignment, ABX statistics. Every design decision measured and documented; 231 tests, mypy --strict, GPL-3.0.">
+  <meta property="og:url" content="https://dailydana.github.io/projeler/codecdelta/">
+  <meta property="og:image" content="https://dailydana.github.io/projeler/codecdelta/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="CodecDelta — Audio Codec Delta Analysis">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#F4F2ED">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/archivo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    (function(){var d=document.documentElement;d.classList.add('js');try{var q=new URLSearchParams(location.search).get('lang'),l=q||localStorage.getItem('lang');if(l==='en'||l==='tr'){d.lang=l;if(q)localStorage.setItem('lang',l);}var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.dataset.theme=t;}catch(e){d.dataset.theme='light';}})();
+  </script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "CodecDelta",
+    "description": "Audio analysis engine that measures what a lossy encoder did to a recording: bitstream readers, sub-sample alignment, ABX statistics.",
+    "codeRepository": "https://github.com/DailyDana/CodecDelta",
+    "programmingLanguage": "Python",
+    "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+    "url": "https://dailydana.github.io/projeler/codecdelta/",
+    "image": "https://dailydana.github.io/projeler/codecdelta/og.png",
+    "author": { "@type": "Person", "name": "İsmail Bilgehan Kazancı", "url": "https://dailydana.github.io/" }
+  }
+  </script>
+</head>
+<body>
+
+<a class="skip" href="#icerik"><span data-lang="tr">İçeriğe geç</span><span data-lang="en">Skip to content</span></a>
+
+<!-- chrome:nav -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="brand" aria-label="İsmail Bilgehan Kazancı · ana sayfa" data-aria="aria.brand">
+      <span class="brand-mark" aria-hidden="true">İBK</span>
+      <span class="brand-name">İsmail Bilgehan Kazancı</span>
+    </a>
+    <div class="nav-right">
+      <nav class="nav-links" id="navLinks" aria-label="Ana menü" data-aria="aria.menu">
+        <a href="/#hakkimda" data-nav><span data-lang="tr">Hakkımda</span><span data-lang="en">About</span></a>
+        <a href="/#projeler" data-nav><span data-lang="tr">Projeler</span><span data-lang="en">Projects</span></a>
+        <a href="/#beceriler" data-nav><span data-lang="tr">Beceriler</span><span data-lang="en">Skills</span></a>
+        <a href="/#deneyim" data-nav><span data-lang="tr">Deneyim</span><span data-lang="en">Experience</span></a>
+        <a href="/#iletisim" data-nav><span data-lang="tr">İletişim</span><span data-lang="en">Contact</span></a>
+      </nav>
+      <div class="toggles">
+        <div class="lang" role="group" aria-label="Dil / Language">
+          <button type="button" data-lang-set="tr" aria-pressed="true" lang="tr">TR</button>
+          <button type="button" data-lang-set="en" aria-pressed="false" lang="en">EN</button>
+        </div>
+        <button type="button" class="theme" id="themeToggle" aria-pressed="false" aria-label="Koyu temaya geç">
+          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menüyü aç" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+</header>
+<!-- /chrome:nav -->
+
+<main id="icerik">
+  <article class="case">
+    <div class="wrap">
+      <nav class="crumb" aria-label="Sayfa yolu" data-aria="aria.crumb"><a href="/#projeler">← <span data-lang="tr">Projeler</span><span data-lang="en">Projects</span></a></nav>
+
+      <header class="case-head">
+        <div class="kicker"><span data-lang="tr">Vaka çalışması · Sinyal işleme · 2026 · geliştiriliyor</span><span data-lang="en">Case study · Signal processing · 2026 · in progress</span></div>
+        <h1 class="case-title"><span data-lang="tr">CodecDelta — Ses Kodlama Farkı Analizi</span><span data-lang="en">CodecDelta — Audio Codec Delta Analysis</span></h1>
+        <p class="case-lead"><span data-lang="tr">Kayıplı bir kodlayıcının kayda ne yaptığını ölçen analiz motoru: aynı kaydın iki kodlamasını karşılaştırır, tek dosyadan "bu FLAC gerçekten kayıpsız mı" sorusuna cevap arar. Asıl değeri özellik listesi değil, ölçülerek alınan ve reddedilen kararların kaydı.</span><span data-lang="en">An analysis engine that measures what a lossy encoder did to a recording: it compares two encodes of the same material and, from a single file, asks whether a FLAC is really lossless. Its real value is not the feature list but the record of decisions taken, and rejected, by measurement.</span></p>
+        <div class="case-tags"><span class="chip">Python 3.14</span><span class="chip">numpy</span><span class="chip">ffmpeg · ffprobe</span><span class="chip">pytest</span><span class="chip">mypy --strict</span><span class="chip">GPL-3.0</span></div>
+        <dl class="case-metrics">
+          <div><dt><span data-lang="tr">Test</span><span data-lang="en">Tests</span></dt><dd>231</dd></div>
+          <div><dt><span data-lang="tr">Bit akışı okuyucu</span><span data-lang="en">Bitstream readers</span></dt><dd>Ogg · Opus · Vorbis · FLAC · MP3</dd></div>
+          <div><dt><span data-lang="tr">Denetim</span><span data-lang="en">Audit</span></dt><dd>12.600 <span data-lang="tr">deneme</span><span data-lang="en">trials</span></dd></div>
+          <div><dt><span data-lang="tr">Durum</span><span data-lang="en">Status</span></dt><dd><span data-lang="tr">motor; arayüz yok</span><span data-lang="en">engine; no UI</span></dd></div>
+        </dl>
+        <div class="case-actions">
+          <a class="btn btn-accent" href="https://github.com/DailyDana/CodecDelta" target="_blank" rel="noopener"><span data-lang="tr">Kaynak kod</span><span data-lang="en">Source code</span> <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-line" href="https://github.com/DailyDana/CodecDelta/blob/main/docs/DECISIONS.md" target="_blank" rel="noopener">DECISIONS.md <span aria-hidden="true">↗</span></a>
+        </div>
+      </header>
+
+      <div class="case-body">
+        <section>
+          <h2 data-no="01"><span data-lang="tr">Problem</span><span data-lang="en">Problem</span></h2>
+          <div data-lang="tr">
+            <p>FLAC ile Opus, orijinal ile YouTube kopyası, MP3 ile AAC: ne kadar bilgi kayboldu, spektrumun neresinde, duyulur mu? Ve referans olmadan, tek dosyadan: bu FLAC gerçekten kayıpsız mı, yoksa kayıplı bir kaynaktan dönüştürülmüş mü?</p>
+            <p>Bu analizi <code>ffprobe</code>, ffmpeg filtreleri ve tek seferlik betiklerle elle yapıyordum. Tekrarlanabilir değildi ve video girdisini kaldıramıyordu. Hedef: sample-hassasiyetinde hizalama yapan, kararlarını ölçümle veren ve "fark yok" demeyi asla bir başarısız testten türetmeyen bir motor.</p>
+          </div>
+          <div data-lang="en">
+            <p>FLAC against Opus, an original against a YouTube rip, MP3 against AAC: how much information was lost, where in the spectrum, and is it audible? And with no reference, from a single file: is this FLAC really lossless, or a transcode from a lossy source?</p>
+            <p>I used to do this by hand with <code>ffprobe</code>, ffmpeg filters and one-off scripts. It was not repeatable and could not take video input. The goal: an engine that aligns to sample accuracy, decides by measurement, and never derives "no difference" from a failed test.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2 data-no="02"><span data-lang="tr">Yaklaşım</span><span data-lang="en">Approach</span></h2>
+          <div data-lang="tr">
+            <ul>
+              <li><strong>Aşağıdan yukarı motor.</strong> <code>core/</code> (ffmpeg keşfi, PCM akışı, ffprobe, gizlilik temizliği, ABX istatistiği) → <code>bitstream/</code> (Ogg örneklenmiş CRC, Opus TOC, Vorbis, FLAC MD5, MP3 Xing/LAME) → <code>dsp/</code> ve <code>align/</code> (alt-örnek gecikme kestirimi ve geçerlilik ölçüsü). Motor katmanı Qt import etmez; bir test bunu kilitler.</li>
+              <li><strong>Sözleşme koddan önce.</strong> Hizalama çekirdeğinin spesifikasyonu (<code>docs/SPEC-alignment.md</code>) kod yazılmadan yazıldı.</li>
+              <li><strong>Video girdisi bedava.</strong> Video akışı hiç decode edilmez; 20 GB'lık bir konser MKV'si yalnız ses parçası kadar maliyet çıkarır. 684 sn'lik gerçek bir YouTube m4a'da probe + decode 1242× gerçek zaman ölçüldü.</li>
+              <li><strong>Bilinçli eksikler.</strong> scipy ve matplotlib yok (FFT bütçenin %1'i; çizim numpy → QImage ve elle SVG). AAC bit akışı ayrıştırıcısı yazılmadı: ffprobe zaten <code>mp4a.40.2</code> nesne tipini veriyor, ayrıştırıcı sıfıra yakın bilgi ekleyecekti.</li>
+              <li><strong>Kalite kapısı.</strong> Her turda <code>ruff</code> + <code>ruff format</code> + <code>mypy --strict</code> + <code>pytest</code> yeşil olmadan commit yok; Windows CI ilk commit'ten beri.</li>
+            </ul>
+          </div>
+          <div data-lang="en">
+            <ul>
+              <li><strong>Bottom-up engine.</strong> <code>core/</code> (ffmpeg discovery, PCM streaming, ffprobe, privacy scrubbing, ABX statistics) → <code>bitstream/</code> (Ogg with sampled CRC, Opus TOC, Vorbis, FLAC MD5, MP3 Xing/LAME) → <code>dsp/</code> and <code>align/</code> (sub-sample delay estimation and a validity measure). The engine layer never imports Qt; a test locks that.</li>
+              <li><strong>Contract before code.</strong> The alignment core's specification (<code>docs/SPEC-alignment.md</code>) was written before the code it describes.</li>
+              <li><strong>Video input for free.</strong> The video stream is never decoded; a 20 GB concert MKV costs the same as its audio track alone. Probe + decode measured at 1242× realtime on a real 684 s YouTube m4a.</li>
+              <li><strong>Deliberate omissions.</strong> No scipy, no matplotlib (FFT is 1% of the budget; plots go through numpy → QImage and hand-written SVG). No AAC bitstream parser: ffprobe already reports the <code>mp4a.40.2</code> object type, so a parser would add almost nothing.</li>
+              <li><strong>Quality gate.</strong> No commit without <code>ruff</code> + <code>ruff format</code> + <code>mypy --strict</code> + <code>pytest</code> green; Windows CI since the first commit.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 data-no="03"><span data-lang="tr">Kanıt izi</span><span data-lang="en">Evidence trail</span></h2>
+          <div data-lang="tr">
+            <p>Makul görünen fikirler uygulandı, ölçüldü ve ölçüm aksini söyleyince kaldırıldı. Her biri <code>docs/DECISIONS.md</code>'de sayılarıyla kayıtlı; bir kısmı geri gelmesin diye testle kilitli.</p>
+            <table>
+              <thead><tr><th>Karar</th><th>Ölçüm</th></tr></thead>
+              <tbody>
+                <tr><td>ffmpeg borusundan <code>readinto</code>, asla <code>read(n)</code></td><td class="num">117,6 s → <b>2,1 s</b> (57×, 211 MB akış)</td></tr>
+                <tr><td>Alt-örnek gecikme: faz eğimi yerine artık araması</td><td class="num">gerçek müzik + lowpass: <b>%79,17 → %0,00</b> hata</td></tr>
+                <tr><td>Gerçek FLAC vs Opus/MP3/AAC/Vorbis çiftleri</td><td class="num">faz eğimi 6/6 başarısız → artık araması <b>0/6</b></td></tr>
+                <tr><td>Ogg CRC örnekleme (ilk 16 sayfa + her 64.)</td><td class="num">1393 ms → <b>137 ms</b>, aynı sonuç</td></tr>
+                <tr><td>Geçerlilik ölçüsü, ikinci kestirici değil</td><td class="num">2,4 ms (alternatifler 8,0 / 23,0 ms)</td></tr>
+                <tr><td>soxr yeniden örnekleme, cutoff açıkça 0,99</td><td class="num">varsayılan 21,5 kHz'de <b>−30,4 dB</b> bastırıyordu</td></tr>
+                <tr><td>ABX gücü n = 16</td><td class="num">plan 0,45 sanıyordu, gerçek <b>0,630</b>; %80 güç n ≈ 26</td></tr>
+              </tbody>
+            </table>
+            <p>Faz eğiminin çöküşünün kök nedeni gürültü değil <code>np.unwrap</code>: banttaki tek bir düşük genlikli bin 2π dal değişimi yapıp sonraki tüm binlere taşıyor. Tonal müzik seyrek spektrumludur (en büyük %1 bin ağırlığın %78,6'sını taşıyor), bu yüzden sonsuz S/N'de bile çöküyor. Düşük binleri filtrelemek denendi ve reddedildi: spektral dropout'ta 150–400 örneklik hata veriyor.</p>
+            <p><strong>Kaldırılan sezgiseller:</strong> FLAC blok boyutu kodlayıcıyı belirlemez (aynı ffmpeg 1024, 4096 ve 4608 üretti); ffmpeg gerçek LAME etiketi yazmaz (+9..+20 alanları sıfır, sıfır "0 Hz'de kesilmiş" diye okunmaz); tepe keskinliği geçerli/geçersizi ayırmaz (aralıklar tamamen örtüşüyor, korelasyon ayırıyor).</p>
+          </div>
+          <div data-lang="en">
+            <p>Plausible ideas were implemented, measured and removed when the measurement disagreed. Each is recorded in <code>docs/DECISIONS.md</code> with its numbers; several are locked by tests so they cannot come back.</p>
+            <table>
+              <thead><tr><th>Decision</th><th>Measurement</th></tr></thead>
+              <tbody>
+                <tr><td><code>readinto</code> on the ffmpeg pipe, never <code>read(n)</code></td><td class="num">117.6 s → <b>2.1 s</b> (57×, 211 MB stream)</td></tr>
+                <tr><td>Sub-sample delay: residual search instead of phase slope</td><td class="num">real music + lowpass: <b>79.17% → 0.00%</b> failures</td></tr>
+                <tr><td>Real FLAC vs Opus/MP3/AAC/Vorbis pairs</td><td class="num">phase slope failed 6/6 → residual search <b>0/6</b></td></tr>
+                <tr><td>Ogg CRC sampling (first 16 pages + every 64th)</td><td class="num">1393 ms → <b>137 ms</b>, identical results</td></tr>
+                <tr><td>A validity measure, not a second estimator</td><td class="num">2.4 ms (alternatives 8.0 / 23.0 ms)</td></tr>
+                <tr><td>soxr resampling with an explicit 0.99 cutoff</td><td class="num">default attenuated <b>−30.4 dB</b> at 21.5 kHz</td></tr>
+                <tr><td>ABX power at n = 16</td><td class="num">plan assumed 0.45, actual <b>0.630</b>; 80% power at n ≈ 26</td></tr>
+              </tbody>
+            </table>
+            <p>The root cause of the phase-slope failure is not noise but <code>np.unwrap</code>: a single low-magnitude bin flips the branch by 2π and every subsequent bin inherits the offset. Tonal music is sparse (the top 1% of bins carry 78.6% of the fit weight), so it fails even at infinite SNR. Filtering low bins before unwrapping was tried and rejected: under spectral dropout it produces 150–400-sample errors.</p>
+            <p><strong>Removed heuristics:</strong> FLAC blocksize does not identify an encoder (the same ffmpeg produced 1024, 4096 and 4608); ffmpeg does not write a real LAME tag (fields +9..+20 are zero, and zero must never be read as "cut at 0 Hz"); peak sharpness does not separate valid from invalid (the ranges overlap completely; correlation does the job).</p>
+          </div>
+        </section>
+
+        <section>
+          <h2 data-no="04"><span data-lang="tr">Öğrendiklerim</span><span data-lang="en">What I learned</span></h2>
+          <div data-lang="tr">
+            <p>Bir kestirici her zaman bir sayı döndürür; bu, sayının bir anlamı olduğu anlamına gelmez. İlgisiz iki sinyalde iki kestirici iki farklı "makul" gecikme verdi, ikisi de yanlıştı; "bulunacak bir gecikme var mı" sorusunu ancak bir geçerlilik ölçüsü cevaplayabildi.</p>
+            <p>Reddedilen fikirleri de belgelemek, aynı hatanın geri gelmesini önleyen tek şey. Bu projenin en değerli dosyası kod değil, <code>DECISIONS.md</code>.</p>
+          </div>
+          <div data-lang="en">
+            <p>An estimator always returns a number; that does not mean the number means anything. On two unrelated signals, two estimators returned two different "plausible" delays, both wrong; only a validity measure could answer whether there was a delay to find at all.</p>
+            <p>Documenting rejected ideas is the only thing that stops the same mistake from returning. The most valuable file in this project is not code, it is <code>DECISIONS.md</code>.</p>
+          </div>
+        </section>
+      </div>
+
+      <section class="related">
+        <div class="sec-head"><span class="sec-no">→</span><span class="sec-label"><span data-lang="tr">Diğer projeler</span><span data-lang="en">Other projects</span></span></div>
+        <div class="projects-grid-2" id="related" data-exclude="codecdelta"></div>
+      </section>
+    </div>
+  </article>
+</main>
+
+<!-- chrome:footer -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>© <span id="year">2026</span> İsmail Bilgehan Kazancı · Bursa</span>
+    <span><span data-lang="tr">Kütüphanesiz, elle yazıldı: HTML + CSS + JS</span><span data-lang="en">Hand-written, no libraries: HTML + CSS + JS</span></span>
+    <span class="footer-links">
+      <a href="https://github.com/DailyDana" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/ismailbilgehankazanci" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/DailyDana/DailyDana.github.io" target="_blank" rel="noopener"><span data-lang="tr">Kaynak</span><span data-lang="en">Source</span></a>
+    </span>
+  </div>
+</footer>
+<!-- /chrome:footer -->
+
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-tr="Hoffmann Montaj Hattı Dengeleme · İsmail Bilgehan Kazancı" data-en="Hoffmann Assembly Line Balancing · İsmail Bilgehan Kazancı">Hoffmann Montaj Hattı Dengeleme · İsmail Bilgehan Kazancı</title>
+  <meta name="description" content="SALBP-1 için Hoffmann (1963) öncelik matrisi yöntemi: saf Python çekirdek, komut satırı ve beş dilli Streamlit arayüzü. 127 test, brute-force ve bitmask-DP ile doğrulanmış, canlı demo.">
+  <meta name="author" content="İsmail Bilgehan Kazancı">
+  <link rel="canonical" href="https://dailydana.github.io/projeler/hoffmann-line-balancing/">
+  <link rel="alternate" hreflang="tr" href="https://dailydana.github.io/projeler/hoffmann-line-balancing/">
+  <link rel="alternate" hreflang="en" href="https://dailydana.github.io/projeler/hoffmann-line-balancing/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://dailydana.github.io/projeler/hoffmann-line-balancing/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="İsmail Bilgehan Kazancı">
+  <meta property="og:title" content="Hoffmann Assembly Line Balancing · vaka çalışması">
+  <meta property="og:description" content="SALBP-1, Hoffmann 1963; CLI + 5 dilli Streamlit. Ders ödevi olarak başladı, inceleme first-fit olduğunu gösterdi, sıfırdan yazıldı. 127 test, brute-force oracle ile doğrulanmış.">
+  <meta property="og:url" content="https://dailydana.github.io/projeler/hoffmann-line-balancing/">
+  <meta property="og:image" content="https://dailydana.github.io/projeler/hoffmann-line-balancing/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Hoffmann Montaj Hattı Dengeleme">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#F4F2ED">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/archivo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    (function(){var d=document.documentElement;d.classList.add('js');try{var q=new URLSearchParams(location.search).get('lang'),l=q||localStorage.getItem('lang');if(l==='en'||l==='tr'){d.lang=l;if(q)localStorage.setItem('lang',l);}var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.dataset.theme=t;}catch(e){d.dataset.theme='light';}})();
+  </script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "hoffmann-line-balancing",
+    "description": "Assembly line balancing (SALBP-1) with Hoffmann's precedence-matrix method: pure-Python core, CLI and a five-language Streamlit UI.",
+    "codeRepository": "https://github.com/DailyDana/hoffmann-line-balancing",
+    "programmingLanguage": "Python",
+    "license": "https://www.apache.org/licenses/LICENSE-2.0",
+    "url": "https://dailydana.github.io/projeler/hoffmann-line-balancing/",
+    "image": "https://dailydana.github.io/projeler/hoffmann-line-balancing/og.png",
+    "author": { "@type": "Person", "name": "İsmail Bilgehan Kazancı", "url": "https://dailydana.github.io/" }
+  }
+  </script>
+</head>
+<body>
+
+<a class="skip" href="#icerik"><span data-lang="tr">İçeriğe geç</span><span data-lang="en">Skip to content</span></a>
+
+<!-- chrome:nav -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="brand" aria-label="İsmail Bilgehan Kazancı · ana sayfa" data-aria="aria.brand">
+      <span class="brand-mark" aria-hidden="true">İBK</span>
+      <span class="brand-name">İsmail Bilgehan Kazancı</span>
+    </a>
+    <div class="nav-right">
+      <nav class="nav-links" id="navLinks" aria-label="Ana menü" data-aria="aria.menu">
+        <a href="/#hakkimda" data-nav><span data-lang="tr">Hakkımda</span><span data-lang="en">About</span></a>
+        <a href="/#projeler" data-nav><span data-lang="tr">Projeler</span><span data-lang="en">Projects</span></a>
+        <a href="/#beceriler" data-nav><span data-lang="tr">Beceriler</span><span data-lang="en">Skills</span></a>
+        <a href="/#deneyim" data-nav><span data-lang="tr">Deneyim</span><span data-lang="en">Experience</span></a>
+        <a href="/#iletisim" data-nav><span data-lang="tr">İletişim</span><span data-lang="en">Contact</span></a>
+      </nav>
+      <div class="toggles">
+        <div class="lang" role="group" aria-label="Dil / Language">
+          <button type="button" data-lang-set="tr" aria-pressed="true" lang="tr">TR</button>
+          <button type="button" data-lang-set="en" aria-pressed="false" lang="en">EN</button>
+        </div>
+        <button type="button" class="theme" id="themeToggle" aria-pressed="false" aria-label="Koyu temaya geç">
+          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menüyü aç" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+</header>
+<!-- /chrome:nav -->
+
+<main id="icerik">
+  <article class="case">
+    <div class="wrap">
+      <nav class="crumb" aria-label="Sayfa yolu" data-aria="aria.crumb"><a href="/#projeler">← <span data-lang="tr">Projeler</span><span data-lang="en">Projects</span></a></nav>
+
+      <header class="case-head">
+        <div class="kicker"><span data-lang="tr">Vaka çalışması · Üretim planlama · 2026</span><span data-lang="en">Case study · Production planning · 2026</span></div>
+        <h1 class="case-title"><span data-lang="tr">Hoffmann Montaj Hattı Dengeleme</span><span data-lang="en">Hoffmann Assembly Line Balancing</span></h1>
+        <p class="case-lead"><span data-lang="tr">SALBP-1 için Hoffmann'ın (1963) öncelik matrisi yöntemi: saf Python çekirdek, komut satırı aracı ve beş dilli Streamlit arayüzü. Ders ödevi olarak başladı; inceleme, kodun aslında Hoffmann olmadığını gösterince sıfırdan yazıldı.</span><span data-lang="en">Hoffmann's (1963) precedence-matrix method for SALBP-1: a pure-Python core, a command-line tool and a five-language Streamlit UI. It started as coursework; when a review showed the code was not actually Hoffmann's method, it was rewritten from scratch.</span></p>
+        <div class="case-tags"><span class="chip">Python 3.11+</span><span class="chip">Streamlit</span><span class="chip">hypothesis</span><span class="chip">mypy --strict</span><span class="chip">GitHub Actions</span><span class="chip">Apache-2.0</span></div>
+        <dl class="case-metrics">
+          <div><dt><span data-lang="tr">Test</span><span data-lang="en">Tests</span></dt><dd>127</dd></div>
+          <div><dt><span data-lang="tr">Arayüz dili</span><span data-lang="en">UI languages</span></dt><dd>EN · TR · DE · ES · FR</dd></div>
+          <div><dt><span data-lang="tr">Doğrulama</span><span data-lang="en">Verification</span></dt><dd>brute-force + bitmask-DP</dd></div>
+          <div><dt><span data-lang="tr">Sürüm</span><span data-lang="en">Release</span></dt><dd>v1.1.0</dd></div>
+        </dl>
+        <div class="case-actions">
+          <a class="btn btn-accent" href="https://hoffmann-line-balancing.streamlit.app/" target="_blank" rel="noopener"><span data-lang="tr">Canlı demo</span><span data-lang="en">Live demo</span> <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-line" href="https://github.com/DailyDana/hoffmann-line-balancing" target="_blank" rel="noopener"><span data-lang="tr">Kaynak kod</span><span data-lang="en">Source code</span> <span aria-hidden="true">↗</span></a>
+        </div>
+      </header>
+
+      <figure class="case-hero">
+        <img src="/assets/img/projects/hoffmann-line-balancing.webp" width="1200" height="1520" alt="Streamlit arayüzü: iş tablosu, çevrim süresi, istasyon sonuçları" fetchpriority="high">
+        <figcaption><span data-lang="tr">Streamlit arayüzü: iş tablosu (süre + ardıllar), çevrim süresi, eşitlik kuralı, sonuç kartları; kenar çubuğundan dil seçimi.</span><span data-lang="en">Streamlit UI: task table (duration + successors), cycle time, tie-break rule, result cards; language selector in the sidebar.</span></figcaption>
+      </figure>
+
+      <div class="case-body">
+        <section>
+          <h2 data-no="01"><span data-lang="tr">Problem</span><span data-lang="en">Problem</span></h2>
+          <div data-lang="tr">
+            <p>Montaj hattı dengeleme (SALBP-1): verilen çevrim süresi <em>C</em> için işleri öncelik kısıtlarını bozmadan en az sayıda istasyona dağıtmak. Projenin ilk sürümü bir ders ödeviydi: MATLAB'dan Python'a taşınmış, üstüne Tkinter arayüzü konmuştu ve "sonuç" üretiyordu.</p>
+            <p>Kod incelemesi, uygulanan döngünün Hoffmann yöntemi değil <strong>first-fit sezgiseli</strong> olduğunu gösterdi ("kodu sıfır olan ilk uygun işi al"). Alt küme sayımı olmadığı için optimumdan sapıyordu: <code>[4, 4, 3, 3, 3, 3]</code>, <em>C</em> = 10 örneğinde 3 istasyon buluyordu, Hoffmann 2 bulur. Ayrıca öncelik döngüsünde sonsuz döngüye giriyor, ondalık süreleri reddediyor ve geçersiz girdiyi sessizce yutuyordu.</p>
+          </div>
+          <div data-lang="en">
+            <p>Assembly line balancing (SALBP-1): for a given cycle time <em>C</em>, assign tasks to the fewest stations without violating precedence. The first version was coursework: a MATLAB script ported to Python with a Tkinter GUI on top, and it did produce "results".</p>
+            <p>A code review showed the implemented loop was a <strong>first-fit heuristic</strong>, not Hoffmann's method ("take the first available task whose code is zero"). Without subset enumeration it deviated from the optimum: on <code>[4, 4, 3, 3, 3, 3]</code> with <em>C</em> = 10 it found 3 stations where Hoffmann finds 2. It also looped forever on precedence cycles, rejected fractional durations and silently dropped invalid input.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2 data-no="02"><span data-lang="tr">Yaklaşım</span><span data-lang="en">Approach</span></h2>
+          <div data-lang="tr">
+            <ul>
+              <li><strong>Gerçek Hoffmann.</strong> Her istasyon için öncelik kısıtını sağlayan <em>tüm</em> iş alt kümeleri sayılır, boş süreyi en aza indiren seçilir. Eşitlik kuralı seçilebilir: <code>ORIGINAL</code>, <code>MOST_TASKS</code>, <code>MOST_FOLLOWERS</code>.</li>
+              <li><strong>Eski davranış korundu.</strong> First-fit döngüsü <code>greedy_first_fit</code> olarak duruyor; arayüzde "eski yöntemle karşılaştır" iki çözümü yan yana gösterir.</li>
+              <li><strong>Ölçütler.</strong> Verimlilik, denge kaybı, teorik alt sınır ⌈Σt/C⌉, düzgünlük indeksi (Moodie &amp; Young).</li>
+              <li><strong>Gerçek girdiler.</strong> Türkçe Excel CSV'si (<code>;</code> ayracı, ondalık virgül), Türkçe sütun başlıkları; hatalar <code>BalancingError</code> altında ve sorunlu iş kimliklerini söyler.</li>
+              <li><strong>Üç arayüz, tek çekirdek.</strong> Python API, komut satırı (metin/JSON/CSV çıktı) ve Streamlit (tablo editörü, çevrim süresi taraması, CSV/JSON indirme). Çekirdeğin zorunlu bağımlılığı yok.</li>
+              <li><strong>Beş dil.</strong> Arayüz ve komut satırı EN/TR/DE/ES/FR; i18n bütünlüğü testle kilitli.</li>
+            </ul>
+          </div>
+          <div data-lang="en">
+            <ul>
+              <li><strong>Real Hoffmann.</strong> For every station, <em>every</em> task subset that satisfies precedence is enumerated and the one with minimum idle time is chosen. The tie-break rule is selectable: <code>ORIGINAL</code>, <code>MOST_TASKS</code>, <code>MOST_FOLLOWERS</code>.</li>
+              <li><strong>The old behaviour is preserved.</strong> The first-fit loop lives on as <code>greedy_first_fit</code>; "compare with legacy method" shows both solutions side by side.</li>
+              <li><strong>Metrics.</strong> Efficiency, balance delay, theoretical lower bound ⌈Σt/C⌉, smoothness index (Moodie &amp; Young).</li>
+              <li><strong>Real inputs.</strong> Turkish Excel CSV (<code>;</code> delimiter, decimal comma), Turkish column headers; errors derive from <code>BalancingError</code> and name the offending task ids.</li>
+              <li><strong>Three interfaces, one core.</strong> Python API, CLI (text/JSON/CSV output) and Streamlit (table editor, cycle-time sweep, CSV/JSON download). The core has no mandatory dependency.</li>
+              <li><strong>Five languages.</strong> UI and CLI in EN/TR/DE/ES/FR; i18n completeness is locked by a test.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 data-no="03"><span data-lang="tr">Sonuç ve doğrulama</span><span data-lang="en">Result and verification</span></h2>
+          <div data-lang="tr"><p>Ders örneği (12 iş, <em>C</em> = 18) komut satırından:</p></div>
+          <div data-lang="en"><p>The course example (12 tasks, <em>C</em> = 18) from the command line:</p></div>
+<pre>$ python -m hoffmann_lb examples/course_example.csv --cycle 18
+
+Method: hoffmann   Cycle time: 18
+
+Station  1: 1, 2            load      18   idle       0
+Station  2: 3, 4, 5, 7, 9   load      18   idle       0
+Station  3: 6, 8            load      17   idle       1
+Station  4: 10, 11, 12      load      17   idle       1
+
+Stations          : 4 (equals lower bound)
+Efficiency (E)    : 97.22 %
+Balance delay (D) : 2.78 %
+Smoothness (SI)   : 1.4142</pre>
+          <div data-lang="tr">
+            <p><strong>127 test:</strong> birim, uçtan uca CLI, Streamlit <code>AppTest</code>, i18n bütünlüğü ve rastgele DAG'lar üzerinde hypothesis özellik testleri. Ders örneğinin beklenen değerleri bağımsız bir <strong>brute-force oracle</strong> ve kesin bir <strong>bitmask-DP çözücü</strong> ile hesaplandı; Hoffmann test edilen her <em>C</em> için tam optimuma ulaşıyor. <code>ORIGINAL</code> kuralıyla 8 işe kadar rastgele graflarda oracle ile birebir aynı istasyon kümelerini veriyor. <code>ruff</code>, <code>mypy --strict</code>, CI (Python 3.11 / 3.12).</p>
+            <p>Sürümler: v0.1.0 çekirdek → v0.2.0 CSV/JSON + CLI → v1.0.0 Streamlit → v1.1.0 çok dilli arayüz. v1.0.0'a kadar MIT, sonrası Apache-2.0 (NOTICE dosyasında belirtildi).</p>
+          </div>
+          <div data-lang="en">
+            <p><strong>127 tests:</strong> unit, end-to-end CLI, Streamlit <code>AppTest</code>, i18n completeness and hypothesis property tests on random DAGs. Expected values for the course example were computed with an independent <strong>brute-force oracle</strong> and an exact <strong>bitmask-DP solver</strong>; Hoffmann reaches the exact optimum for every tested <em>C</em>. With the <code>ORIGINAL</code> rule it yields exactly the same station sets as the oracle on random graphs up to 8 tasks. <code>ruff</code>, <code>mypy --strict</code>, CI on Python 3.11 / 3.12.</p>
+            <p>Releases: v0.1.0 core → v0.2.0 CSV/JSON + CLI → v1.0.0 Streamlit → v1.1.0 multilingual UI. MIT up to v1.0.0, Apache-2.0 afterwards (recorded in NOTICE).</p>
+          </div>
+        </section>
+
+        <section>
+          <h2 data-no="04"><span data-lang="tr">Öğrendiklerim</span><span data-lang="en">What I learned</span></h2>
+          <div data-lang="tr">
+            <p>Çalışan kod ile doğru kod arasındaki fark ancak bağımsız bir doğrulayıcıyla görünür. Ödev sürümü de her girdide bir "sonuç" üretiyordu; brute-force oracle olmadan first-fit olduğu hiç anlaşılmayacaktı. Bir yöntemin adını taşıyan kodun o yöntemi gerçekten uyguladığını kanıtlamak, kodu yazmaktan daha değerli.</p>
+          </div>
+          <div data-lang="en">
+            <p>The difference between working code and correct code only shows up with an independent verifier. The coursework version produced a "result" for every input; without the brute-force oracle nobody would have noticed it was first-fit. Proving that code named after a method actually implements that method is worth more than writing the code.</p>
+          </div>
+        </section>
+      </div>
+
+      <section class="related">
+        <div class="sec-head"><span class="sec-no">→</span><span class="sec-label"><span data-lang="tr">Diğer projeler</span><span data-lang="en">Other projects</span></span></div>
+        <div class="projects-grid-2" id="related" data-exclude="hoffmann-line-balancing"></div>
+      </section>
+    </div>
+  </article>
+</main>
+
+<!-- chrome:footer -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>© <span id="year">2026</span> İsmail Bilgehan Kazancı · Bursa</span>
+    <span><span data-lang="tr">Kütüphanesiz, elle yazıldı: HTML + CSS + JS</span><span data-lang="en">Hand-written, no libraries: HTML + CSS + JS</span></span>
+    <span class="footer-links">
+      <a href="https://github.com/DailyDana" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/ismailbilgehankazanci" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/DailyDana/DailyDana.github.io" target="_blank" rel="noopener"><span data-lang="tr">Kaynak</span><span data-lang="en">Source</span></a>
+    </span>
+  </div>
+</footer>
+<!-- /chrome:footer -->
+
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

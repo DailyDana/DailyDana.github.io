@@ -21,6 +21,41 @@ BASE = sys.argv[1] if len(sys.argv) > 1 else "http://127.0.0.1:8000"
 # (çıktı yolu, sorgu parametreleri); boş sözlük = şablonun varsayılanı
 OG_PAGES: list[tuple[Path, dict[str, str]]] = [
     (ROOT / "assets" / "img" / "og-default.png", {}),
+    (ROOT / "projeler" / "spc-analyzer" / "og.png", {
+        "kicker": "Vaka çalışması · Kalite ve süreç",
+        "title": "SPC + süreç yeterliliği analiz aracı.",
+        "sub": "X̄-R, X̄-S, I-MR; 4 Western Electric + 8 Nelson kuralı; Cp/Cpk ve Pp/Ppk. Önce kararlılık, sonra yeterlilik.",
+        "m1": "776 test", "m2": "Apache-2.0 lisans", "m3": "Streamlit canlı demo",
+        "url": "dailydana.github.io/projeler/spc-analyzer",
+    }),
+    (ROOT / "projeler" / "hoffmann-line-balancing" / "og.png", {
+        "kicker": "Vaka çalışması · Üretim planlama",
+        "title": "Hoffmann montaj hattı dengeleme.",
+        "sub": "SALBP-1, öncelik matrisi yöntemi; CLI + beş dilli Streamlit. Ders ödevi olarak başladı, inceleme sonrası sıfırdan yazıldı.",
+        "m1": "127 test", "m2": "2 doğrulama çözücüsü", "m3": "5 arayüz dili",
+        "url": "dailydana.github.io/projeler/hoffmann-line-balancing",
+    }),
+    (ROOT / "projeler" / "aniflow" / "og.png", {
+        "kicker": "Vaka çalışması · Yazılım ve otomasyon",
+        "title": "Aniflow + video upscale aracı.",
+        "sub": "Anime4K/FSRCNNX shader zincirlerini ffmpeg libplacebo ile videoya kalıcı işler; RIFE, Real-ESRGAN, donanım kodlama, tek satır kurulum.",
+        "m1": "v1.4 sürüm", "m2": "11 shader ön ayarı", "m3": "MIT lisans",
+        "url": "dailydana.github.io/projeler/aniflow",
+    }),
+    (ROOT / "projeler" / "codecdelta" / "og.png", {
+        "kicker": "Vaka çalışması · Sinyal işleme",
+        "title": "CodecDelta + ölçülmüş kararlar.",
+        "sub": "Kayıplı kodlayıcının kayda ne yaptığını ölçen motor; her tasarım kararı ölçüldü, reddedilenler belgelendi.",
+        "m1": "231 test", "m2": "57× hızlanma", "m3": "12.600 denetim denemesi",
+        "url": "dailydana.github.io/projeler/codecdelta",
+    }),
+    (ROOT / "projeler" / "cad-calismalari" / "og.png", {
+        "kicker": "Vaka çalışması · CAD / CAM",
+        "title": "SolidWorks + Siemens NX.",
+        "sub": "Donanma topu: 8 parça, 2 montaj, 9 teknik resim. Napoleon 12'lik sahra topu: 19 parça, montaj resmi.",
+        "m1": "27 parça", "m2": "3 montaj", "m3": "10 teknik resim",
+        "url": "dailydana.github.io/projeler/cad-calismalari",
+    }),
 ]
 
 

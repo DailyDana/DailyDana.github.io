@@ -89,8 +89,8 @@ def check_html(page: Path) -> None:
             err(f"{rel}: <img src={img.get('src')}> alt eksik")
     for attr in ("src", "href"):
         for m in re.finditer(rf'{attr}="(/[^"]+)"', text):
-            path = m.group(1).split("?")[0]
-            if path.startswith("/tools/"):
+            path = m.group(1).split("?")[0].split("#")[0]
+            if path.startswith("/tools/") or path in ("", "/"):
                 continue
             if not (ROOT / path.lstrip("/")).exists() and not (ROOT / path.lstrip("/") / "index.html").exists():
                 err(f"{rel}: dosya yok: {path}")

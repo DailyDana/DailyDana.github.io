@@ -37,6 +37,16 @@ window.PORTFOLIO = {
       'theme.dark': 'Koyu temaya geç',
       'theme.light': 'Açık temaya geç',
       'cert.verify': 'Doğrula',
+      'aria.menu': 'Ana menü',
+      'aria.brand': 'İsmail Bilgehan Kazancı · ana sayfa',
+      'aria.crumb': 'Sayfa yolu',
+      'aria.metrics': 'Özet sayılar',
+      'cpk.low': 'yetersiz',
+      'cpk.marginal': 'sınırda',
+      'cpk.ok': 'yeterli',
+      'cpk.onesided': 'tek taraflı spek: Cp tanımsız',
+      'cpk.invalid': 'geçersiz girdi: σ > 0 ve USL > LSL olmalı',
+      'cpk.caveat': 'Eşik 1,33 bir müşteri sözleşmesidir, istatistik yasası değil; kararlılık doğrulanmadan hiçbir Cpk geçerli değildir.',
       'noscript': 'Bu liste JavaScript ile oluşturuluyor. Projeler için GitHub profiline bakabilirsin:'
     },
     en: {
@@ -59,6 +69,16 @@ window.PORTFOLIO = {
       'theme.dark': 'Switch to dark theme',
       'theme.light': 'Switch to light theme',
       'cert.verify': 'Verify',
+      'aria.menu': 'Main menu',
+      'aria.brand': 'İsmail Bilgehan Kazancı · home',
+      'aria.crumb': 'Breadcrumb',
+      'aria.metrics': 'Headline numbers',
+      'cpk.low': 'not capable',
+      'cpk.marginal': 'marginal',
+      'cpk.ok': 'capable',
+      'cpk.onesided': 'one-sided spec: Cp undefined',
+      'cpk.invalid': 'invalid input: σ > 0 and USL > LSL required',
+      'cpk.caveat': 'The 1.33 threshold is a customer convention, not a statistical law; no Cpk is valid until stability has been verified.',
       'noscript': 'This list is rendered with JavaScript. The projects are on GitHub:'
     }
   },
@@ -83,7 +103,7 @@ window.PORTFOLIO = {
         { kind: 'demo', url: 'https://spc-analyzer.streamlit.app/' },
         { kind: 'repo', url: 'https://github.com/DailyDana/process-capability-analyzer' }
       ],
-      page: '',
+      page: '/projeler/spc-analyzer/',
       image: { src: '/assets/img/projects/spc-analyzer.webp', w: 1200, h: 898, alt: { tr: 'I-MR kontrol grafiği çıktısı', en: 'I-MR control chart output' } }
     },
     {
@@ -95,7 +115,7 @@ window.PORTFOLIO = {
         tr: 'SALBP-1 için Hoffmann (1963) öncelik matrisi yöntemi: her istasyon için uygun tüm alt kümeleri sayar. Komut satırı + beş dilli Streamlit arayüzü, çevrim süresi taraması. Brute-force ve bitmask-DP çözücülerle çapraz doğrulandı; ders ödevi olarak başlayan kodun aslında first-fit olduğu görülünce sıfırdan yazıldı.',
         en: 'Hoffmann\'s (1963) precedence-matrix method for SALBP-1: enumerates every feasible subset per station. CLI + five-language Streamlit UI, cycle-time sweep. Cross-checked against brute-force and bitmask-DP solvers; rewritten from scratch after a review showed the original coursework code was first-fit, not Hoffmann.'
       },
-      tags: ['Python', 'Streamlit', 'Yöneylem', 'hypothesis', 'Apache-2.0'],
+      tags: ['Python', 'Streamlit', { tr: 'Yöneylem', en: 'Operations research' }, 'hypothesis', 'Apache-2.0'],
       metrics: [
         { value: '127', label: { tr: 'test', en: 'tests' } },
         { value: '5', label: { tr: 'arayüz dili', en: 'UI languages' } },
@@ -105,7 +125,7 @@ window.PORTFOLIO = {
         { kind: 'demo', url: 'https://hoffmann-line-balancing.streamlit.app/' },
         { kind: 'repo', url: 'https://github.com/DailyDana/hoffmann-line-balancing' }
       ],
-      page: '',
+      page: '/projeler/hoffmann-line-balancing/',
       image: { src: '/assets/img/projects/hoffmann-line-balancing.webp', w: 1200, h: 1520, alt: { tr: 'Hat dengeleme Streamlit arayüzü', en: 'Line balancing Streamlit interface' } }
     },
     {
@@ -127,7 +147,7 @@ window.PORTFOLIO = {
         { kind: 'repo', url: 'https://github.com/DailyDana/Aniflow' },
         { kind: 'release', url: 'https://github.com/DailyDana/Aniflow/releases' }
       ],
-      page: '',
+      page: '/projeler/aniflow/',
       image: { src: '/assets/img/projects/aniflow.webp', w: 676, h: 749, alt: { tr: 'Aniflow arayüzü', en: 'Aniflow interface' } }
     },
     {
@@ -148,7 +168,7 @@ window.PORTFOLIO = {
       links: [
         { kind: 'repo', url: 'https://github.com/DailyDana/CodecDelta' }
       ],
-      page: '',
+      page: '/projeler/codecdelta/',
       image: null
     },
     {
@@ -160,7 +180,7 @@ window.PORTFOLIO = {
         tr: 'SolidWorks\'te sekiz parça, iki montaj ve teknik resimleriyle bir donanma topu; Siemens NX\'te 19 parçalı Napoleon 12\'lik sahra topu montajı ve montaj resmi. Parça modelleme, montaj kısıtları ve teknik resim standartları üzerine çalışma.',
         en: 'A naval cannon in SolidWorks with eight parts, two assemblies and full drawings; a 19-part Napoleon 12-pounder field gun assembly and assembly drawing in Siemens NX. Practice in part modelling, assembly mates and drawing standards.'
       },
-      tags: ['SolidWorks', 'Siemens NX', 'Teknik resim'],
+      tags: ['SolidWorks', 'Siemens NX', { tr: 'Teknik resim', en: 'Technical drawing' }],
       metrics: [
         { value: '27', label: { tr: 'parça', en: 'parts' } },
         { value: '3', label: { tr: 'montaj', en: 'assemblies' } },
@@ -170,14 +190,14 @@ window.PORTFOLIO = {
         { kind: 'repo', url: 'https://github.com/DailyDana/cannon-model', label: { tr: 'SolidWorks deposu', en: 'SolidWorks repo' } },
         { kind: 'repo', url: 'https://github.com/DailyDana/napoleon-artillery-cannon', label: { tr: 'NX deposu', en: 'NX repo' } }
       ],
-      page: '',
-      image: null
+      page: '/projeler/cad-calismalari/',
+      image: { src: '/assets/img/cad/cannon-top-assem-thumb.webp', w: 800, h: 574, alt: { tr: 'Donanma topu montaj teknik resmi', en: 'Naval cannon assembly drawing' } }
     }
   ],
 
   tools: [
     {
-      name: 'mpv yapılandırması · Anime4K + RIFE',
+      name: { tr: 'mpv yapılandırması · Anime4K + RIFE', en: 'mpv configuration · Anime4K + RIFE' },
       desc: {
         tr: 'uosc tabanlı canlı ayar panelleri, çözünürlüğe göre RIFE politikası, shader profilleri, LUT menüsü ve SHA-256 karşılaştırmalı güncelleme sistemi. README\'de ölçülerek bulunan yedi hatanın kaydı var.',
         en: 'uosc-based live settings panels, resolution-aware RIFE policy, shader profiles, LUT menu and a SHA-256 update checker. The README records seven bugs found by measurement.'
@@ -204,7 +224,7 @@ window.PORTFOLIO = {
       links: []
     },
     {
-      name: 'HSD Gazi web sitesi',
+      name: { tr: 'HSD Gazi web sitesi', en: 'HSD Gazi website' },
       desc: {
         tr: 'Huawei Student Developers Gazi topluluğu için kütüphanesiz tek sayfa site: veri dosyasından üretilen etkinlik kartları, takvim linkleri, erişilebilir mobil menü.',
         en: 'Library-free single-page site for the Huawei Student Developers Gazi community: event cards rendered from a data file, calendar links, accessible mobile navigation.'
@@ -283,7 +303,7 @@ window.PORTFOLIO = {
 
   education: [
     {
-      school: 'Gazi Üniversitesi · Teknoloji Fakültesi',
+      school: { tr: 'Gazi Üniversitesi · Teknoloji Fakültesi', en: 'Gazi University · Faculty of Technology' },
       degree: { tr: 'İmalat Mühendisliği (Lisans)', en: 'B.Sc. Manufacturing Engineering' },
       notes: { tr: 'Uygulamalı CNC ve CAD/CAM dersleri; SPC ve kalite mühendisliği odağı.', en: 'Hands-on CNC and CAD/CAM coursework; focus on SPC and quality engineering.' }
     }

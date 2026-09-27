@@ -22,9 +22,16 @@ SHOTS = [
     ("index-360-light-tr", "/", 360, "light", "tr"),
     ("index-360-dark-en", "/?lang=en", 360, "dark", "en"),
     ("404-900-light", "/404.html", 900, "light", "tr"),
+    ("spc-1440-light-tr", "/projeler/spc-analyzer/", 1440, "light", "tr"),
+    ("spc-360-dark-en", "/projeler/spc-analyzer/?lang=en", 360, "dark", "en"),
+    ("hoffmann-1440-dark-en", "/projeler/hoffmann-line-balancing/?lang=en", 1440, "dark", "en"),
+    ("aniflow-1440-light-tr", "/projeler/aniflow/", 1440, "light", "tr"),
+    ("codecdelta-1440-light-tr", "/projeler/codecdelta/", 1440, "light", "tr"),
+    ("cad-1440-light-tr", "/projeler/cad-calismalari/", 1440, "light", "tr"),
+    ("cad-360-dark-en", "/projeler/cad-calismalari/?lang=en", 360, "dark", "en"),
 ]
 # Açık temada bölüm bazlı yakın çekimler (tam sayfa görüntüsü ayrıntı için fazla küçülüyor)
-SECTIONS = ["#hero", "#projectsFeatured", "#projectsMore", "#tools", "#skills", "#experience", "#egitim", "#iletisim"]
+SECTIONS = ["#hero", ".bands", "#projectsFeatured", "#projectsMore", "#tools", "#skills", "#cpk", "#experience", "#egitim", "#iletisim", ".case-head", ".case-body", "#related"]
 
 
 async def main() -> int:
