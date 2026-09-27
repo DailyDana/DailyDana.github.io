@@ -6,7 +6,7 @@
 window.PORTFOLIO = {
   meta: {
     name: 'İsmail Bilgehan Kazancı',
-    location: 'Bursa',
+    location: 'Bursa · Ankara',
     updated: '2026-09-27',
     links: {
       github: 'https://github.com/DailyDana',
@@ -278,12 +278,12 @@ window.PORTFOLIO = {
 
   experience: [
     {
-      org: 'HUAWEI Student Developers Türkiye',
+      org: { tr: 'HSD Gazi · HUAWEI Student Developers Türkiye, Gazi Üniversitesi topluluğu', en: 'HSD Gazi · HUAWEI Student Developers Türkiye, Gazi University community' },
       role: { tr: 'Denetim Kurulu Başkanı', en: 'Chair of the Audit Board' },
-      type: 'volunteer', location: 'Türkiye',
+      type: 'volunteer', location: 'Ankara',
       start: '2026-04', end: null,
       bullets: [
-        { tr: 'Huawei destekli öğrenci geliştirici programının Türkiye yapılanmasında gönüllü görev.', en: 'Volunteer role in the Türkiye organisation of the Huawei-backed student developer programme.' },
+        { tr: 'Huawei destekli öğrenci geliştirici programının Gazi Üniversitesi topluluğunda denetim kurulunu yönetiyor.', en: 'Leads the audit board of the Gazi University community of the Huawei-backed student developer programme.' },
         { tr: 'HSD Gazi topluluk sitesinin tasarımı ve geliştirilmesi (yayında).', en: 'Designed and built the HSD Gazi community website (live).' }
       ],
       links: [{ kind: 'site', url: 'https://dailydana.github.io/hsd-gazi-web/' }]
