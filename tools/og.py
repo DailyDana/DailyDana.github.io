@@ -23,35 +23,35 @@ OG_PAGES: list[tuple[Path, dict[str, str]]] = [
     (ROOT / "assets" / "img" / "og-default.png", {}),
     (ROOT / "projeler" / "spc-analyzer" / "og.png", {
         "kicker": "Vaka çalışması · Kalite ve süreç",
-        "title": "SPC + süreç yeterliliği analiz aracı.",
+        "title": "Süreç yeterliliği ve *SPC* analiz aracı", "sheet": "02",
         "sub": "X̄-R, X̄-S, I-MR; 4 Western Electric + 8 Nelson kuralı; Cp/Cpk ve Pp/Ppk. Önce kararlılık, sonra yeterlilik.",
         "m1": "776 test", "m2": "Apache-2.0 lisans", "m3": "Streamlit canlı demo",
         "url": "dailydana.github.io/projeler/spc-analyzer",
     }),
     (ROOT / "projeler" / "hoffmann-line-balancing" / "og.png", {
         "kicker": "Vaka çalışması · Üretim planlama",
-        "title": "Hoffmann montaj hattı dengeleme.",
+        "title": "Hoffmann ile *montaj hattı* dengeleme", "sheet": "03",
         "sub": "SALBP-1, öncelik matrisi yöntemi; CLI + beş dilli Streamlit. Ders ödevi olarak başladı, inceleme sonrası sıfırdan yazıldı.",
         "m1": "127 test", "m2": "2 doğrulama çözücüsü", "m3": "5 arayüz dili",
         "url": "dailydana.github.io/projeler/hoffmann-line-balancing",
     }),
     (ROOT / "projeler" / "aniflow" / "og.png", {
         "kicker": "Vaka çalışması · Yazılım ve otomasyon",
-        "title": "Aniflow + video upscale aracı.",
+        "title": "Aniflow: *shader tabanlı* video upscale", "sheet": "04",
         "sub": "Anime4K/FSRCNNX shader zincirlerini ffmpeg libplacebo ile videoya kalıcı işler; RIFE, Real-ESRGAN, donanım kodlama, tek satır kurulum.",
         "m1": "v1.4 sürüm", "m2": "11 shader ön ayarı", "m3": "MIT lisans",
         "url": "dailydana.github.io/projeler/aniflow",
     }),
     (ROOT / "projeler" / "codecdelta" / "og.png", {
         "kicker": "Vaka çalışması · Sinyal işleme",
-        "title": "CodecDelta + ölçülmüş kararlar.",
+        "title": "CodecDelta: *ölçülerek* verilmiş kararlar", "sheet": "05",
         "sub": "Kayıplı kodlayıcının kayda ne yaptığını ölçen motor; her tasarım kararı ölçüldü, reddedilenler belgelendi.",
         "m1": "231 test", "m2": "57× hızlanma", "m3": "12.600 denetim denemesi",
         "url": "dailydana.github.io/projeler/codecdelta",
     }),
     (ROOT / "projeler" / "cad-calismalari" / "og.png", {
         "kicker": "Vaka çalışması · CAD / CAM",
-        "title": "SolidWorks + Siemens NX.",
+        "title": "Donanma topu ve *Napoleon* sahra topu", "sheet": "06",
         "sub": "Donanma topu: 8 parça, 2 montaj, 9 teknik resim. Napoleon 12'lik sahra topu: 19 parça, montaj resmi.",
         "m1": "27 parça", "m2": "3 montaj", "m3": "10 teknik resim",
         "url": "dailydana.github.io/projeler/cad-calismalari",
@@ -69,7 +69,7 @@ async def main() -> None:
             await page.evaluate("document.fonts.ready")
             await page.wait_for_timeout(200)
             png = await page.screenshot(clip={"x": 0, "y": 0, "width": 1200, "height": 630})
-            im = Image.open(BytesIO(png)).convert("RGB").quantize(colors=128, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.FLOYDSTEINBERG)
+            im = Image.open(BytesIO(png)).convert("RGB").quantize(colors=64, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.FLOYDSTEINBERG)
             out.parent.mkdir(parents=True, exist_ok=True)
             im.save(out, "PNG", optimize=True)
             print(f"{out.relative_to(ROOT)}: {out.stat().st_size / 1024:.1f} KB")

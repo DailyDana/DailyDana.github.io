@@ -22,10 +22,10 @@
   <meta property="og:locale" content="tr_TR">
   <meta property="og:locale:alternate" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#F4F2ED">
+  <meta name="theme-color" content="#FCFCFA">
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-  <link rel="preload" href="/assets/fonts/archivo-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <script>
     (function(){var d=document.documentElement;d.classList.add('js');try{var q=new URLSearchParams(location.search).get('lang'),l=q||localStorage.getItem('lang');if(l==='en'||l==='tr'){d.lang=l;if(q)localStorage.setItem('lang',l);}var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.dataset.theme=t;}catch(e){d.dataset.theme='light';}})();
   </script>
@@ -46,10 +46,10 @@
 <a class="skip" href="#icerik"><span data-lang="tr">İçeriğe geç</span><span data-lang="en">Skip to content</span></a>
 
 <!-- chrome:nav -->
+<div class="sheet" aria-hidden="true"><div class="sheet-top"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></div><div class="sheet-left"><i>A</i><i>B</i><i>C</i><i>D</i><i>E</i></div></div>
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
     <a href="/" class="brand" aria-label="İsmail Bilgehan Kazancı · ana sayfa" data-aria="aria.brand">
-      <span class="brand-mark" aria-hidden="true">İBK</span>
       <span class="brand-name">İsmail Bilgehan Kazancı</span>
     </a>
     <div class="nav-right">
@@ -75,7 +75,6 @@
       </button>
     </div>
   </div>
-  <div class="progress" id="progress" aria-hidden="true"></div>
 </header>
 <!-- /chrome:nav -->
 
@@ -180,14 +179,16 @@
 
 <!-- chrome:footer -->
 <footer class="footer">
-  <div class="wrap footer-inner">
-    <span>© <span id="year">2026</span> İsmail Bilgehan Kazancı · Bursa · Ankara</span>
-    <span><span data-lang="tr">Kütüphanesiz, elle yazıldı: HTML + CSS + JS</span><span data-lang="en">Hand-written, no libraries: HTML + CSS + JS</span></span>
-    <span class="footer-links">
-      <a href="https://github.com/DailyDana" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/ismailbilgehankazanci" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/DailyDana/DailyDana.github.io" target="_blank" rel="noopener"><span data-lang="tr">Kaynak</span><span data-lang="en">Source</span></a>
-    </span>
+  <div class="wrap">
+    <div class="titleblock">
+      <div class="tb-name"><small><span data-lang="tr">AD SOYAD</span><span data-lang="en">NAME</span></small><strong lang="tr">İSMAİL BİLGEHAN KAZANCI</strong></div>
+      <div><small><span data-lang="tr">ALAN</span><span data-lang="en">FIELD</span></small><span data-lang="tr">İmalat mühendisliği</span><span data-lang="en">Manufacturing eng.</span></div>
+      <div><small><span data-lang="tr">KONUM</span><span data-lang="en">LOCATION</span></small>Bursa · Ankara</div>
+      <div><small>GITHUB</small><a href="https://github.com/DailyDana" target="_blank" rel="noopener">DailyDana</a></div>
+      <div><small>LINKEDIN</small><a href="https://www.linkedin.com/in/ismailbilgehankazanci" target="_blank" rel="noopener">ismailbilgehankazanci</a></div>
+      <div class="wide"><small><span data-lang="tr">NOT</span><span data-lang="en">NOTE</span></small><span data-lang="tr">Kütüphanesiz, elle yazıldı · </span><span data-lang="en">Hand-written, no libraries · </span><a href="https://github.com/DailyDana/DailyDana.github.io" target="_blank" rel="noopener"><span data-lang="tr">kaynak kod</span><span data-lang="en">source</span></a></div>
+      <div><small>REV.</small>© <span id="year">2026</span></div>
+    </div>
   </div>
 </footer>
 <!-- /chrome:footer -->

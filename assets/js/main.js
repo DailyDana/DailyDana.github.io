@@ -51,11 +51,7 @@
   const linkLabel = l => l.label ? t(l.label) : tu(`btn.${l.kind}`);
   const links = arr => (Array.isArray(arr) ? arr : []).filter(l => l && isHttp(l.url)).map(l => extLink(l.url, linkLabel(l))).join('');
   const chips = arr => (Array.isArray(arr) ? arr : []).map(x => `<span class="chip">${t(x)}</span>`).join('');
-  const metrics = arr => (Array.isArray(arr) ? arr : []).map(m => {
-    const v = String(m.value ?? '');
-    const cnt = /^\d{1,6}$/.test(v) ? ` data-count="${v}"` : ''; // tam sayılar sayarak gelir
-    return `<span class="metric"><b${cnt}>${esc(v)}</b>${t(m.label)}</span>`;
-  }).join('');
+  const metrics = arr => (Array.isArray(arr) ? arr : []).map(m => `<span class="metric"><b>${esc(m.value)}</b>${t(m.label)}</span>`).join('');
 
   /* ---------- dil ve tema geçişleri ---------- */
   const titleEl = $('title');
@@ -184,7 +180,7 @@
       <article class="card ${featured ? 'card-featured' : 'card-medium'} reveal" id="p-${esc(p.slug)}">
         <div class="card-media">${img}</div>
         <div class="card-body">
-          <div class="card-top"><span>${esc(p.year || '')}${p.repo ? ` · <span lang="en">${esc(p.repo)}</span>` : ''}</span><span class="card-status">${tu(`status.${p.status || 'active'}`)}</span></div>
+          <div class="card-top"><span><b>${t({ tr: `Şekil ${p.order ?? ''}`, en: `Figure ${p.order ?? ''}` })}</b> · ${esc(p.year || '')}${p.repo ? ` · <span lang="en">${esc(p.repo)}</span>` : ''}</span><span class="card-status">${tu(`status.${p.status || 'active'}`)}</span></div>
           <h3>${title}</h3>
           <p>${t(p.summary)}</p>
           <div class="card-metrics">${metrics(p.metrics)}</div>
@@ -318,127 +314,6 @@
     }));
     dlg.addEventListener('click', e => { if (e.target === dlg || e.target.closest('.lightbox-close')) dlg.close(); });
     dlg.addEventListener('close', () => { img.removeAttribute('src'); });
-  });
-
-  /* ---------- hero: kontrol grafiği kendini çizer ---------- */
-  safe('chart', () => {
-    const svg = $('.hero-chart');
-    if (!svg) return;
-    $$('.pt circle', svg).forEach((c, i) => c.style.setProperty('--i', String(i)));
-    const run = $('.run', svg);
-    if (reduceMotion || !run || typeof run.getTotalLength !== 'function') { svg.classList.add('is-live'); return; }
-    const len = run.getTotalLength();
-    run.style.strokeDasharray = String(len);
-    run.style.strokeDashoffset = String(len);
-    void run.getBoundingClientRect();
-    requestAnimationFrame(() => { run.style.strokeDashoffset = '0'; svg.classList.add('is-live'); });
-  });
-
-  /* ---------- hero: fareyi izleyen ızgara ---------- */
-  safe('hero-light', () => {
-    const hero = $('#hero');
-    if (!hero || reduceMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-    let raf = 0, x = 0, y = 0;
-    hero.addEventListener('pointermove', e => {
-      const r = hero.getBoundingClientRect();
-      x = e.clientX - r.left; y = e.clientY - r.top;
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        raf = 0;
-        hero.style.setProperty('--mx', `${x}px`);
-        hero.style.setProperty('--my', `${y}px`);
-        hero.classList.add('is-lit');
-      });
-    });
-    hero.addEventListener('pointerleave', () => hero.classList.remove('is-lit'));
-  });
-
-  /* ---------- sayaçlar: tam sayı metrikler sayarak gelir ---------- */
-  safe('counters', () => {
-    const els = $$('[data-count]');
-    if (!els.length || reduceMotion || !hasIO) return;
-    const fmt = n => n.toLocaleString(getLang() === 'tr' ? 'tr-TR' : 'en-US');
-    const run = el => {
-      const target = Number(el.dataset.count), t0 = performance.now(), dur = 1400;
-      let done = false;
-      const step = now => {
-        if (done) return;
-        const p = Math.min(1, (now - t0) / dur);
-        el.textContent = fmt(Math.round(target * (1 - Math.pow(1 - p, 4))));
-        if (p < 1) requestAnimationFrame(step); else done = true;
-      };
-      el.textContent = '0';
-      requestAnimationFrame(step);
-      setTimeout(() => { done = true; el.textContent = fmt(target); }, dur + 200);
-    };
-    const io = new IntersectionObserver(entries => entries.forEach(en => {
-      if (en.isIntersecting) { io.unobserve(en.target); run(en.target); }
-    }), { threshold: 0.6 });
-    els.forEach(el => io.observe(el));
-  });
-
-  /* ---------- karışık harf efekti (mono etiketlerde) ---------- */
-  const GLYPHS = 'ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ0123456789·/+=<>';
-  const scramble = (el, dur = 800) => {
-    const final = el.dataset.final || el.textContent;
-    el.dataset.final = final;
-    if (reduceMotion) { el.textContent = final; return; }
-    const chars = Array.from(final);
-    const t0 = performance.now();
-    let done = false;
-    const finish = () => { done = true; el.textContent = final; };
-    const tick = now => {
-      if (done) return;
-      const p = Math.min(1, (now - t0) / dur);
-      const settled = Math.floor(p * chars.length);
-      el.textContent = chars.map((c, i) => (i < settled || c === ' ' || c === '·') ? c : GLYPHS[(Math.random() * GLYPHS.length) | 0]).join('');
-      if (p < 1) requestAnimationFrame(tick); else finish();
-    };
-    requestAnimationFrame(tick);
-    setTimeout(finish, dur + 150);
-  };
-  safe('scramble', () => {
-    const items = $$('.sec-label > span, .hero .kicker > span, .case-head .kicker > span');
-    if (!items.length || !hasIO) return;
-    const io = new IntersectionObserver(entries => entries.forEach(en => {
-      if (en.isIntersecting) { io.unobserve(en.target); scramble(en.target); }
-    }), { threshold: 1 });
-    items.forEach(el => io.observe(el));
-  });
-
-  /* ---------- akan anahtar kelime bandı ---------- */
-  safe('bands', () => {
-    const tracks = $$('.band-track[data-items]');
-    if (!tracks.length) return;
-    const sets = new Map(tracks.map(tr => {
-      const n = Number(tr.dataset.items) || tr.children.length;
-      return [tr, Array.from(tr.children).slice(0, n).map(el => el.outerHTML).join('')];
-    }));
-    const build = () => {
-      tracks.forEach(tr => {
-        const band = tr.parentElement, set = sets.get(tr);
-        tr.classList.remove('is-ready');
-        tr.innerHTML = set;
-        const setW = tr.offsetWidth, bandW = band.offsetWidth;
-        if (!setW || !bandW) return;
-        const reps = Math.max(1, Math.ceil((bandW + 80) / setW));
-        const half = set.repeat(reps);
-        tr.innerHTML = half + half;
-        const speed = Number(tr.dataset.speed) || 36; // piksel/saniye
-        tr.style.setProperty('--band-dur', `${(setW * reps / speed).toFixed(2)}s`);
-        void tr.offsetWidth;
-        tr.classList.add('is-ready');
-      });
-    };
-    build();
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
-    let timer = 0, lastW = window.innerWidth;
-    window.addEventListener('resize', () => {
-      if (window.innerWidth === lastW) return;
-      lastW = window.innerWidth;
-      clearTimeout(timer);
-      timer = setTimeout(build, 200);
-    });
   });
 
   /* ---------- Cpk hesaplayıcı ---------- */
