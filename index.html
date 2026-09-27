@@ -48,12 +48,11 @@
   }
   </script>
 </head>
-<body>
+<body class="home">
 
 <a class="skip" href="#hakkimda"><span data-lang="tr">İçeriğe geç</span><span data-lang="en">Skip to content</span></a>
 
 <!-- chrome:nav -->
-<div class="sheet" aria-hidden="true"><div class="sheet-top"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></div><div class="sheet-left"><i>A</i><i>B</i><i>C</i><i>D</i><i>E</i></div></div>
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
     <a href="/" class="brand" aria-label="İsmail Bilgehan Kazancı · ana sayfa" data-aria="aria.brand">
@@ -87,32 +86,39 @@
 
 <main id="top">
 
-  <!-- ===== Hero ===== -->
-  <section class="hero" id="hero">
-    <div class="wrap hero-grid">
-      <div class="hero-text">
-        <div class="kicker"><span data-lang="tr">İmalat mühendisliği · Bursa ve Ankara</span><span data-lang="en">Manufacturing engineering · Bursa and Ankara</span></div>
-        <h1 class="hero-title">
-          <span data-lang="tr">Üretim verisini okuyan, <em>ölçen</em> ve araca çeviren bir mühendis.</span>
-          <span data-lang="en">An engineer who reads production data, <em>measures</em> it and turns it into tools.</span>
-        </h1>
-        <p class="lead">
-          <span data-lang="tr">Kontrol grafiklerini, Cpk hesaplarını ve hat dengelemeyi elle yapmak yerine test edilmiş, açık kaynak araçlara dönüştürüyorum; CAD tarafında SolidWorks ve Siemens NX ile çalışıyorum.</span>
-          <span data-lang="en">Instead of doing control charts, Cpk and line balancing by hand, I turn them into tested, open-source tools; on the CAD side I work in SolidWorks and Siemens NX.</span>
+  <!-- ===== İlk ekran: teknik resim paftası ===== -->
+  <section class="sheet-hero" id="hero">
+    <div class="sheet-frame" aria-hidden="true"><div class="sheet-top"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></div><div class="sheet-left"><i>A</i><i>B</i><i>C</i><i>D</i><i>E</i></div></div>
+    <div class="wrap sheet-grid">
+      <div>
+        <div class="dimline" aria-label="Özet sayılar" data-aria="aria.metrics"><span><span data-lang="tr">776 TEST · 8 AÇIK KAYNAK DEPO · 2 CANLI DEMO</span><span data-lang="en">776 TESTS · 8 OPEN-SOURCE REPOS · 2 LIVE DEMOS</span></span></div>
+        <div class="sheet-label"><span data-lang="tr">İMALAT MÜHENDİSLİĞİ · BURSA / ANKARA</span><span data-lang="en">MANUFACTURING ENGINEERING · BURSA / ANKARA</span></div>
+        <h1 class="sheet-name" lang="tr">İSMAİL BİLGEHAN<br>KAZANCI</h1>
+        <p class="sheet-lead">
+          <span data-lang="tr">Süreç yeterliliği ve SPC analizini Python ile araca dönüştürüyorum. SolidWorks ve Siemens NX'te parça, montaj ve teknik resim çiziyorum.</span>
+          <span data-lang="en">I turn process-capability and SPC analysis into Python tools. I model parts, assemblies and drawings in SolidWorks and Siemens NX.</span>
         </p>
-        <div class="dimline" aria-label="Özet sayılar" data-aria="aria.metrics"><span><span data-lang="tr">776 test · 8 açık kaynak depo · 2 canlı demo</span><span data-lang="en">776 tests · 8 open-source repos · 2 live demos</span></span></div>
-        <div class="hero-cta">
-          <a href="#projeler" class="btn btn-accent"><span data-lang="tr">Projeleri incele</span><span data-lang="en">View projects</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a href="https://www.linkedin.com/in/ismailbilgehankazanci" class="btn btn-line" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+        <div class="sheet-cta">
+          <a href="#projeler" class="btn btn-accent"><span data-lang="tr">PROJELERİ İNCELE</span><span data-lang="en">VIEW PROJECTS</span></a>
+          <a href="https://www.linkedin.com/in/ismailbilgehankazanci" class="btn btn-line" target="_blank" rel="noopener">LINKEDIN ↗</a>
         </div>
       </div>
-
-      <figure class="portrait">
-        <div class="portrait-frame">
-          <div class="portrait-ph" aria-hidden="true"><span class="portrait-ini">İBK</span></div>
+      <figure class="view portrait">
+        <div class="view-frame">
+          <div class="view-ph" aria-hidden="true"><span>İBK</span></div>
         </div>
-        <figcaption class="view-cap"><span data-lang="tr"><b>Görünüş A</b> — portre · ölçek 1:1</span><span data-lang="en"><b>View A</b> — portrait · scale 1:1</span></figcaption>
+        <figcaption class="view-cap"><span data-lang="tr"><b>GÖRÜNÜŞ A</b> — PORTRE · ÖLÇEK 1:1</span><span data-lang="en"><b>VIEW A</b> — PORTRAIT · SCALE 1:1</span></figcaption>
       </figure>
+    </div>
+    <div class="titleblock">
+      <div class="wide"><small><span data-lang="tr">AD SOYAD</span><span data-lang="en">NAME</span></small><span class="tb-name" lang="tr">İSMAİL BİLGEHAN KAZANCI</span></div>
+      <div><small><span data-lang="tr">PAFTA</span><span data-lang="en">SHEET</span></small>01 / 06</div>
+      <div><small><span data-lang="tr">ALAN</span><span data-lang="en">FIELD</span></small><span data-lang="tr">Kalite · Süreç</span><span data-lang="en">Quality · Process</span></div>
+      <div><small><span data-lang="tr">ARAÇLAR</span><span data-lang="en">TOOLS</span></small>Python · SolidWorks · NX</div>
+      <div><small><span data-lang="tr">OKUL</span><span data-lang="en">SCHOOL</span></small><span data-lang="tr">Gazi Üniv. Tekn. Fak.</span><span data-lang="en">Gazi Univ. Fac. of Tech.</span></div>
+      <div><small>GITHUB</small><a href="https://github.com/DailyDana" target="_blank" rel="noopener">DailyDana</a></div>
+      <div><small>LINKEDIN</small><a href="https://www.linkedin.com/in/ismailbilgehankazanci" target="_blank" rel="noopener">ismailbilgehankazanci</a></div>
+      <div><small>REV.</small>2026-09</div>
     </div>
   </section>
 
@@ -252,16 +258,13 @@
 
 <!-- chrome:footer -->
 <footer class="footer">
-  <div class="wrap">
-    <div class="titleblock">
-      <div class="tb-name"><small><span data-lang="tr">AD SOYAD</span><span data-lang="en">NAME</span></small><strong lang="tr">İSMAİL BİLGEHAN KAZANCI</strong></div>
-      <div><small><span data-lang="tr">ALAN</span><span data-lang="en">FIELD</span></small><span data-lang="tr">İmalat mühendisliği</span><span data-lang="en">Manufacturing eng.</span></div>
-      <div><small><span data-lang="tr">KONUM</span><span data-lang="en">LOCATION</span></small>Bursa · Ankara</div>
-      <div><small>GITHUB</small><a href="https://github.com/DailyDana" target="_blank" rel="noopener">DailyDana</a></div>
-      <div><small>LINKEDIN</small><a href="https://www.linkedin.com/in/ismailbilgehankazanci" target="_blank" rel="noopener">ismailbilgehankazanci</a></div>
-      <div class="wide"><small><span data-lang="tr">NOT</span><span data-lang="en">NOTE</span></small><span data-lang="tr">Kütüphanesiz, elle yazıldı · </span><span data-lang="en">Hand-written, no libraries · </span><a href="https://github.com/DailyDana/DailyDana.github.io" target="_blank" rel="noopener"><span data-lang="tr">kaynak kod</span><span data-lang="en">source</span></a></div>
-      <div><small>REV.</small>© <span id="year">2026</span></div>
-    </div>
+  <div class="wrap footer-inner">
+    <span>İsmail Bilgehan Kazancı · Bursa · Ankara · © <span id="year">2026</span></span>
+    <span class="footer-links">
+      <a href="https://www.linkedin.com/in/ismailbilgehankazanci" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/DailyDana" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/DailyDana/DailyDana.github.io" target="_blank" rel="noopener"><span data-lang="tr">Sitenin kaynağı</span><span data-lang="en">Site source</span></a>
+    </span>
   </div>
 </footer>
 <!-- /chrome:footer -->
