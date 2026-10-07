@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-tr="CodecDelta — Ses Kodlama Farkı Analizi · İsmail Bilgehan Kazancı" data-en="CodecDelta — Audio Codec Delta Analysis · İsmail Bilgehan Kazancı">CodecDelta — Ses Kodlama Farkı Analizi · İsmail Bilgehan Kazancı</title>
-  <meta name="description" content="Kayıplı bir kodlayıcının kayda ne yaptığını ölçen Python analiz motoru: bit akışı okuyucuları, alt-örnek hizalama, ABX istatistiği. Her tasarım kararı ölçülerek verildi ve belgelendi. 231 test, mypy --strict, GPL-3.0.">
+  <meta name="description" content="Kayıplı bir kodlayıcının kayda ne yaptığını ölçen Windows uygulaması: örnek-altı hizalama, bant bant S/N, kör ABX testi, kodlama, kütüphane taraması, paylaşılabilir rapor. v1.0.0, 617 test, mypy --strict, GPL-3.0.">
   <meta name="author" content="İsmail Bilgehan Kazancı">
   <link rel="canonical" href="https://dailydana.github.io/projeler/codecdelta/">
   <link rel="alternate" hreflang="tr" href="https://dailydana.github.io/projeler/codecdelta/">
@@ -13,7 +13,7 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="İsmail Bilgehan Kazancı">
   <meta property="og:title" content="CodecDelta — Audio Codec Delta Analysis · case study">
-  <meta property="og:description" content="Measure what a lossy encoder did: bitstream readers, sub-sample alignment, ABX statistics. Every design decision measured and documented; 231 tests, mypy --strict, GPL-3.0.">
+  <meta property="og:description" content="A Windows app that measures what a lossy encoder did: sub-sample alignment, per-band SNR, blind ABX, encoding, library scan, shareable reports. v1.0.0, 617 tests, every design decision measured and documented.">
   <meta property="og:url" content="https://dailydana.github.io/projeler/codecdelta/">
   <meta property="og:image" content="https://dailydana.github.io/projeler/codecdelta/og.png">
   <meta property="og:image:width" content="1200">
@@ -35,7 +35,8 @@
     "@context": "https://schema.org",
     "@type": "SoftwareSourceCode",
     "name": "CodecDelta",
-    "description": "Audio analysis engine that measures what a lossy encoder did to a recording: bitstream readers, sub-sample alignment, ABX statistics.",
+    "description": "Windows application that measures what a lossy encoder did to a recording: sub-sample alignment, per-band SNR, blind ABX testing, encoding, library scanning and shareable reports.",
+    "softwareVersion": "1.0.0",
     "codeRepository": "https://github.com/DailyDana/CodecDelta",
     "programmingLanguage": "Python",
     "license": "https://www.gnu.org/licenses/gpl-3.0.html",
@@ -87,15 +88,15 @@
       <nav class="crumb" aria-label="Sayfa yolu" data-aria="aria.crumb"><a href="/#projeler">← <span data-lang="tr">Projeler</span><span data-lang="en">Projects</span></a></nav>
 
       <header class="case-head">
-        <div class="kicker"><span data-lang="tr">Vaka çalışması · Sinyal işleme · 2026 · geliştiriliyor</span><span data-lang="en">Case study · Signal processing · 2026 · in progress</span></div>
+        <div class="kicker"><span data-lang="tr">Vaka çalışması · Sinyal işleme · 2026 · v1.0.0</span><span data-lang="en">Case study · Signal processing · 2026 · v1.0.0</span></div>
         <h1 class="case-title"><span data-lang="tr">CodecDelta — Ses Kodlama Farkı Analizi</span><span data-lang="en">CodecDelta — Audio Codec Delta Analysis</span></h1>
-        <p class="case-lead"><span data-lang="tr">Kayıplı bir kodlayıcının kayda ne yaptığını ölçen analiz motoru: aynı kaydın iki kodlamasını karşılaştırır, tek dosyadan "bu FLAC gerçekten kayıpsız mı" sorusuna cevap arar. Asıl değeri özellik listesi değil, ölçülerek alınan ve reddedilen kararların kaydı.</span><span data-lang="en">An analysis engine that measures what a lossy encoder did to a recording: it compares two encodes of the same material and, from a single file, asks whether a FLAC is really lossless. Its real value is not the feature list but the record of decisions taken, and rejected, by measurement.</span></p>
-        <div class="case-tags"><span class="chip">Python 3.14</span><span class="chip">numpy</span><span class="chip">ffmpeg · ffprobe</span><span class="chip">pytest</span><span class="chip">mypy --strict</span><span class="chip">GPL-3.0</span></div>
+        <p class="case-lead"><span data-lang="tr">Kayıplı bir kodlayıcının kayda ne yaptığını ölçen Windows uygulaması. Aynı kaydın iki kodlamasını örnek-altı hassasiyetle hizalayıp karşılaştırır, farkın duyulup duyulmadığını kör ABX testiyle sorar ve tek bir dosyadan "bu FLAC gerçekten kayıpsız mı" sorusuna cevap arar. Asıl değeri özellik listesi değil, ölçülerek alınan ve reddedilen kararların kaydı.</span><span data-lang="en">A Windows application that measures what a lossy encoder did to a recording. It aligns two encodes of the same material to sub-sample accuracy, asks with a blind ABX test whether the difference is audible, and checks from a single file whether a FLAC is really lossless. Its real value is not the feature list but the record of decisions taken, and rejected, by measurement.</span></p>
+        <div class="case-tags"><span class="chip">Python 3.14</span><span class="chip">numpy</span><span class="chip">PyQt6</span><span class="chip">ffmpeg · ffprobe</span><span class="chip">pytest</span><span class="chip">mypy --strict</span><span class="chip">GPL-3.0</span></div>
         <dl class="case-metrics">
-          <div><dt><span data-lang="tr">Test</span><span data-lang="en">Tests</span></dt><dd>231</dd></div>
-          <div><dt><span data-lang="tr">Bit akışı okuyucu</span><span data-lang="en">Bitstream readers</span></dt><dd>Ogg · Opus · Vorbis · FLAC · MP3</dd></div>
+          <div><dt><span data-lang="tr">Test</span><span data-lang="en">Tests</span></dt><dd>617</dd></div>
+          <div><dt><span data-lang="tr">Sürüm</span><span data-lang="en">Release</span></dt><dd>v1.0.0</dd></div>
           <div><dt><span data-lang="tr">Denetim</span><span data-lang="en">Audit</span></dt><dd>12.600 <span data-lang="tr">deneme</span><span data-lang="en">trials</span></dd></div>
-          <div><dt><span data-lang="tr">Durum</span><span data-lang="en">Status</span></dt><dd><span data-lang="tr">motor; arayüz yok</span><span data-lang="en">engine; no UI</span></dd></div>
+          <div><dt><span data-lang="tr">Kodlayıcı</span><span data-lang="en">Encoders</span></dt><dd>12</dd></div>
         </dl>
         <div class="case-actions">
           <a class="btn btn-accent" href="https://github.com/DailyDana/CodecDelta" target="_blank" rel="noopener"><span data-lang="tr">Kaynak kod</span><span data-lang="en">Source code</span> <span aria-hidden="true">↗</span></a>
@@ -103,16 +104,21 @@
         </div>
       </header>
 
+      <figure class="case-hero">
+        <img src="/assets/img/projects/codecdelta-rapor.webp" width="920" height="1470" alt="CodecDelta karşılaştırma raporu: hüküm, özet tablosu ve bant bant S/N grafiği" fetchpriority="high">
+        <figcaption><span data-lang="tr">Uygulamanın ürettiği paylaşılabilir HTML rapor: FLAC ile aynı kaydın 64 kbps Opus kodlaması karşılaştırılmış. Hizalama, seviye, codec S/N ve bant bant fark; dosya yolları ve kullanıcı adları rapordan otomatik çıkarılır.</span><span data-lang="en">The shareable HTML report produced by the app: a FLAC compared with a 64 kbps Opus encode of the same recording. Alignment, level, codec SNR and per-band difference; file paths and user names are removed automatically.</span></figcaption>
+      </figure>
+
       <div class="case-body">
         <section>
           <h2 data-no="01"><span data-lang="tr">Problem</span><span data-lang="en">Problem</span></h2>
           <div data-lang="tr">
             <p>FLAC ile Opus, orijinal ile YouTube kopyası, MP3 ile AAC: ne kadar bilgi kayboldu, spektrumun neresinde, duyulur mu? Ve referans olmadan, tek dosyadan: bu FLAC gerçekten kayıpsız mı, yoksa kayıplı bir kaynaktan dönüştürülmüş mü?</p>
-            <p>Bu analizi <code>ffprobe</code>, ffmpeg filtreleri ve tek seferlik betiklerle elle yapıyordum. Tekrarlanabilir değildi ve video girdisini kaldıramıyordu. Hedef: sample-hassasiyetinde hizalama yapan, kararlarını ölçümle veren ve "fark yok" demeyi asla bir başarısız testten türetmeyen bir motor.</p>
+            <p>Bu analizi <code>ffprobe</code>, ffmpeg filtreleri ve tek seferlik betiklerle elle yapıyordum. Tekrarlanabilir değildi ve video girdisini kaldıramıyordu. Hedef: örnek-altı hassasiyetle hizalayan, kararlarını ölçümle veren ve "fark yok" demeyi asla başarısız bir testten türetmeyen bir araç.</p>
           </div>
           <div data-lang="en">
             <p>FLAC against Opus, an original against a YouTube rip, MP3 against AAC: how much information was lost, where in the spectrum, and is it audible? And with no reference, from a single file: is this FLAC really lossless, or a transcode from a lossy source?</p>
-            <p>I used to do this by hand with <code>ffprobe</code>, ffmpeg filters and one-off scripts. It was not repeatable and could not take video input. The goal: an engine that aligns to sample accuracy, decides by measurement, and never derives "no difference" from a failed test.</p>
+            <p>I used to do this by hand with <code>ffprobe</code>, ffmpeg filters and one-off scripts. It was not repeatable and could not take video input. The goal: a tool that aligns to sub-sample accuracy, decides by measurement, and never derives "no difference" from a failed test.</p>
           </div>
         </section>
 
@@ -120,6 +126,9 @@
           <h2 data-no="02"><span data-lang="tr">Yaklaşım</span><span data-lang="en">Approach</span></h2>
           <div data-lang="tr">
             <ul>
+              <li><strong>Dört sekmeli uygulama.</strong> <em>Analiz</em> iki dosyayı karşılaştırır ya da tek dosyayı doğrular; <em>Kodlama</em> ffmpeg yapısından bulunan 12 kodlayıcıyla kodlayıp hemen karşılaştırır ve 96–256 kbps arasında bit hızı taraması yapar; <em>ABX</em> hizalanmış, seviyesi eşitlenmiş, tıklamasız (8 ms çapraz geçiş) kör test yürütür; <em>Kütüphane taraması</em> bir klasörü kaldığı yerden devam edebilen önbellekle tarar ve CSV verir. Arayüz Türkçe ve İngilizce.</li>
+              <li><strong>Paylaşılabilir rapor.</strong> Tek dosyalık HTML, grafikler satır içi SVG, açık/koyu tema. Yazılmadan önce yol, kullanıcı ve bilgisayar adı için denetlenir; sızıntı bulunursa dosya hiç yazılmaz.</li>
+              <li><strong>Kurulum.</strong> Kullanıcı başına kurulum (yönetici yetkisi gerekmez), ffmpeg indirme betiği özetini ve soxr desteğini doğrular. CI temiz bir makinede paketi derler ve duman testinden geçmeyen yapıyı paketlemez.</li>
               <li><strong>Aşağıdan yukarı motor.</strong> <code>core/</code> (ffmpeg keşfi, PCM akışı, ffprobe, gizlilik temizliği, ABX istatistiği) → <code>bitstream/</code> (Ogg örneklenmiş CRC, Opus TOC, Vorbis, FLAC MD5, MP3 Xing/LAME) → <code>dsp/</code> ve <code>align/</code> (alt-örnek gecikme kestirimi ve geçerlilik ölçüsü). Motor katmanı Qt import etmez; bir test bunu kilitler.</li>
               <li><strong>Sözleşme koddan önce.</strong> Hizalama çekirdeğinin spesifikasyonu (<code>docs/SPEC-alignment.md</code>) kod yazılmadan yazıldı.</li>
               <li><strong>Video girdisi bedava.</strong> Video akışı hiç decode edilmez; 20 GB'lık bir konser MKV'si yalnız ses parçası kadar maliyet çıkarır. 684 sn'lik gerçek bir YouTube m4a'da probe + decode 1242× gerçek zaman ölçüldü.</li>
@@ -129,6 +138,9 @@
           </div>
           <div data-lang="en">
             <ul>
+              <li><strong>A four-tab application.</strong> <em>Analyze</em> compares two files or verifies one; <em>Encode</em> encodes with the 12 codecs found in the ffmpeg build, compares immediately and sweeps bitrates from 96 to 256 kbps; <em>ABX</em> runs an aligned, level-matched, click-free (8 ms crossfade) blind test; <em>Library scan</em> checks a whole folder with a resumable cache and exports CSV. UI in English and Turkish.</li>
+              <li><strong>Shareable reports.</strong> A single self-contained HTML file, charts as inline SVG, light and dark. Before writing, it is audited for paths, user and machine names; if anything leaks, the file is not written.</li>
+              <li><strong>Packaging.</strong> Per-user install (no administrator rights); the ffmpeg download script checks the digest and soxr support. CI builds the package on a clean machine and refuses to zip a build that fails its smoke test.</li>
               <li><strong>Bottom-up engine.</strong> <code>core/</code> (ffmpeg discovery, PCM streaming, ffprobe, privacy scrubbing, ABX statistics) → <code>bitstream/</code> (Ogg with sampled CRC, Opus TOC, Vorbis, FLAC MD5, MP3 Xing/LAME) → <code>dsp/</code> and <code>align/</code> (sub-sample delay estimation and a validity measure). The engine layer never imports Qt; a test locks that.</li>
               <li><strong>Contract before code.</strong> The alignment core's specification (<code>docs/SPEC-alignment.md</code>) was written before the code it describes.</li>
               <li><strong>Video input for free.</strong> The video stream is never decoded; a 20 GB concert MKV costs the same as its audio track alone. Probe + decode measured at 1242× realtime on a real 684 s YouTube m4a.</li>
@@ -152,10 +164,14 @@
                 <tr><td>Geçerlilik ölçüsü, ikinci kestirici değil</td><td class="num">2,4 ms (alternatifler 8,0 / 23,0 ms)</td></tr>
                 <tr><td>soxr yeniden örnekleme, cutoff açıkça 0,99</td><td class="num">varsayılan 21,5 kHz'de <b>−30,4 dB</b> bastırıyordu</td></tr>
                 <tr><td>ABX gücü n = 16</td><td class="num">plan 0,45 sanıyordu, gerçek <b>0,630</b>; %80 güç n ≈ 26</td></tr>
+                <tr><td>Kaba hizalama: örtüşme sayısı yerine Pearson</td><td class="num">40 tohumda 20/40 → <b>40/40</b> doğru</td></tr>
+                <tr><td><code>ffmpeg -ss</code> her formatta örnek-doğru değil</td><td class="num">M4A/AAC'de <b>70–820</b> örnek sapma; yalnız ölçülenler hızlı yoldan</td></tr>
+                <tr><td>Yeniden örnekleme zinciri kayan noktada</td><td class="num">16-bit ara adım: 81 dB → <b>148 dB</b></td></tr>
+                <tr><td>Hüküm mutlak NMR'ye değil, kullanıcının referansından kurulan merdivene dayanır</td><td class="num">tek bir tonalite seçimi NMR'yi <b>15 dB</b> oynatıyor</td></tr>
               </tbody>
             </table>
             <p>Faz eğiminin çöküşünün kök nedeni gürültü değil <code>np.unwrap</code>: banttaki tek bir düşük genlikli bin 2π dal değişimi yapıp sonraki tüm binlere taşıyor. Tonal müzik seyrek spektrumludur (en büyük %1 bin ağırlığın %78,6'sını taşıyor), bu yüzden sonsuz S/N'de bile çöküyor. Düşük binleri filtrelemek denendi ve reddedildi: spektral dropout'ta 150–400 örneklik hata veriyor.</p>
-            <p><strong>Kaldırılan sezgiseller:</strong> FLAC blok boyutu kodlayıcıyı belirlemez (aynı ffmpeg 1024, 4096 ve 4608 üretti); ffmpeg gerçek LAME etiketi yazmaz (+9..+20 alanları sıfır, sıfır "0 Hz'de kesilmiş" diye okunmaz); tepe keskinliği geçerli/geçersizi ayırmaz (aralıklar tamamen örtüşüyor, korelasyon ayırıyor).</p>
+            <p><strong>Kaldırılan sezgiseller:</strong> FLAC blok boyutu kodlayıcıyı belirlemez (aynı ffmpeg 1024, 4096 ve 4608 üretti); ffmpeg gerçek LAME etiketi yazmaz (+9..+20 alanları sıfır, sıfır "0 Hz'de kesilmiş" diye okunmaz); tepe keskinliği geçerli/geçersizi ayırmaz (aralıklar tamamen örtüşüyor, korelasyon ayırıyor); plandaki dönüştürme sezgisellerinin bir kısmı tersti (9 CD parçası ve 117 dönüştürmede ayırt eden tek işaret çerçeve başına kesim frekansının medyanı çıktı).</p>
           </div>
           <div data-lang="en">
             <p>Plausible ideas were implemented, measured and removed when the measurement disagreed. Each is recorded in <code>docs/DECISIONS.md</code> with its numbers; several are locked by tests so they cannot come back.</p>
@@ -169,15 +185,29 @@
                 <tr><td>A validity measure, not a second estimator</td><td class="num">2.4 ms (alternatives 8.0 / 23.0 ms)</td></tr>
                 <tr><td>soxr resampling with an explicit 0.99 cutoff</td><td class="num">default attenuated <b>−30.4 dB</b> at 21.5 kHz</td></tr>
                 <tr><td>ABX power at n = 16</td><td class="num">plan assumed 0.45, actual <b>0.630</b>; 80% power at n ≈ 26</td></tr>
+                <tr><td>Coarse alignment: Pearson instead of overlap count</td><td class="num">40 seeds: 20/40 → <b>40/40</b> correct</td></tr>
+                <tr><td><code>ffmpeg -ss</code> is not sample-accurate on every format</td><td class="num"><b>70–820</b> samples off on M4A/AAC; only measured formats take the fast path</td></tr>
+                <tr><td>Resampling chain forced to floating point</td><td class="num">16-bit midway step: 81 dB → <b>148 dB</b></td></tr>
+                <tr><td>Verdict rests on a ladder built from the user's reference, not absolute NMR</td><td class="num">one tonality choice moves NMR by <b>15 dB</b></td></tr>
               </tbody>
             </table>
             <p>The root cause of the phase-slope failure is not noise but <code>np.unwrap</code>: a single low-magnitude bin flips the branch by 2π and every subsequent bin inherits the offset. Tonal music is sparse (the top 1% of bins carry 78.6% of the fit weight), so it fails even at infinite SNR. Filtering low bins before unwrapping was tried and rejected: under spectral dropout it produces 150–400-sample errors.</p>
-            <p><strong>Removed heuristics:</strong> FLAC blocksize does not identify an encoder (the same ffmpeg produced 1024, 4096 and 4608); ffmpeg does not write a real LAME tag (fields +9..+20 are zero, and zero must never be read as "cut at 0 Hz"); peak sharpness does not separate valid from invalid (the ranges overlap completely; correlation does the job).</p>
+            <p><strong>Removed heuristics:</strong> FLAC blocksize does not identify an encoder (the same ffmpeg produced 1024, 4096 and 4608); ffmpeg does not write a real LAME tag (fields +9..+20 are zero, and zero must never be read as "cut at 0 Hz"); peak sharpness does not separate valid from invalid (the ranges overlap completely; correlation does the job); some of the plan's transcode heuristics were backwards (on 9 CD tracks and 117 transcodes, the only clean separator was the median per-frame cutoff).</p>
           </div>
         </section>
 
         <section>
-          <h2 data-no="04"><span data-lang="tr">Öğrendiklerim</span><span data-lang="en">What I learned</span></h2>
+          <h2 data-no="04"><span data-lang="tr">Henüz doğrulanmayanlar</span><span data-lang="en">Not verified yet</span></h2>
+          <div data-lang="tr">
+            <p>v1.0.0 çalışıyor, ama her şey kanıtlanmış değil; deponun README'si bunları açıkça listeliyor. ABX testi henüz kulakla denenmedi ve Bluetooth üzerinden çalma (tampon boşalmaları testi bozabilir) ölçülmedi. "Farklı master" sınıfı gerçek remaster çiftleri bulunamadığı için sentetik veriyle kalibre edildi; bu yüzden hüküm değil yalnız uyarı üretiyor. Kayıplı kaynak eşiklerini kullanıcının kendi dosyalarından kalibre etmek bilinçli olarak yapılmadı: 20,75 kHz kapısının iki yanında yaklaşık 120 Hz pay var ve otomatik ayar, denetlenemeyen yanlış pozitifler ekleyebilir.</p>
+          </div>
+          <div data-lang="en">
+            <p>v1.0.0 works, but not everything is proven; the repository README lists these openly. The ABX test has not yet been tried by ear, and playback over Bluetooth (where buffer underruns could spoil a test) has not been measured. The "different master" class was calibrated on synthetic data because no real remaster pairs were available, so it produces a warning rather than a verdict. Calibrating the lossy-source thresholds from the user's own files was deliberately not built: the margin is about 120 Hz either side of the 20.75 kHz gate, and an automatic adjustment could add false positives with no way to check them.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2 data-no="05"><span data-lang="tr">Öğrendiklerim</span><span data-lang="en">What I learned</span></h2>
           <div data-lang="tr">
             <p>Bir kestirici her zaman bir sayı döndürür; bu, sayının bir anlamı olduğu anlamına gelmez. İlgisiz iki sinyalde iki kestirici iki farklı "makul" gecikme verdi, ikisi de yanlıştı; "bulunacak bir gecikme var mı" sorusunu ancak bir geçerlilik ölçüsü cevaplayabildi.</p>
             <p>Reddedilen fikirleri de belgelemek, aynı hatanın geri gelmesini önleyen tek şey. Bu projenin en değerli dosyası kod değil, <code>DECISIONS.md</code>.</p>

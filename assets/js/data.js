@@ -154,23 +154,23 @@ window.PORTFOLIO = {
     {
       slug: 'codecdelta',
       repo: 'CodecDelta',
-      order: 4, featured: false, cluster: 'software', status: 'wip', year: '2026',
+      order: 4, featured: false, cluster: 'software', status: 'active', year: '2026',
       title: { tr: 'CodecDelta — Ses Kodlama Farkı Analizi', en: 'CodecDelta — Audio Codec Delta Analysis' },
       summary: {
-        tr: 'Kayıplı bir kodlayıcının kayda ne yaptığını ölçen araç: Ogg/Opus/Vorbis/FLAC/MP3 bit akışı okuyucuları, alt-örnek hizalama ve geçerlilik ölçüsü, kapalı formlu ABX istatistiği. Her tasarım kararı ölçülerek verildi ve belgelendi; arayüz henüz yok.',
-        en: 'Measures what a lossy encoder did to a recording: Ogg/Opus/Vorbis/FLAC/MP3 bitstream readers, sub-sample alignment with a validity measure, closed-form ABX statistics. Every design decision was measured and documented; no UI yet.'
+        tr: 'Kayıplı bir kodlayıcının kayda ne yaptığını ölçen Windows uygulaması: örnek-altı hizalama, bant bant S/N, kör ABX testi, 12 kodlayıcıyla kodlama ve bit hızı taraması, kütüphane taraması, kişisel veriden arındırılmış HTML rapor. Her tasarım kararı ölçülerek verildi ve belgelendi.',
+        en: 'A Windows app that measures what a lossy encoder did to a recording: sub-sample alignment, per-band SNR, blind ABX testing, encoding with 12 codecs and a bitrate sweep, library scanning, privacy-scrubbed HTML reports. Every design decision was measured and documented.'
       },
-      tags: ['Python', 'numpy', 'DSP', 'mypy --strict', 'GPL-3.0'],
+      tags: ['Python', 'PyQt6', 'numpy', 'DSP', 'mypy --strict', 'GPL-3.0'],
       metrics: [
-        { value: '231', label: { tr: 'test', en: 'tests' } },
-        { value: '57×', label: { tr: 'hızlanma (readinto)', en: 'speed-up (readinto)' } },
-        { value: '5', label: { tr: 'bit akışı formatı', en: 'bitstream formats' } }
+        { value: '617', label: { tr: 'test', en: 'tests' } },
+        { value: 'v1.0.0', label: { tr: 'sürüm', en: 'release' } },
+        { value: '57×', label: { tr: 'hızlanma (readinto)', en: 'speed-up (readinto)' } }
       ],
       links: [
         { kind: 'repo', url: 'https://github.com/DailyDana/CodecDelta' }
       ],
       page: '/projeler/codecdelta/',
-      image: null
+      image: { src: '/assets/img/projects/codecdelta.webp', w: 872, h: 490, alt: { tr: 'CodecDelta raporundan bant bant S/N grafiği ve gürültü/maske ısı haritası', en: 'Per-band SNR chart and noise-to-mask heat map from a CodecDelta report' } }
     },
     {
       slug: 'cad-calismalari',

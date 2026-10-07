@@ -45,8 +45,8 @@ OG_PAGES: list[tuple[Path, dict[str, str]]] = [
     (ROOT / "projeler" / "codecdelta" / "og.png", {
         "kicker": "Vaka çalışması · Sinyal işleme",
         "title": "CodecDelta: *ölçülerek* verilmiş kararlar", "sheet": "05",
-        "sub": "Kayıplı kodlayıcının kayda ne yaptığını ölçen motor; her tasarım kararı ölçüldü, reddedilenler belgelendi.",
-        "m1": "231 test", "m2": "57× hızlanma", "m3": "12.600 denetim denemesi",
+        "sub": "Kayıplı kodlayıcının kayda ne yaptığını ölçen Windows uygulaması: hizalama, bant bant S/N, kör ABX, rapor.",
+        "m1": "617 test", "m2": "v1.0.0", "m3": "12 kodlayıcı",
         "url": "dailydana.github.io/projeler/codecdelta",
     }),
     (ROOT / "projeler" / "cad-calismalari" / "og.png", {
