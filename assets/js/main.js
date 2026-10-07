@@ -47,7 +47,7 @@
   const tDate = s => s ? t({ tr: ym(s, 'tr'), en: ym(s, 'en') }) : '';
 
   const extLink = (url, inner, cls = '') =>
-    `<a${cls ? ` class="${cls}"` : ''} href="${esc(url.trim())}" target="_blank" rel="noopener">${inner} <span aria-hidden="true">↗</span></a>`;
+    `<a${cls ? ` class="${cls}"` : ''} href="${esc(url.trim())}" target="_blank" rel="noopener">${inner}</a>`;
   const linkLabel = l => l.label ? t(l.label) : tu(`btn.${l.kind}`);
   const links = arr => (Array.isArray(arr) ? arr : []).filter(l => l && isHttp(l.url)).map(l => extLink(l.url, linkLabel(l))).join('');
   const chips = arr => (Array.isArray(arr) ? arr : []).map(x => `<span class="chip">${t(x)}</span>`).join('');
@@ -175,12 +175,11 @@
       : `<div class="card-noimg" aria-hidden="true"><b>${esc(p.slug)}</b>${esc((p.tags || []).slice(0, 3).join(' · '))}</div>`;
     const page = isPath(p.page) ? p.page.trim() : '';
     const title = page ? `<a href="${esc(page)}">${t(p.title)}</a>` : t(p.title);
-    const caseLink = page ? `<a class="is-muted" href="${esc(page)}">${tu('btn.case')} →</a>` : '';
+    const caseLink = page ? `<a class="is-muted" href="${esc(page)}">${tu('btn.case')}</a>` : '';
     return `
       <article class="card ${featured ? 'card-featured' : 'card-medium'} reveal" id="p-${esc(p.slug)}">
         <div class="card-media">${img}</div>
         <div class="card-body">
-          <div class="card-top"><span><b>${t({ tr: `Şekil ${p.order ?? ''}`, en: `Figure ${p.order ?? ''}` })}</b> · ${esc(p.year || '')}${p.repo ? ` · <span lang="en">${esc(p.repo)}</span>` : ''}</span><span class="card-status">${tu(`status.${p.status || 'active'}`)}</span></div>
           <h3>${title}</h3>
           <p>${t(p.summary)}</p>
           <div class="card-metrics">${metrics(p.metrics)}</div>
@@ -205,8 +204,7 @@
     const list = Array.isArray(D.tools) ? D.tools : [];
     box.innerHTML = list.map((x, i) => `
       <article class="tool reveal">
-        <span class="tool-no">${String(i + 1).padStart(2, '0')}</span>
-        <div>
+                <div>
           <h3>${t(x.name)}</h3>
           <p>${t(x.desc)}</p>
           <div class="tool-tech">${chips(x.tech)}</div>
@@ -230,7 +228,7 @@
           ${(g.items || []).map(it => {
             const refs = (it.projects || []).map(s => bySlug.get(s)).filter(Boolean)
               .map(p => `<a href="#p-${esc(p.slug)}">${esc(p.repo || p.slug)}</a>`).join(', ');
-            return `<li class="skill-item"><span class="skill-name">${t(it.name)}</span><span class="skill-note">${t(it.note)}${refs ? ` · ${refs}` : ''}</span></li>`;
+            return `<li class="skill-item"><span class="skill-name">${t(it.name)}</span><span class="skill-note">${t(it.note)}${refs ? `<br>${refs}` : ''}</span></li>`;
           }).join('')}
         </ul>
       </section>`).join('');
@@ -250,7 +248,7 @@
       const kind = x.type ? tu(`xp.${x.type}`) : '';
       return `
         <article class="xp reveal">
-          <div class="xp-when">${when}${kind ? `<br>${kind}` : ''}${x.location ? ` · ${esc(x.location)}` : ''}</div>
+          <div class="xp-when">${when}${kind ? `<br>${kind}` : ''}${x.location ? `, ${esc(x.location)}` : ''}</div>
           <div>
             <h3>${t(x.role)}</h3>
             <div class="xp-org">${t(x.org)}</div>
@@ -282,7 +280,7 @@
         <li class="cert reveal">
           <div>
             <div class="cert-title">${t(c.title)}</div>
-            <div class="cert-issuer">${t(c.issuer)}${c.id ? ` · <span class="mono">${esc(c.id)}</span>` : ''}${isHttp(c.url) ? ` · ${extLink(c.url, tu('cert.verify'))}` : ''}</div>
+            <div class="cert-issuer">${t(c.issuer)}${c.id ? `, <span class="mono">${esc(c.id)}</span>` : ''}${isHttp(c.url) ? `, ${extLink(c.url, tu('cert.verify'))}` : ''}</div>
           </div>
           <span class="cert-date">${tDate(c.date)}</span>
         </li>`).join('');
