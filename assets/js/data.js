@@ -91,12 +91,12 @@ window.PORTFOLIO = {
       order: 1, featured: true, cluster: 'quality', status: 'active', year: '2026',
       title: { tr: 'Süreç Yeterliliği ve SPC Analiz Aracı', en: 'Process Capability & SPC Analyzer' },
       summary: {
-        tr: 'X̄-R, X̄-S ve I-MR kontrol grafikleri; 4 Western Electric + 8 Nelson kuralı; Cp/Cpk (grup içi) ve Pp/Ppk (genel). Yeterlilikten önce kararlılığı denetler, yorumları kural tabanlı üretir, CSV/Excel/PDF rapor verir. Montgomery\'nin piston segmanı verisiyle yayınlanan değerlere karşı doğrulandı.',
-        en: 'X̄-R, X̄-S and I-MR control charts; 4 Western Electric + 8 Nelson rules; Cp/Cpk (within) and Pp/Ppk (overall). Checks stability before capability, produces rule-based interpretations and CSV/Excel/PDF reports. Validated against Montgomery\'s published piston-ring results.'
+        tr: 'X̄-R, X̄-S ve I-MR kontrol grafikleri; 4 Western Electric + 8 Nelson kuralı; Cp/Cpk (grup içi) ve Pp/Ppk (genel); çapraz Gage R&R (ANOVA ve AIAG ortalama-aralık). Yeterlilikten önce ölçüm sistemini ve kararlılığı denetler, yorumları kural tabanlı üretir, CSV/Excel/PDF rapor verir. Montgomery, Minitab ve SAS\'ın yayınlanmış sonuçlarına karşı doğrulandı.',
+        en: 'X̄-R, X̄-S and I-MR control charts; 4 Western Electric + 8 Nelson rules; Cp/Cpk (within) and Pp/Ppk (overall); crossed Gage R&R (ANOVA and AIAG Average & Range). Checks the measurement system and stability before capability, produces rule-based interpretations and CSV/Excel/PDF reports. Validated against published Montgomery, Minitab and SAS results.'
       },
       tags: ['Python', 'Streamlit', 'SPC', 'pytest', 'Apache-2.0'],
       metrics: [
-        { value: '776', label: { tr: 'test', en: 'tests' } },
+        { value: '890', label: { tr: 'test', en: 'tests' } },
         { value: '12', label: { tr: 'çalışma kuralı', en: 'run rules' } },
         { value: '3', label: { tr: 'grafik tipi', en: 'chart types' } }
       ],
@@ -242,9 +242,10 @@ window.PORTFOLIO = {
     {
       id: 'quality',
       title: { tr: 'Kalite ve süreç', en: 'Quality & process' },
-      blurb: { tr: 'Ölçüm verisinden karar çıkarmak: kararlılık, yeterlilik, hat dengesi.', en: 'Turning measurement data into decisions: stability, capability, line balance.' },
+      blurb: { tr: 'Ölçüm verisinden karar çıkarmak: ölçüm sistemi, kararlılık, yeterlilik, hat dengesi.', en: 'Turning measurement data into decisions: measurement system, stability, capability, line balance.' },
       items: [
         { name: 'SPC · X̄-R, X̄-S, I-MR', note: { tr: 'Kontrol limitleri yayınlanan sabitlerle; 4 WE + 8 Nelson kuralı', en: 'Limits from published constants; 4 WE + 8 Nelson rules' }, projects: ['spc-analyzer'] },
+        { name: 'Gage R&R · MSA', note: { tr: 'ANOVA ve AIAG ortalama-aralık; Minitab ve SAS sonuçlarıyla aynı', en: 'ANOVA and AIAG Average & Range; matches Minitab and SAS results' }, projects: ['spc-analyzer'] },
         { name: 'Cp/Cpk · Pp/Ppk · DPMO', note: { tr: 'Grup içi/genel sigma ayrımı, tek taraflı spek, güven aralığı', en: 'Within/overall sigma, one-sided specs, confidence interval' }, projects: ['spc-analyzer'] },
         { name: { tr: 'Normallik testleri', en: 'Normality tests' }, note: { tr: 'Shapiro-Wilk, Anderson-Darling; küçük örneklem korumaları', en: 'Shapiro-Wilk, Anderson-Darling; small-sample guards' }, projects: ['spc-analyzer'] },
         { name: { tr: 'Hat dengeleme (SALBP)', en: 'Line balancing (SALBP)' }, note: { tr: 'Hoffmann öncelik matrisi, çevrim süresi taraması', en: 'Hoffmann precedence matrix, cycle-time sweep' }, projects: ['hoffmann-line-balancing'] },

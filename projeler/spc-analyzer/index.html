@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-tr="SPC ve Süreç Yeterliliği Analiz Aracı · İsmail Bilgehan Kazancı" data-en="SPC &amp; Process Capability Analyzer · İsmail Bilgehan Kazancı">SPC ve Süreç Yeterliliği Analiz Aracı · İsmail Bilgehan Kazancı</title>
-  <meta name="description" content="Açık kaynak SPC aracı: X̄-R, X̄-S, I-MR kontrol grafikleri, Western Electric ve Nelson kuralları, Cp/Cpk ve Pp/Ppk, denetime hazır raporlar. 776 test, Montgomery verisiyle doğrulanmış, canlı demo.">
+  <meta name="description" content="Açık kaynak SPC aracı: X̄-R, X̄-S, I-MR kontrol grafikleri, Western Electric ve Nelson kuralları, Cp/Cpk ve Pp/Ppk, Gage R&R, denetime hazır raporlar. 890 test, yayınlanmış sonuçlarla doğrulanmış, canlı demo.">
   <meta name="author" content="İsmail Bilgehan Kazancı">
   <link rel="canonical" href="https://dailydana.github.io/projeler/spc-analyzer/">
   <link rel="alternate" hreflang="tr" href="https://dailydana.github.io/projeler/spc-analyzer/">
@@ -13,7 +13,7 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="İsmail Bilgehan Kazancı">
   <meta property="og:title" content="SPC & Process Capability Analyzer · vaka çalışması">
-  <meta property="og:description" content="Kontrol grafikleri, 12 çalışma kuralı, Cp/Cpk vs Pp/Ppk; önce kararlılık, sonra yeterlilik. 776 test, Apache-2.0, canlı demo.">
+  <meta property="og:description" content="Gage R&amp;R, kontrol grafikleri, 12 çalışma kuralı, Cp/Cpk vs Pp/Ppk; önce ölçüm sistemi ve kararlılık, sonra yeterlilik. 890 test, Apache-2.0, canlı demo.">
   <meta property="og:url" content="https://dailydana.github.io/projeler/spc-analyzer/">
   <meta property="og:image" content="https://dailydana.github.io/projeler/spc-analyzer/og.png">
   <meta property="og:image:width" content="1200">
@@ -35,7 +35,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareSourceCode",
     "name": "process-capability-analyzer",
-    "description": "SPC and process capability analysis tool: X̄-R, X̄-S, I-MR control charts, Western Electric and Nelson rules, Cp/Cpk vs Pp/Ppk, reports.",
+    "description": "SPC, process capability and Gage R&R tool: X̄-R, X̄-S, I-MR control charts, Western Electric and Nelson rules, Cp/Cpk vs Pp/Ppk, crossed Gage R&R, reports.",
     "codeRepository": "https://github.com/DailyDana/process-capability-analyzer",
     "programmingLanguage": "Python",
     "license": "https://www.apache.org/licenses/LICENSE-2.0",
@@ -88,10 +88,10 @@
 
       <header class="case-head">
         <h1 class="case-title"><span data-lang="tr">Süreç Yeterliliği ve SPC Analiz Aracı</span><span data-lang="en">Process Capability &amp; SPC Analyzer</span></h1>
-        <p class="case-lead"><span data-lang="tr">Üretim ölçüm verisinden savunulabilir mühendislik ifadeleri üreten açık kaynak SPC aracı: kontrol grafikleri, çalışma kuralları, Cp/Cpk ve Pp/Ppk, denetime hazır raporlar. Önce kararlılık, sonra yeterlilik.</span><span data-lang="en">An open-source SPC tool that turns production measurement data into defensible engineering statements: control charts, run rules, Cp/Cpk and Pp/Ppk, audit-ready reports. Stability first, capability second.</span></p>
+        <p class="case-lead"><span data-lang="tr">Üretim ölçüm verisinden savunulabilir mühendislik ifadeleri üreten açık kaynak SPC aracı: Gage R&amp;R, kontrol grafikleri, çalışma kuralları, Cp/Cpk ve Pp/Ppk, denetime hazır raporlar. Önce ölçüm sistemi, sonra kararlılık, sonra yeterlilik.</span><span data-lang="en">An open-source SPC tool that turns production measurement data into defensible engineering statements: Gage R&amp;R, control charts, run rules, Cp/Cpk and Pp/Ppk, audit-ready reports. Measurement system first, then stability, then capability.</span></p>
         <div class="case-tags"><span class="chip">Python 3.10+</span><span class="chip">Streamlit</span><span class="chip">numpy · scipy · pandas</span><span class="chip">pytest</span><span class="chip">GitHub Actions</span><span class="chip">Apache-2.0</span></div>
         <dl class="case-metrics">
-          <div><dt><span data-lang="tr">Test</span><span data-lang="en">Tests</span></dt><dd>776</dd></div>
+          <div><dt><span data-lang="tr">Test</span><span data-lang="en">Tests</span></dt><dd>890</dd></div>
           <div><dt><span data-lang="tr">Çalışma kuralı</span><span data-lang="en">Run rules</span></dt><dd>4 WE + 8 Nelson</dd></div>
           <div><dt><span data-lang="tr">Grafik</span><span data-lang="en">Charts</span></dt><dd>X̄-R · X̄-S · I-MR</dd></div>
           <div><dt><span data-lang="tr">Rapor</span><span data-lang="en">Reports</span></dt><dd>CSV · Excel · PDF</dd></div>
@@ -124,24 +124,26 @@
           <h2 data-no="02"><span data-lang="tr">Yaklaşım</span><span data-lang="en">Approach</span></h2>
           <div data-lang="tr">
             <ul>
+              <li><strong>Önce ölçüm sistemi.</strong> Çapraz Gage R&amp;R (ANOVA ve AIAG ortalama-aralık yöntemi): tekrarlanabilirlik, tekrar üretilebilirlik, %Study Var, %Tolerans ve ndc. Tekrarlanan okumalar önce aralık kartıyla denetlenir; tutarsız bir hücre varsa bütün sonuçlar şerhli verilir.</li>
               <li><strong>Önce kararlılık.</strong> SPC kuralları yeterlilikten önce çalışır; her Cpk sonucu kararlılık hükmüyle birlikte gelir. Kararsız süreçte yüksek Cpk sessizce "yeterli" diye raporlanmaz, açıkça uyarıyla verilir.</li>
               <li><strong>Doğru sabitler.</strong> Kontrol limitleri yayınlanan kontrol grafiği sabitlerinden (d₂, c₄, A₂, D₃/D₄…) hesaplanır; asla çizilen verinin ±3·stdev'inden değil.</li>
               <li><strong>Grup içi ve genel sigma karıştırılmaz.</strong> Cp/Cpk için R̄/d₂, S̄/c₄, havuzlanmış ya da MR̄/d₂; Pp/Ppk için genel sigma. Tek taraflı spesifikasyonda sahte Cp/Pp üretilmez.</li>
               <li><strong>Kural motoru.</strong> 4 Western Electric ve 8 Nelson kuralı ayrı setler olarak (WE4 = ardışık 8, Nelson N2 = ardışık 9); her ihlal kural kimliği, etkilenen gözlemler, yön ve açıklamayla yapısal bir kayıt. Örtüşen ihlaller korunur.</li>
               <li><strong>Deterministik yorum.</strong> Kural tabanlı, tekrarlanabilir, LLM yok. İstatistiksel sonuçlar (olgu) ile mühendislik önerileri (tavsiye) ayrı listeler; her biri kararlı bir tetikleyici kodu ve önem derecesi taşır.</li>
               <li><strong>Korumalar.</strong> Küçük örneklem, az alt grup, sıfır varyasyon, normallik (Shapiro-Wilk + Anderson-Darling) ve kararsızlık uyarıları: sayıları bastırmaz, yanına yazılır.</li>
-              <li><strong>Mimari.</strong> Bağımlılıklar yalnız aşağı yönde: <code>data → statistics → spc → capability → interpret → reporting → ui</code>. İstatistik çekirdeği arayüzden ve dosya sisteminden bağımsız saf Python; grafik ve raporlama hiçbir istatistiği yeniden hesaplamaz. Her formül, sabit ve kaynak <code>docs/FORMULAS.md</code>'de.</li>
+              <li><strong>Mimari.</strong> Bağımlılıklar yalnız aşağı yönde: <code>data → statistics → spc → capability / msa → interpret → reporting → ui</code>. İstatistik çekirdeği arayüzden ve dosya sisteminden bağımsız saf Python; grafik ve raporlama hiçbir istatistiği yeniden hesaplamaz. Her formül, sabit ve kaynak <code>docs/FORMULAS.md</code>'de.</li>
             </ul>
           </div>
           <div data-lang="en">
             <ul>
+              <li><strong>Measurement system first.</strong> Crossed Gage R&amp;R (ANOVA and the AIAG Average &amp; Range method): repeatability, reproducibility, %Study Var, %Tolerance and ndc. Repeat readings are checked on a range chart first; an inconsistent cell caveats every result.</li>
               <li><strong>Stability first.</strong> SPC rules run before capability; every Cpk result carries the stability verdict. A high Cpk on an unstable process is never silently reported as "capable"; it is explicitly caveated.</li>
               <li><strong>The right constants.</strong> Control limits come from the published control-chart constants (d₂, c₄, A₂, D₃/D₄…), never from ±3·stdev of the plotted data.</li>
               <li><strong>Within and overall sigma are never interchanged.</strong> Cp/Cpk use R̄/d₂, S̄/c₄, pooled or MR̄/d₂; Pp/Ppk use overall sigma. One-sided specifications never produce a fake Cp/Pp.</li>
               <li><strong>Rule engine.</strong> 4 Western Electric and 8 Nelson rules kept as distinct sets (WE4 = 8-in-a-row, Nelson N2 = 9-in-a-row); every violation is a structured record with rule ID, affected observations, direction and explanation. Overlapping violations are preserved.</li>
               <li><strong>Deterministic interpretation.</strong> Rule-based, reproducible, no LLM. Statistical conclusions (facts) and engineering recommendations (advice) are separate lists, each with a stable trigger code and severity.</li>
               <li><strong>Guards.</strong> Small-sample, few-subgroups, zero-variation, non-normality (Shapiro-Wilk + Anderson-Darling) and instability warnings: advisory, never suppressing the numbers.</li>
-              <li><strong>Architecture.</strong> Dependencies point downward only: <code>data → statistics → spc → capability → interpret → reporting → ui</code>. The statistical core is pure Python with no UI or I/O dependency; charts and reports never recompute a statistic. Every formula, constant and reference lives in <code>docs/FORMULAS.md</code>.</li>
+              <li><strong>Architecture.</strong> Dependencies point downward only: <code>data → statistics → spc → capability / msa → interpret → reporting → ui</code>. The statistical core is pure Python with no UI or I/O dependency; charts and reports never recompute a statistic. Every formula, constant and reference lives in <code>docs/FORMULAS.md</code>.</li>
             </ul>
           </div>
         </section>
@@ -160,7 +162,17 @@
               </tbody>
             </table>
             <p>Faz I (1–25. örnekler) kural ihlali olmadan kararlı raporlanır, Cp 1,70 / Cpk 1,66; Faz II örnekleri eklenince kayma N1/N5/N6 ile yakalanır ve yeterlilik hükmü buna göre kayıtlanır.</p>
-            <p><strong>776 test</strong> (Python 3.10 / 3.11 / 3.12, CI): her istatistiğin elle hesaplanmış bilinen cevaplarla doğrulanması, her WE/Nelson kuralı için üretilmiş deterministik diziler, Pp/Ppk'nin grup içi sigmadan etkilenemeyeceğini kanıtlayan test, uçtan uca CSV → analiz → yorum → CSV/Excel/PDF (PDF içeriği metin çıkarımıyla doğrulanır) ve gerçek Streamlit uygulamasının <code>AppTest</code> ile çalıştırılması. Kapsam yüzdesi ölçülmediği için iddia edilmiyor.</p>
+            <p>Gage R&amp;R için iki referans çalışma kullanıldı. AIAG MSA el kitabının örnek çalışmasında (10 parça × 3 operatör × 3 tekrar) Minitab'ın yayınladığı değerler, Houf &amp; Burman (1988) termal empedans verisinde SAS'ın varyans bileşenleri, yayınlandıkları basamağa kadar aynı çıkıyor:</p>
+            <table>
+              <thead><tr><th>Büyüklük</th><th>Yayınlanan</th><th>Bu uygulama</th></tr></thead>
+              <tbody>
+                <tr><td>%GRR, çalışma varyasyonu (Minitab)</td><td class="num">27.86</td><td class="num">27.86</td></tr>
+                <tr><td>%GRR, tolerans 8 (Minitab)</td><td class="num">22.68</td><td class="num">22.68</td></tr>
+                <tr><td>ndc (Minitab)</td><td class="num">4</td><td class="num">4</td></tr>
+                <tr><td>Etkileşim varyansı (SAS)</td><td class="num">0.72798</td><td class="num">0.72798</td></tr>
+              </tbody>
+            </table>
+            <p><strong>890 test</strong> (Python 3.10 / 3.11 / 3.12, CI): her istatistiğin elle hesaplanmış bilinen cevaplarla doğrulanması, her WE/Nelson kuralı için üretilmiş deterministik diziler, Pp/Ppk'nin grup içi sigmadan etkilenemeyeceğini kanıtlayan test, uçtan uca CSV → analiz → yorum → CSV/Excel/PDF (PDF içeriği metin çıkarımıyla doğrulanır), Gage R&amp;R için bağımsız bir ANOVA uygulamasıyla (statsmodels) karşılaştırma, varyans bileşeni tahminlerinin yansızlığını sınayan Monte Carlo testi ve gerçek Streamlit sayfalarının <code>AppTest</code> ile çalıştırılması. Kapsam yüzdesi ölçülmediği için iddia edilmiyor.</p>
             <p>Çıktılar: tam hassasiyetli CSV, 7 sayfalı Excel çalışma kitabı, gömülü grafikli PDF raporu, PNG/SVG grafik. Streamlit arayüzünde her dışlanan satır sebebiyle listelenir; eşikler yapılandırılabilir.</p>
           </div>
           <div data-lang="en">
@@ -175,7 +187,17 @@
               </tbody>
             </table>
             <p>Phase I (samples 1–25) is reported stable with no rule violations, Cp 1.70 / Cpk 1.66; once the Phase II samples are included the drift is caught as N1/N5/N6 and the capability verdict is caveated accordingly.</p>
-            <p><strong>776 tests</strong> (Python 3.10 / 3.11 / 3.12 in CI): known-answer verification of every statistic against hand-computed values, crafted deterministic sequences for every WE/Nelson rule, a test proving Pp/Ppk cannot be affected by the within-subgroup sigma, full-pipeline CSV → analysis → interpretation → CSV/Excel/PDF (PDF content verified by text extraction) and the real Streamlit app driven through <code>AppTest</code>. No coverage percentage is claimed because coverage is not measured.</p>
+            <p>Gage R&amp;R was checked on two reference studies. On the AIAG MSA manual's example study (10 parts × 3 appraisers × 3 trials) the figures Minitab publishes, and on the Houf &amp; Burman (1988) thermal impedance data the variance components SAS publishes, match to the printed decimal:</p>
+            <table>
+              <thead><tr><th>Quantity</th><th>Published</th><th>This application</th></tr></thead>
+              <tbody>
+                <tr><td>%GRR, study variation (Minitab)</td><td class="num">27.86</td><td class="num">27.86</td></tr>
+                <tr><td>%GRR, tolerance 8 (Minitab)</td><td class="num">22.68</td><td class="num">22.68</td></tr>
+                <tr><td>ndc (Minitab)</td><td class="num">4</td><td class="num">4</td></tr>
+                <tr><td>Interaction variance (SAS)</td><td class="num">0.72798</td><td class="num">0.72798</td></tr>
+              </tbody>
+            </table>
+            <p><strong>890 tests</strong> (Python 3.10 / 3.11 / 3.12 in CI): known-answer verification of every statistic against hand-computed values, crafted deterministic sequences for every WE/Nelson rule, a test proving Pp/Ppk cannot be affected by the within-subgroup sigma, full-pipeline CSV → analysis → interpretation → CSV/Excel/PDF (PDF content verified by text extraction), a comparison of the Gage R&amp;R ANOVA with an independent implementation (statsmodels), a Monte Carlo test of the variance-component estimators' unbiasedness, and the real Streamlit pages driven through <code>AppTest</code>. No coverage percentage is claimed because coverage is not measured.</p>
             <p>Outputs: full-precision CSV, a 7-sheet Excel workbook, a PDF report with embedded charts, PNG/SVG charts. The Streamlit UI lists every excluded row with its reason; thresholds are configurable.</p>
           </div>
         </section>
