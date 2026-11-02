@@ -31,7 +31,7 @@
   const t = (v, tag = 'span') => {
     if (v == null) return '';
     if (typeof v !== 'object') return esc(v);
-    return `<${tag} data-lang="tr">${esc(v.tr ?? '')}</${tag}><${tag} data-lang="en">${esc(v.en ?? '')}</${tag}>`;
+    return `<${tag} data-lang="tr" lang="tr">${esc(v.tr ?? '')}</${tag}><${tag} data-lang="en" lang="en">${esc(v.en ?? '')}</${tag}>`;
   };
   const tu = key => t({ tr: ui(key, 'tr'), en: ui(key, 'en') });
 

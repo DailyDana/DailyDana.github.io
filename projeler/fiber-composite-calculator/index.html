@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-tr="Elyaf Takviyeli Kompozit Hesaplayıcı · İsmail Bilgehan Kazancı" data-en="Fiber Composite Calculator · İsmail Bilgehan Kazancı">Elyaf Takviyeli Kompozit Hesaplayıcı · İsmail Bilgehan Kazancı</title>
+  <meta name="description" content="Callister Bölüm 16 bağıntılarıyla elyaf takviyeli kompozitleri hesaplayan ve sıralayan Streamlit aracı: sürekli ve süreksiz elyaf, kritik elyaf boyu, adım adım formül gösteren PDF rapor. 334 test, TR ve EN, canlı demo.">
+  <meta name="author" content="İsmail Bilgehan Kazancı">
+  <link rel="canonical" href="https://dailydana.github.io/projeler/fiber-composite-calculator/">
+  <link rel="alternate" hreflang="tr" href="https://dailydana.github.io/projeler/fiber-composite-calculator/">
+  <link rel="alternate" hreflang="en" href="https://dailydana.github.io/projeler/fiber-composite-calculator/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://dailydana.github.io/projeler/fiber-composite-calculator/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="İsmail Bilgehan Kazancı">
+  <meta property="og:title" content="Fiber Composite Calculator · vaka çalışması">
+  <meta property="og:description" content="Callister Bölüm 16: kompozitleri elyaf yönündeki dayanıma göre sıralar, sıralamanın matris dayanımına karşı sağlamlığını hesaplar, her adımı PDF rapora yazar. 334 test, TR ve EN.">
+  <meta property="og:url" content="https://dailydana.github.io/projeler/fiber-composite-calculator/">
+  <meta property="og:image" content="https://dailydana.github.io/projeler/fiber-composite-calculator/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Elyaf Takviyeli Kompozit Hesaplayıcı">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#FCFCFA">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    (function(){var d=document.documentElement;d.classList.add('js');try{var q=new URLSearchParams(location.search).get('lang'),l=q||localStorage.getItem('lang');if(l==='en'||l==='tr'){d.lang=l;if(q)localStorage.setItem('lang',l);}var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.dataset.theme=t;}catch(e){d.dataset.theme='light';}})();
+  </script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "fiber-composite-calculator",
+    "description": "Calculator for fiber-reinforced composites based on Callister chapter 16: continuous and discontinuous fibers, critical length, ranking with a matrix-strength robustness check, step-by-step PDF reports.",
+    "codeRepository": "https://github.com/DailyDana/fiber-composite-calculator",
+    "programmingLanguage": "Python",
+    "license": "https://www.apache.org/licenses/LICENSE-2.0",
+    "softwareVersion": "0.1.1",
+    "url": "https://dailydana.github.io/projeler/fiber-composite-calculator/",
+    "image": "https://dailydana.github.io/projeler/fiber-composite-calculator/og.png",
+    "author": { "@type": "Person", "name": "İsmail Bilgehan Kazancı", "url": "https://dailydana.github.io/" }
+  }
+  </script>
+</head>
+<body>
+
+<a class="skip" href="#icerik"><span data-lang="tr" lang="tr">İçeriğe geç</span><span data-lang="en" lang="en">Skip to content</span></a>
+
+<!-- chrome:nav -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="brand" aria-label="İsmail Bilgehan Kazancı · ana sayfa" data-aria="aria.brand">
+      <span class="brand-name">İsmail Bilgehan Kazancı</span>
+    </a>
+    <div class="nav-right">
+      <nav class="nav-links" id="navLinks" aria-label="Ana menü" data-aria="aria.menu">
+        <a href="/#hakkimda" data-nav><span data-lang="tr" lang="tr">Hakkımda</span><span data-lang="en" lang="en">About</span></a>
+        <a href="/#projeler" data-nav><span data-lang="tr" lang="tr">Projeler</span><span data-lang="en" lang="en">Projects</span></a>
+        <a href="/#beceriler" data-nav><span data-lang="tr" lang="tr">Beceriler</span><span data-lang="en" lang="en">Skills</span></a>
+        <a href="/#deneyim" data-nav><span data-lang="tr" lang="tr">Deneyim</span><span data-lang="en" lang="en">Experience</span></a>
+        <a href="/#iletisim" data-nav><span data-lang="tr" lang="tr">İletişim</span><span data-lang="en" lang="en">Contact</span></a>
+      </nav>
+      <div class="toggles">
+        <div class="lang" role="group" aria-label="Dil / Language">
+          <button type="button" data-lang-set="tr" aria-pressed="true" lang="tr">TR</button>
+          <button type="button" data-lang-set="en" aria-pressed="false" lang="en">EN</button>
+        </div>
+        <button type="button" class="theme" id="themeToggle" aria-pressed="false" aria-label="Koyu temaya geç">
+          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menüyü aç" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<!-- /chrome:nav -->
+
+<main id="icerik">
+  <article class="case">
+    <div class="wrap">
+      <nav class="crumb" aria-label="Sayfa yolu" data-aria="aria.crumb"><a href="/#projeler"><span data-lang="tr" lang="tr">Tüm projeler</span><span data-lang="en" lang="en">All projects</span></a></nav>
+
+      <header class="case-head">
+        <h1 class="case-title"><span data-lang="tr" lang="tr">Elyaf Takviyeli Kompozit Hesaplayıcı</span><span data-lang="en" lang="en">Fiber Composite Calculator</span></h1>
+        <p class="case-lead"><span data-lang="tr" lang="tr">Callister ve Rethwisch'in <em>Malzeme Bilimi ve Mühendisliği</em> kitabının 16. bölümündeki bağıntılarla elyaf takviyeli kompozitleri hesaplayan bir araç. Kompozitleri girersiniz; elyaf yönündeki dayanıma göre sıralar, sıralamanın neden öyle çıktığını açıklar ve her adımın hesabını gösteren bir PDF rapor yazar.</span><span data-lang="en" lang="en">A calculator for fiber-reinforced composites built on the relations in chapter 16 of Callister and Rethwisch, <em>Materials Science and Engineering</em>. You enter your composites; it ranks them by strength along the fibers, explains why the ranking comes out the way it does, and writes a PDF report that shows every step of the math.</span></p>
+        <div class="case-tags"><span class="chip">Python 3.11+</span><span class="chip">Streamlit</span><span class="chip">matplotlib</span><span class="chip">ReportLab</span><span class="chip">pytest</span><span class="chip">Apache-2.0</span></div>
+        <dl class="case-metrics">
+          <div><dt><span data-lang="tr" lang="tr">Test</span><span data-lang="en" lang="en">Tests</span></dt><dd>334</dd></div>
+          <div><dt><span data-lang="tr" lang="tr">Sürüm</span><span data-lang="en" lang="en">Release</span></dt><dd>v0.1.1</dd></div>
+          <div><dt><span data-lang="tr" lang="tr">Hesap sayfası</span><span data-lang="en" lang="en">Calculator pages</span></dt><dd>4</dd></div>
+          <div><dt><span data-lang="tr" lang="tr">Dil</span><span data-lang="en" lang="en">Languages</span></dt><dd>TR · EN</dd></div>
+        </dl>
+        <div class="case-actions">
+          <a class="btn btn-accent" href="https://fiber-composite-calculator.streamlit.app/" target="_blank" rel="noopener"><span data-lang="tr" lang="tr">Canlı demo</span><span data-lang="en" lang="en">Live demo</span></a>
+          <a class="btn btn-line" href="https://github.com/DailyDana/fiber-composite-calculator" target="_blank" rel="noopener"><span data-lang="tr" lang="tr">Kaynak kod</span><span data-lang="en" lang="en">Source code</span></a>
+        </div>
+      </header>
+
+      <figure class="case-hero">
+        <img src="/assets/img/projects/fiber-composite-calculator.webp" width="1200" height="857" alt="Karşılaştır ve sırala sayfası: düzenlenebilir kompozit tablosu, dayanımlar ve l/lc grafiği" fetchpriority="high">
+        <figcaption><span data-lang="tr" lang="tr">Karşılaştır ve sırala sayfası: hizalı süreksiz elyaflı kompozitler için düzenlenebilir tablo, hesaplanan dayanımlar ve l/lc grafiği.</span><span data-lang="en" lang="en">The compare-and-rank page: an editable table of aligned discontinuous-fiber composites, the computed strengths and an l/lc chart.</span></figcaption>
+      </figure>
+
+      <div class="case-body">
+        <section>
+          <h2 data-no="01"><span data-lang="tr" lang="tr">Problem</span><span data-lang="en" lang="en">Problem</span></h2>
+          <div data-lang="tr" lang="tr">
+            <p>Malzeme dersindeki Kavram Kontrol 16.2 gibi sorular, dört kompoziti elyaf verisiyle sıralamayı ister ama matris hakkında bilgi vermez. Elle çözüldüğünde hem işlem uzun hem de asıl soru açıkta kalır: matris dayanımı bilinmezken bu sıralama gerçekten geçerli mi?</p>
+            <p>Hedef, bu tür ödevleri tek seferlik bir hesap yerine tekrar kullanılabilir, her adımı gösteren ve sonucunun sınırlarını kendisi söyleyen bir araçla çözmekti.</p>
+          </div>
+          <div data-lang="en" lang="en">
+            <p>Exercises such as Concept Check 16.2 in a materials course ask you to rank four composites from fiber data but say nothing about the matrix. Solved by hand, the arithmetic is long and the real question stays open: without the matrix strength, does the ranking actually hold?</p>
+            <p>The goal was to turn this kind of exercise into a reusable tool that shows every step and states the limits of its own result, instead of a one-off calculation.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2 data-no="02"><span data-lang="tr" lang="tr">Yaklaşım</span><span data-lang="en" lang="en">Approach</span></h2>
+          <div data-lang="tr" lang="tr">
+            <ul>
+              <li><strong>Dört hesap sayfası.</strong> <em>Karşılaştır ve sırala</em> (elyaf türü, Vf, σf*, ortalama boy l ve kritik boy lc ile düzenlenebilir tablo); <em>Sürekli elyaf</em> (boyuna ve enine elastisite modülü, yükün elyaf ile matris arasında paylaşımı, boyuna dayanım); <em>Süreksiz elyaf</em> (σf*, d ve τc'den kritik boy, dayanımın elyaf boyuyla değişimi); <em>Yönlenme ve parçacık</em> (elyaf verim katsayısı K, büyük parçacıklı kompozitlerde üst ve alt sınırlar).</li>
+              <li><strong>Adım adım panel.</strong> Her sayfada formül, yerine konan sayılar ve sonuç ayrı ayrı gösterilir. Tüm formüller ve kaynakları <code>docs/FORMULAS.md</code>'de.</li>
+              <li><strong>Rapor.</strong> Her hesabı formülüyle birlikte yazan PDF. Türkçe karakterler için yazı tipi gömülü; rapor her zaman açık temada, iyi yazdırılsın diye.</li>
+              <li><strong>Arayüz.</strong> Türkçe ve İngilizce (<code>?lang=tr</code> ya da <code>?lang=en</code>), sistem temasına uyan açık ve koyu görünüm; grafikler iki temada da çiziliyor.</li>
+            </ul>
+          </div>
+          <div data-lang="en" lang="en">
+            <ul>
+              <li><strong>Four calculator pages.</strong> <em>Compare and rank</em> (an editable table with fiber type, Vf, σf*, mean length l and critical length lc); <em>Continuous fibers</em> (longitudinal and transverse modulus, how the load splits between fiber and matrix, longitudinal strength); <em>Discontinuous fibers</em> (critical length from σf*, d and τc, and how strength changes with fiber length); <em>Orientation and particles</em> (fiber efficiency factor K, upper and lower bounds for large-particle composites).</li>
+              <li><strong>Step-by-step panel.</strong> Every page shows the formula, the numbers put in and the result separately. All formulas and their sources are in <code>docs/FORMULAS.md</code>.</li>
+              <li><strong>Reports.</strong> A PDF that writes every calculation with its formula. The font is embedded so Turkish characters survive; reports are always light so they print well.</li>
+              <li><strong>Interface.</strong> Turkish and English (<code>?lang=tr</code> or <code>?lang=en</code>), light and dark following the system theme, with charts drawn for both.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 data-no="03"><span data-lang="tr" lang="tr">Sıralamanın sağlamlığı</span><span data-lang="en" lang="en">How robust the ranking is</span></h2>
+          <div data-lang="tr" lang="tr">
+            <p>Veri matrisi içermediği için sıralama elyaf terimiyle yapılır: σf*·Vf·(1 − lc/2l). Ama matris terimi σm'·(1 − Vf) yine de sırayı değiştirebilir, çünkü daha az elyaflı kompoziti kayırır. Araç, herhangi iki kompozitin yerini değiştirecek en küçük ortak σm' değerini hesaplar.</p>
+            <p>Kavram Kontrol 16.2 verisinde bu eşik yaklaşık <strong>3450 MPa</strong> (B–A çifti); hiçbir polimer matrisin taşıyamayacağı kadar yüksek. Yani C &gt; D &gt; B &gt; A sırası geçerli. Rapor bu hesabı gösterir ve somut olsun diye sıralamayı σm' = 100 MPa ile tekrar eder.</p>
+          </div>
+          <div data-lang="en" lang="en">
+            <p>Because the data has no matrix, the ranking uses the fiber term σf*·Vf·(1 − lc/2l). The matrix term σm'·(1 − Vf) could still change the order, because it favours the composite with less fiber. The app computes the smallest common σm' that would swap any two composites.</p>
+            <p>For the Concept Check 16.2 data that threshold is about <strong>3450 MPa</strong> (pair B–A), far above anything a polymer matrix can carry, so the ranking C &gt; D &gt; B &gt; A holds. The report shows this calculation and repeats the ranking with σm' = 100 MPa to make the point concrete.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2 data-no="04"><span data-lang="tr" lang="tr">Doğrulama</span><span data-lang="en" lang="en">Verification</span></h2>
+          <div data-lang="tr" lang="tr">
+            <p>Testler ders kitabının çözümlü sonuçlarını sabitler:</p>
+            <table>
+              <thead><tr><th>Örnek</th><th>Büyüklük</th><th>Değer</th></tr></thead>
+              <tbody>
+                <tr><td>Örnek 16.1</td><td>Boyuna modül Ecl</td><td class="num">≈ 30 GPa</td></tr>
+                <tr><td>Örnek 16.1</td><td>Yük oranı Ff/Fm</td><td class="num">≈ 13,5</td></tr>
+                <tr><td>Örnek 16.1</td><td>Enine modül Ect</td><td class="num">≈ 5,5 GPa</td></tr>
+                <tr><td>Kavram Kontrol 16.2</td><td>Elyaf katkısı C / D / B / A</td><td class="num">2145,0 / 1598,4 / 1186,7 / 669,4 MPa</td></tr>
+              </tbody>
+            </table>
+            <p><strong>334 test</strong> ayrıca PDF'e çizilecek her formül satırını ayrıştırır, Türkçe karakterlerin bozulmadığını PDF'ten metin çıkararak denetler ve her sayfayı Streamlit'in <code>AppTest</code> aracıyla tarayıcısız çalıştırır. CI Python 3.11, 3.12 ve 3.13'te koşar.</p>
+          </div>
+          <div data-lang="en" lang="en">
+            <p>The tests pin the textbook's worked results:</p>
+            <table>
+              <thead><tr><th>Example</th><th>Quantity</th><th>Value</th></tr></thead>
+              <tbody>
+                <tr><td>Example 16.1</td><td>Longitudinal modulus Ecl</td><td class="num">≈ 30 GPa</td></tr>
+                <tr><td>Example 16.1</td><td>Load ratio Ff/Fm</td><td class="num">≈ 13.5</td></tr>
+                <tr><td>Example 16.1</td><td>Transverse modulus Ect</td><td class="num">≈ 5.5 GPa</td></tr>
+                <tr><td>Concept Check 16.2</td><td>Fiber term C / D / B / A</td><td class="num">2145.0 / 1598.4 / 1186.7 / 669.4 MPa</td></tr>
+              </tbody>
+            </table>
+            <p>The <strong>334 tests</strong> also parse every formula line the PDF will draw, extract the PDF text to make sure Turkish characters survive, and run each page headlessly with Streamlit's <code>AppTest</code>. CI runs on Python 3.11, 3.12 and 3.13.</p>
+          </div>
+        </section>
+      </div>
+
+      <section class="gallery">
+        <div class="gallery-head"><span data-lang="tr" lang="tr">Diğer görünümler · büyütmek için tıklayın</span><span data-lang="en" lang="en">Other views · click to enlarge</span></div>
+        <div class="gallery-grid">
+          <a class="thumb" href="/assets/img/projects/fiber-composite-continuous.webp" data-lightbox data-caption="Sürekli elyaf / Continuous fibers"><img src="/assets/img/projects/fiber-composite-continuous.webp" width="1200" height="1337" loading="lazy" decoding="async" alt="Sürekli elyaf sayfası ve adım adım hesap paneli"><span><span data-lang="tr" lang="tr">Sürekli elyaf sayfası</span><span data-lang="en" lang="en">Continuous fibers page</span></span></a>
+          <a class="thumb" href="/assets/img/projects/fiber-composite-report.webp" data-lightbox data-caption="Rapor / Report"><img src="/assets/img/projects/fiber-composite-report.webp" width="745" height="1053" loading="lazy" decoding="async" alt="PDF raporda sıralama sağlamlık hesabı"><span><span data-lang="tr" lang="tr">Rapordaki sağlamlık hesabı</span><span data-lang="en" lang="en">Ranking check in the report</span></span></a>
+        </div>
+      </section>
+
+      <section class="related">
+        <h2 class="related-title"><span data-lang="tr" lang="tr">Diğer projeler</span><span data-lang="en" lang="en">Other projects</span></h2>
+        <div class="projects-grid-2" id="related" data-exclude="fiber-composite-calculator"><!-- static:related --><article class="card card-medium" id="p-spc-analyzer">
+        <div class="card-media"><img src="/assets/img/projects/spc-analyzer.webp" width="1200" height="898" loading="lazy" decoding="async" alt="I-MR kontrol grafiği çıktısı" data-alt-tr="I-MR kontrol grafiği çıktısı" data-alt-en="I-MR control chart output"></div>
+        <div class="card-body">
+          <h3><a href="/projeler/spc-analyzer/"><span data-lang="tr" lang="tr">Süreç Yeterliliği ve SPC Analiz Aracı</span><span data-lang="en" lang="en">Process Capability &amp; SPC Analyzer</span></a></h3>
+          <p><span data-lang="tr" lang="tr">X̄-R, X̄-S ve I-MR kontrol grafikleri; 4 Western Electric + 8 Nelson kuralı; Cp/Cpk (grup içi) ve Pp/Ppk (genel), normal olmayan veri için de; Type-1 (Cg/Cgk) ve çapraz Gage R&amp;R (ANOVA ve AIAG ortalama-aralık). Yeterlilikten önce ölçüm sistemini ve kararlılığı denetler, yorumları kural tabanlı üretir, CSV/Excel/PDF rapor verir. Montgomery, Minitab, SAS ve Bosch'un yayınlanmış sonuçlarına karşı doğrulandı.</span><span data-lang="en" lang="en">X̄-R, X̄-S and I-MR control charts; 4 Western Electric + 8 Nelson rules; Cp/Cpk (within) and Pp/Ppk (overall), also for non-normal data; Type-1 (Cg/Cgk) and crossed Gage R&amp;R (ANOVA and AIAG Average &amp; Range). Checks the measurement system and stability before capability, produces rule-based interpretations and CSV/Excel/PDF reports. Validated against published Montgomery, Minitab, SAS and Bosch results.</span></p>
+          <div class="card-metrics"><span class="metric"><b>961</b><span data-lang="tr" lang="tr">test</span><span data-lang="en" lang="en">tests</span></span><span class="metric"><b>12</b><span data-lang="tr" lang="tr">çalışma kuralı</span><span data-lang="en" lang="en">run rules</span></span><span class="metric"><b>3</b><span data-lang="tr" lang="tr">grafik tipi</span><span data-lang="en" lang="en">chart types</span></span></div>
+          <div class="card-tags"><span class="chip">Python</span><span class="chip">Streamlit</span><span class="chip">SPC</span><span class="chip">pytest</span><span class="chip">Apache-2.0</span></div>
+          <div class="card-links"><a class="is-muted" href="/projeler/spc-analyzer/"><span data-lang="tr" lang="tr">Vaka çalışması</span><span data-lang="en" lang="en">Case study</span></a><a href="https://spc-analyzer.streamlit.app/" target="_blank" rel="noopener"><span data-lang="tr" lang="tr">Canlı demo</span><span data-lang="en" lang="en">Live demo</span></a><a href="https://github.com/DailyDana/process-capability-analyzer" target="_blank" rel="noopener"><span data-lang="tr" lang="tr">Kaynak kod</span><span data-lang="en" lang="en">Source code</span></a></div>
+        </div>
+      </article>
+      <article class="card card-medium" id="p-hoffmann-line-balancing">
+        <div class="card-media"><img src="/assets/img/projects/hoffmann-line-balancing.webp" width="1200" height="1520" loading="lazy" decoding="async" alt="Hat dengeleme Streamlit arayüzü" data-alt-tr="Hat dengeleme Streamlit arayüzü" data-alt-en="Line balancing Streamlit interface"></div>
+        <div class="card-body">
+          <h3><a href="/projeler/hoffmann-line-balancing/"><span data-lang="tr" lang="tr">Hoffmann Montaj Hattı Dengeleme</span><span data-lang="en" lang="en">Hoffmann Assembly Line Balancing</span></a></h3>
+          <p><span data-lang="tr" lang="tr">SALBP-1 için Hoffmann (1963) öncelik matrisi yöntemi: her istasyon için uygun tüm alt kümeleri sayar. Komut satırı + beş dilli Streamlit arayüzü, çevrim süresi taraması. Brute-force ve bitmask-DP çözücülerle çapraz doğrulandı; ders ödevi olarak başlayan kodun aslında first-fit olduğu görülünce sıfırdan yazıldı.</span><span data-lang="en" lang="en">Hoffmann's (1963) precedence-matrix method for SALBP-1: enumerates every feasible subset per station. CLI + five-language Streamlit UI, cycle-time sweep. Cross-checked against brute-force and bitmask-DP solvers; rewritten from scratch after a review showed the original coursework code was first-fit, not Hoffmann.</span></p>
+          <div class="card-metrics"><span class="metric"><b>127</b><span data-lang="tr" lang="tr">test</span><span data-lang="en" lang="en">tests</span></span><span class="metric"><b>5</b><span data-lang="tr" lang="tr">arayüz dili</span><span data-lang="en" lang="en">UI languages</span></span><span class="metric"><b>2</b><span data-lang="tr" lang="tr">doğrulama çözücüsü</span><span data-lang="en" lang="en">oracle solvers</span></span></div>
+          <div class="card-tags"><span class="chip">Python</span><span class="chip">Streamlit</span><span class="chip"><span data-lang="tr" lang="tr">Yöneylem</span><span data-lang="en" lang="en">Operations research</span></span><span class="chip">hypothesis</span><span class="chip">Apache-2.0</span></div>
+          <div class="card-links"><a class="is-muted" href="/projeler/hoffmann-line-balancing/"><span data-lang="tr" lang="tr">Vaka çalışması</span><span data-lang="en" lang="en">Case study</span></a><a href="https://hoffmann-line-balancing.streamlit.app/" target="_blank" rel="noopener"><span data-lang="tr" lang="tr">Canlı demo</span><span data-lang="en" lang="en">Live demo</span></a><a href="https://github.com/DailyDana/hoffmann-line-balancing" target="_blank" rel="noopener"><span data-lang="tr" lang="tr">Kaynak kod</span><span data-lang="en" lang="en">Source code</span></a></div>
+        </div>
+      </article><!-- /static:related --></div>
+      </section>
+    </div>
+  </article>
+</main>
+
+<dialog class="lightbox" id="lightbox">
+  <button type="button" class="lightbox-close" aria-label="Kapat / Close">×</button>
+  <img alt="" width="1200" height="1337">
+  <div class="lightbox-cap"></div>
+</dialog>
+
+<!-- chrome:footer -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>İsmail Bilgehan Kazancı, Bursa ve Ankara. © <span id="year">2026</span></span>
+    <span class="footer-links">
+      <a href="https://www.linkedin.com/in/ismailbilgehankazanci" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/DailyDana" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/DailyDana/DailyDana.github.io" target="_blank" rel="noopener"><span data-lang="tr" lang="tr">Sitenin kaynağı</span><span data-lang="en" lang="en">Site source</span></a>
+    </span>
+  </div>
+</footer>
+<!-- /chrome:footer -->
+
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/main.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "fa9ce7c9204f44c0bb32274c1430b982"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

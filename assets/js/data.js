@@ -7,13 +7,13 @@ window.PORTFOLIO = {
   meta: {
     name: 'İsmail Bilgehan Kazancı',
     location: 'Bursa · Ankara',
-    updated: '2026-09-27',
+    updated: '2026-11-02',
     links: {
       github: 'https://github.com/DailyDana',
       linkedin: 'https://www.linkedin.com/in/ismailbilgehankazanci',
       email: 'bilgehankazanci@gmail.com',
-      cvTr: '',
-      cvEn: ''
+      cvTr: '/cv/ismail-bilgehan-kazanci-cv-tr.pdf',
+      cvEn: '/cv/ismail-bilgehan-kazanci-cv-en.pdf'
     }
   },
 
@@ -26,6 +26,7 @@ window.PORTFOLIO = {
       'btn.site': 'Siteyi aç',
       'btn.release': 'Sürümler',
       'btn.pdf': 'PDF',
+      'btn.contrib': 'Katkı (PR #1)',
       'status.wip': 'geliştiriliyor',
       'status.active': 'aktif',
       'status.done': 'tamamlandı',
@@ -58,6 +59,7 @@ window.PORTFOLIO = {
       'btn.site': 'Open site',
       'btn.release': 'Releases',
       'btn.pdf': 'PDF',
+      'btn.contrib': 'Contribution (PR #1)',
       'status.wip': 'in progress',
       'status.active': 'active',
       'status.done': 'completed',
@@ -130,9 +132,31 @@ window.PORTFOLIO = {
       image: { src: '/assets/img/projects/hoffmann-line-balancing.webp', w: 1200, h: 1520, alt: { tr: 'Hat dengeleme Streamlit arayüzü', en: 'Line balancing Streamlit interface' } }
     },
     {
+      slug: 'fiber-composite-calculator',
+      repo: 'fiber-composite-calculator',
+      order: 3, featured: true, cluster: 'materials', status: 'active', year: '2026',
+      title: { tr: 'Elyaf Takviyeli Kompozit Hesaplayıcı', en: 'Fiber Composite Calculator' },
+      summary: {
+        tr: 'Callister Bölüm 16 bağıntılarıyla elyaf takviyeli kompozitleri hesaplayan ve karşılaştıran araç: sürekli ve süreksiz elyaf, kritik elyaf boyu, yönlenme verimi, parçacık kompozit sınırları. Kompozitleri elyaf yönündeki dayanıma göre sıralar, sıralamanın matris dayanımına karşı ne kadar sağlam olduğunu hesaplar ve her adımın formülünü gösteren PDF rapor yazar. Ders kitabının çözümlü örnekleri testle sabitlendi.',
+        en: 'Calculates and compares fiber-reinforced composites with the relations in Callister chapter 16: continuous and discontinuous fibers, critical fiber length, orientation efficiency, particle composite bounds. It ranks composites by strength along the fibers, works out how robust the ranking is against the matrix strength, and writes a PDF report that shows every formula. The textbook\'s worked examples are pinned by tests.'
+      },
+      tags: ['Python', 'Streamlit', { tr: 'Malzeme bilimi', en: 'Materials science' }, 'ReportLab', 'Apache-2.0'],
+      metrics: [
+        { value: '334', label: { tr: 'test', en: 'tests' } },
+        { value: '4', label: { tr: 'hesap sayfası', en: 'calculator pages' } },
+        { value: 'TR · EN', label: { tr: 'arayüz ve rapor', en: 'UI and reports' } }
+      ],
+      links: [
+        { kind: 'demo', url: 'https://fiber-composite-calculator.streamlit.app/' },
+        { kind: 'repo', url: 'https://github.com/DailyDana/fiber-composite-calculator' }
+      ],
+      page: '/projeler/fiber-composite-calculator/',
+      image: { src: '/assets/img/projects/fiber-composite-calculator.webp', w: 1200, h: 857, alt: { tr: 'Kompozit karşılaştırma ve sıralama sayfası', en: 'Composite compare-and-rank page' } }
+    },
+    {
       slug: 'aniflow',
       repo: 'Aniflow',
-      order: 3, featured: true, cluster: 'software', status: 'active', year: '2026',
+      order: 4, featured: true, cluster: 'software', status: 'active', year: '2026',
       title: { tr: 'Aniflow — Video Upscale Aracı', en: 'Aniflow — Video Upscaler' },
       summary: {
         tr: 'Anime4K ve FSRCNNX GLSL shader zincirlerini ffmpeg libplacebo ile videoya kalıcı olarak uygulayan taşınabilir Windows aracı. Real-ESRGAN AI upscale, RIFE 2x kare ara değerleme, QSV/NVENC/AMF donanım kodlama, çoklu GPU seçimi, sürükle-bırak kuyruk ve tek satırlık kurulum betiği.',
@@ -154,7 +178,7 @@ window.PORTFOLIO = {
     {
       slug: 'codecdelta',
       repo: 'CodecDelta',
-      order: 4, featured: false, cluster: 'software', status: 'active', year: '2026',
+      order: 5, featured: false, cluster: 'software', status: 'active', year: '2026',
       title: { tr: 'CodecDelta — Ses Kodlama Farkı Analizi', en: 'CodecDelta — Audio Codec Delta Analysis' },
       summary: {
         tr: 'Kayıplı bir kodlayıcının kayda ne yaptığını ölçen Windows uygulaması: örnek-altı hizalama, bant bant S/N, kör ABX testi, 12 kodlayıcıyla kodlama ve bit hızı taraması, kütüphane taraması, kişisel veriden arındırılmış HTML rapor. Her tasarım kararı ölçülerek verildi ve belgelendi.',
@@ -175,7 +199,7 @@ window.PORTFOLIO = {
     {
       slug: 'cad-calismalari',
       repo: 'cannon-model',
-      order: 5, featured: false, cluster: 'cad', status: 'done', year: '2026',
+      order: 6, featured: false, cluster: 'cad', status: 'done', year: '2026',
       title: { tr: 'CAD Çalışmaları — Donanma Topu ve Napoleon Sahra Topu', en: 'CAD Work — Naval Cannon & Napoleon Field Gun' },
       summary: {
         tr: 'SolidWorks\'te sekiz parça, iki montaj ve teknik resimleriyle bir donanma topu; Siemens NX\'te 19 parçalı Napoleon 12\'lik sahra topu montajı ve montaj resmi. Parça modelleme, montaj kısıtları ve teknik resim standartları üzerine çalışma.',
@@ -197,6 +221,30 @@ window.PORTFOLIO = {
   ],
 
   tools: [
+    {
+      name: 'ccusage Status Bar',
+      desc: {
+        tr: 'Claude Code kullanımını VS Code durum çubuğunda gösteren eklenti: etkin 5 saatlik bloğun maliyeti ve kalan süresi, günlük toplam; araç ipucunda harcama hızı ve model bazında döküm. Yalnız yerel kayıtları okur, dışarı veri göndermez.',
+        en: 'VS Code extension that shows Claude Code usage in the status bar: cost and time left in the active 5-hour block and today\'s total; the tooltip adds burn rate and a per-model breakdown. Reads local logs only and sends nothing anywhere.'
+      },
+      tech: ['JavaScript', 'VS Code API'],
+      links: [
+        { kind: 'repo', url: 'https://github.com/DailyDana/ccusage-statusbar' },
+        { kind: 'release', url: 'https://github.com/DailyDana/ccusage-statusbar/releases' }
+      ]
+    },
+    {
+      name: { tr: 'eozMP · açık kaynak katkı', en: 'eozMP · open-source contribution' },
+      desc: {
+        tr: 'Bir arkadaşımın Soulseek entegre müzik çalarına katkı. İlk çekme isteği veri güvenliği düzeltmeleri ve testlerdi (atomik ayar kaydı, kapanışta iş parçacıklarını bekleme, kopya denetimi) ve birleştirildi; sonra ortak geliştirici olarak mpv tabanlı çalma motorunu ve v1.4 sürümünü hazırladım.',
+        en: 'Contributions to a friend\'s Soulseek-integrated music player. The first pull request, data-safety fixes with tests (atomic settings writes, waiting for workers on exit, duplicate checks), was merged; as a collaborator I then built the mpv-based playback engine and the v1.4 release.'
+      },
+      tech: ['Python', 'PyQt6', 'mpv'],
+      links: [
+        { kind: 'contrib', url: 'https://github.com/erenoozr/eozMP/pull/1' },
+        { kind: 'repo', url: 'https://github.com/erenoozr/eozMP' }
+      ]
+    },
     {
       name: { tr: 'mpv yapılandırması · Anime4K + RIFE', en: 'mpv configuration · Anime4K + RIFE' },
       desc: {
@@ -249,7 +297,7 @@ window.PORTFOLIO = {
         { name: 'Cp/Cpk · Pp/Ppk · DPMO', note: { tr: 'Grup içi/genel sigma ayrımı, tek taraflı spek, güven aralığı', en: 'Within/overall sigma, one-sided specs, confidence interval' }, projects: ['spc-analyzer'] },
         { name: { tr: 'Normal olmayan veride yeterlilik', en: 'Non-normal capability' }, note: { tr: 'ISO 22514-2 persentil yöntemi, Box-Cox, kesin MLE', en: 'ISO 22514-2 percentile method, Box-Cox, exact MLE' }, projects: ['spc-analyzer'] },
         { name: { tr: 'Normallik testleri', en: 'Normality tests' }, note: { tr: 'Shapiro-Wilk, Anderson-Darling; küçük örneklem korumaları', en: 'Shapiro-Wilk, Anderson-Darling; small-sample guards' }, projects: ['spc-analyzer'] },
-        { name: { tr: 'Hat dengeleme (SALBP)', en: 'Line balancing (SALBP)' }, note: { tr: 'Hoffmann öncelik matrisi, çevrim süresi taraması', en: 'Hoffmann precedence matrix, cycle-time sweep' }, projects: ['hoffmann-line-balancing'] },
+        { name: { tr: 'Hat dengeleme (SALBP)', en: 'Line balancing (SALBP)' }, note: { tr: 'Hoffmann öncelik matrisi, çevrim süresi taraması; derste Kilbridge-Wester ve RPW', en: 'Hoffmann precedence matrix, cycle-time sweep; Kilbridge-Wester and RPW in coursework' }, projects: ['hoffmann-line-balancing'] },
         { name: 'Six Sigma White Belt', note: { tr: 'CSSC, 2026', en: 'CSSC, 2026' }, projects: [] }
       ]
     },
@@ -258,7 +306,7 @@ window.PORTFOLIO = {
       title: { tr: 'Yazılım ve otomasyon', en: 'Software & automation' },
       blurb: { tr: 'Tekrarlanan işi test edilmiş araca dönüştürmek.', en: 'Turning repeated work into tested tools.' },
       items: [
-        { name: 'Python', note: { tr: 'numpy, pandas, scipy, Streamlit; pytest, hypothesis, mypy --strict, ruff', en: 'numpy, pandas, scipy, Streamlit; pytest, hypothesis, mypy --strict, ruff' }, projects: ['spc-analyzer', 'hoffmann-line-balancing', 'codecdelta'] },
+        { name: 'Python', note: { tr: 'numpy, pandas, scipy, Streamlit; pytest, hypothesis, mypy --strict, ruff', en: 'numpy, pandas, scipy, Streamlit; pytest, hypothesis, mypy --strict, ruff' }, projects: ['spc-analyzer', 'hoffmann-line-balancing', 'fiber-composite-calculator', 'codecdelta'] },
         { name: 'PowerShell', note: { tr: 'WinForms arayüzler, ffmpeg otomasyonu, sistem betikleri', en: 'WinForms GUIs, ffmpeg automation, system scripts' }, projects: ['aniflow'] },
         { name: 'ffmpeg · libplacebo · DSP', note: { tr: 'Shader zincirleri, LUT işleme, bit akışı ayrıştırma', en: 'Shader chains, LUT baking, bitstream parsing' }, projects: ['aniflow', 'codecdelta'] },
         { name: 'Git · GitHub Actions', note: { tr: 'Her depoda CI; Conventional Commits', en: 'CI on every repo; Conventional Commits' }, projects: [] },
@@ -268,13 +316,15 @@ window.PORTFOLIO = {
     },
     {
       id: 'cad',
-      title: { tr: 'CAD / CAM', en: 'CAD / CAM' },
-      blurb: { tr: 'Parça, montaj ve teknik resim; CNC tarafında uygulamalı ders deneyimi.', en: 'Parts, assemblies and drawings; hands-on CNC coursework.' },
+      title: { tr: 'CAD/CAM ve üretim', en: 'CAD/CAM & manufacturing' },
+      blurb: { tr: 'Parça, montaj ve teknik resim; proses planlama ve malzeme hesapları.', en: 'Parts, assemblies and drawings; process planning and materials calculations.' },
       items: [
         { name: 'SolidWorks', note: { tr: 'Parça/montaj/teknik resim; LinkedIn Learning ileri çizim eğitimi', en: 'Parts/assemblies/drawings; LinkedIn Learning advanced drawings course' }, projects: ['cad-calismalari'] },
         { name: 'Siemens NX', note: { tr: '19 parçalı montaj ve montaj resmi', en: '19-part assembly and assembly drawing' }, projects: ['cad-calismalari'] },
         { name: 'Mastercam · AutoCAD', note: { tr: 'CAM takım yolu ve 2B çizim dersleri', en: 'CAM toolpath and 2D drafting coursework' }, projects: [] },
-        { name: { tr: 'CNC torna · teknik resim', en: 'CNC lathe · technical drawing' }, note: { tr: 'Uygulamalı atölye dersleri', en: 'Hands-on workshop courses' }, projects: [] }
+        { name: { tr: 'GD&T · proses planlama', en: 'GD&T · process planning' }, note: { tr: 'İMM 348 ders projeleri: A-B-C datum, MMC\'li pozisyon toleransı; AISI 1020 parça için işleme payı ve CNC freze operasyon sırası', en: 'İMM 348 coursework: A-B-C datums, position at MMC; machining allowance and CNC milling sequence for an AISI 1020 part' }, projects: [] },
+        { name: { tr: 'CNC torna · teknik resim', en: 'CNC lathe · technical drawing' }, note: { tr: 'Uygulamalı atölye dersleri', en: 'Hands-on workshop courses' }, projects: [] },
+        { name: { tr: 'Kompozit mekaniği', en: 'Composite mechanics' }, note: { tr: 'Callister Bölüm 16: karışım kuralı, kritik elyaf boyu, yönlenme verimi', en: 'Callister chapter 16: rule of mixtures, critical fiber length, orientation efficiency' }, projects: ['fiber-composite-calculator'] }
       ]
     }
   ],

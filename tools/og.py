@@ -25,7 +25,7 @@ OG_PAGES: list[tuple[Path, dict[str, str]]] = [
         "kicker": "Vaka çalışması · Kalite ve süreç",
         "title": "Süreç yeterliliği ve *SPC* analiz aracı", "sheet": "02",
         "sub": "X̄-R, X̄-S, I-MR; 4 Western Electric + 8 Nelson kuralı; Cp/Cpk ve Pp/Ppk. Önce kararlılık, sonra yeterlilik.",
-        "m1": "776 test", "m2": "Apache-2.0 lisans", "m3": "Streamlit canlı demo",
+        "m1": "961 test", "m2": "Apache-2.0 lisans", "m3": "Streamlit canlı demo",
         "url": "dailydana.github.io/projeler/spc-analyzer",
     }),
     (ROOT / "projeler" / "hoffmann-line-balancing" / "og.png", {
@@ -34,6 +34,13 @@ OG_PAGES: list[tuple[Path, dict[str, str]]] = [
         "sub": "SALBP-1, öncelik matrisi yöntemi; CLI + beş dilli Streamlit. Ders ödevi olarak başladı, inceleme sonrası sıfırdan yazıldı.",
         "m1": "127 test", "m2": "2 doğrulama çözücüsü", "m3": "5 arayüz dili",
         "url": "dailydana.github.io/projeler/hoffmann-line-balancing",
+    }),
+    (ROOT / "projeler" / "fiber-composite-calculator" / "og.png", {
+        "kicker": "Vaka çalışması · Malzeme",
+        "title": "Elyaf takviyeli *kompozit* hesaplayıcı", "sheet": "04",
+        "sub": "Callister Bölüm 16: kompozitleri elyaf yönündeki dayanıma göre sıralar, sıralamanın sağlamlığını hesaplar, her adımı PDF rapora yazar.",
+        "m1": "334 test", "m2": "TR + EN", "m3": "Streamlit canlı demo",
+        "url": "dailydana.github.io/projeler/fiber-composite-calculator",
     }),
     (ROOT / "projeler" / "aniflow" / "og.png", {
         "kicker": "Vaka çalışması · Yazılım ve otomasyon",

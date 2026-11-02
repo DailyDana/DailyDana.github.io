@@ -23,6 +23,9 @@ MANIFEST: dict[str, str] = {
     "spc-analyzer": "https://raw.githubusercontent.com/DailyDana/process-capability-analyzer/main/docs/images/example_imr_chart.png",
     "aniflow": "https://raw.githubusercontent.com/DailyDana/Aniflow/main/docs/screenshot.png",
     "hoffmann-line-balancing": "https://raw.githubusercontent.com/DailyDana/hoffmann-line-balancing/main/docs/images/streamlit_app.png",
+    "fiber-composite-calculator": "https://raw.githubusercontent.com/DailyDana/fiber-composite-calculator/main/docs/images/app_compare.png",
+    "fiber-composite-continuous": "https://raw.githubusercontent.com/DailyDana/fiber-composite-calculator/main/docs/images/app_continuous.png",
+    "fiber-composite-report": "https://raw.githubusercontent.com/DailyDana/fiber-composite-calculator/main/docs/images/report_verification.png",
 }
 
 
@@ -51,7 +54,11 @@ def convert(slug: str, src: str) -> tuple[int, int, int]:
 
 def main() -> int:
     ok = True
+    # argüman verilirse yalnız o görseller işlenir (diğerlerinin boyutu data.js'te kayıtlı, bozulmasın)
+    wanted = set(sys.argv[1:])
     for slug, src in MANIFEST.items():
+        if wanted and slug not in wanted:
+            continue
         try:
             w, h, size = convert(slug, src)
             print(f"{slug:28s} {w}x{h}  {size/1024:6.1f} KB")

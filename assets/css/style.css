@@ -162,7 +162,7 @@ code { font-family: var(--mono); font-size: .8em; }
 .link-arrow.is-muted { color: var(--ink); }
 .metric { font-size: 16.5px; color: var(--mute); white-space: nowrap; font-variant-numeric: lining-nums tabular-nums; }
 .metric b { color: var(--ink); font-weight: 600; margin-right: 4px; }
-.card-metrics, .case-tags { column-gap: 22px; }
+.card-metrics { column-gap: 22px; }
 .chip { font-size: 15.5px; color: var(--mute); font-style: italic; white-space: nowrap; }
 .chip + .chip::before { content: ', '; font-style: normal; }
 

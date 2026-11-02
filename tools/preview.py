@@ -29,6 +29,8 @@ SHOTS = [
     ("codecdelta-1440-light-tr", "/projeler/codecdelta/", 1440, "light", "tr"),
     ("cad-1440-light-tr", "/projeler/cad-calismalari/", 1440, "light", "tr"),
     ("cad-360-dark-en", "/projeler/cad-calismalari/?lang=en", 360, "dark", "en"),
+    ("fiber-1440-light-tr", "/projeler/fiber-composite-calculator/", 1440, "light", "tr"),
+    ("fiber-360-dark-en", "/projeler/fiber-composite-calculator/?lang=en", 360, "dark", "en"),
 ]
 # Açık temada bölüm bazlı yakın çekimler (tam sayfa görüntüsü ayrıntı için fazla küçülüyor)
 SECTIONS = ["#hero", ".bands", "#projectsFeatured", "#projectsMore", "#tools", "#skills", "#cpk", "#experience", "#egitim", "#iletisim", ".case-head", ".case-body", "#related"]
@@ -41,11 +43,13 @@ async def main() -> int:
         browser = await p.chromium.launch(channel="msedge")
         for name, path, width, scheme, lang in SHOTS:
             ctx = await browser.new_context(viewport={"width": width, "height": 900}, color_scheme=scheme, device_scale_factor=1)
+            # Cloudflare ziyaret sayacı yalnız canlı alan adında çalışır; yerel testte isteği hiç gönderme
+            await ctx.route("**/*cloudflareinsights.com/**", lambda r: r.fulfill(status=200, content_type="text/javascript", body=""))
             page = await ctx.new_page()
             errors: list[str] = []
             page.on("console", lambda m: errors.append(m.text) if m.type == "error" else None)
             page.on("pageerror", lambda e: errors.append(str(e)))
-            page.on("requestfailed", lambda r: errors.append(f"requestfailed {r.url}"))
+            page.on("requestfailed", lambda r: errors.append(f"requestfailed {r.url}") if "cloudflareinsights" not in r.url else None)
             page.on("response", lambda r: errors.append(f"{r.status} {r.url}") if r.status >= 400 else None)
             await page.goto(BASE + path, wait_until="networkidle")
             await page.evaluate("document.querySelectorAll('.reveal').forEach(e => e.classList.add('is-in'))")
