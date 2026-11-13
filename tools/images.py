@@ -22,6 +22,8 @@ MAX_W = 1200
 MANIFEST: dict[str, str] = {
     "spc-analyzer": "https://raw.githubusercontent.com/DailyDana/process-capability-analyzer/main/docs/images/example_imr_chart.png",
     "aniflow": "https://raw.githubusercontent.com/DailyDana/Aniflow/main/docs/screenshot.png",
+    "aniflow-frames": "https://raw.githubusercontent.com/DailyDana/Aniflow/main/docs/frame-preview.png",
+    "aniflow-luts": "https://raw.githubusercontent.com/DailyDana/Aniflow/main/docs/luts-preview.png",
     "hoffmann-line-balancing": "https://raw.githubusercontent.com/DailyDana/hoffmann-line-balancing/main/docs/images/streamlit_app.png",
     "fiber-composite-calculator": "https://raw.githubusercontent.com/DailyDana/fiber-composite-calculator/main/docs/images/app_compare.png",
     "fiber-composite-continuous": "https://raw.githubusercontent.com/DailyDana/fiber-composite-calculator/main/docs/images/app_continuous.png",

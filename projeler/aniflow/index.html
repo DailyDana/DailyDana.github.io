@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-tr="Aniflow — Video Upscale Aracı · İsmail Bilgehan Kazancı" data-en="Aniflow — Video Upscaler · İsmail Bilgehan Kazancı">Aniflow — Video Upscale Aracı · İsmail Bilgehan Kazancı</title>
-  <meta name="description" content="Anime4K/FSRCNNX shader zincirlerini ffmpeg libplacebo ile videoya kalıcı uygulayan tek dosyalık PowerShell/WinForms aracı; Real-ESRGAN, RIFE 2x, QSV/NVENC/AMF, tek satır kurulum. v1.4, MIT.">
+  <meta name="description" content="Anime4K/FSRCNNX shader zincirlerini ffmpeg libplacebo ile videoya kalıcı uygulayan tek dosyalık PowerShell/WPF aracı; Real-ESRGAN, RIFE 2x, renk LUT'ları, kare önizleme, QSV/NVENC/AMF, tek satır kurulum. v1.5, MIT.">
   <meta name="author" content="İsmail Bilgehan Kazancı">
   <link rel="canonical" href="https://dailydana.github.io/projeler/aniflow/">
   <link rel="alternate" hreflang="tr" href="https://dailydana.github.io/projeler/aniflow/">
@@ -13,7 +13,7 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="İsmail Bilgehan Kazancı">
   <meta property="og:title" content="Aniflow — Video Upscaler · vaka çalışması">
-  <meta property="og:description" content="PowerShell/WinForms + ffmpeg libplacebo: Anime4K/FSRCNNX shader'ları videoya kalıcı işler; Real-ESRGAN, RIFE 2x, donanım kodlama, tek satır kurulum. v1.4, 5 sürüm, MIT.">
+  <meta property="og:description" content="PowerShell/WPF + ffmpeg libplacebo: Anime4K/FSRCNNX shader'ları videoya kalıcı işler; Real-ESRGAN, RIFE 2x, renk LUT'ları, donanım kodlama, tek satır kurulum. v1.5, 5 sürüm, MIT.">
   <meta property="og:url" content="https://dailydana.github.io/projeler/aniflow/">
   <meta property="og:image" content="https://dailydana.github.io/projeler/aniflow/og.png">
   <meta property="og:image:width" content="1200">
@@ -88,10 +88,10 @@
 
       <header class="case-head">
         <h1 class="case-title"><span data-lang="tr" lang="tr">Aniflow — Video Upscale Aracı</span><span data-lang="en" lang="en">Aniflow — Video Upscaler</span></h1>
-        <p class="case-lead"><span data-lang="tr" lang="tr">mpv'de gerçek zamanlı çalışan Anime4K ve FSRCNNX shader zincirlerini videoya kalıcı olarak işleyen, tek dosyalık PowerShell/WinForms uygulaması; donanım kodlama, RIFE kare ara değerleme ve Real-ESRGAN seçenekleriyle.</span><span data-lang="en" lang="en">A single-file PowerShell/WinForms application that permanently bakes the Anime4K and FSRCNNX shader chains mpv runs in real time into video files, with hardware encoding, RIFE frame interpolation and Real-ESRGAN options.</span></p>
-        <div class="case-tags"><span class="chip">PowerShell 5.1</span><span class="chip">WinForms</span><span class="chip">ffmpeg · libplacebo</span><span class="chip">GLSL</span><span class="chip">VapourSynth · RIFE</span><span class="chip">Real-ESRGAN</span><span class="chip">MIT</span></div>
+        <p class="case-lead"><span data-lang="tr" lang="tr">mpv'de gerçek zamanlı çalışan Anime4K ve FSRCNNX shader zincirlerini videoya kalıcı olarak işleyen, tek dosyalık PowerShell/WPF uygulaması; donanım kodlama, RIFE kare ara değerleme ve Real-ESRGAN seçenekleriyle.</span><span data-lang="en" lang="en">A single-file PowerShell/WPF application that permanently bakes the Anime4K and FSRCNNX shader chains mpv runs in real time into video files, with hardware encoding, RIFE frame interpolation and Real-ESRGAN options.</span></p>
+        <div class="case-tags"><span class="chip">PowerShell 5.1</span><span class="chip">WPF</span><span class="chip">ffmpeg · libplacebo</span><span class="chip">GLSL</span><span class="chip">VapourSynth · RIFE</span><span class="chip">Real-ESRGAN</span><span class="chip">MIT</span></div>
         <dl class="case-metrics">
-          <div><dt><span data-lang="tr" lang="tr">Sürüm</span><span data-lang="en" lang="en">Release</span></dt><dd>v1.4</dd></div>
+          <div><dt><span data-lang="tr" lang="tr">Sürüm</span><span data-lang="en" lang="en">Release</span></dt><dd>v1.5</dd></div>
           <div><dt><span data-lang="tr" lang="tr">Yayın</span><span data-lang="en" lang="en">Releases</span></dt><dd>5</dd></div>
           <div><dt><span data-lang="tr" lang="tr">Shader ön ayarı</span><span data-lang="en" lang="en">Shader presets</span></dt><dd>11</dd></div>
           <div><dt><span data-lang="tr" lang="tr">Kodlayıcı</span><span data-lang="en" lang="en">Encoders</span></dt><dd>x264 · x265 · QSV · NVENC · AMF</dd></div>
@@ -103,8 +103,8 @@
       </header>
 
       <figure class="case-hero is-contain">
-        <img src="/assets/img/projects/aniflow.webp" width="676" height="749" alt="Aniflow arayüzü: kuyruk, shader modu, kodlayıcı, çözünürlük seçenekleri" fetchpriority="high">
-        <figcaption><span data-lang="tr" lang="tr">Ana pencere: sürükle-bırak kuyruk, shader modu, kodlayıcı, çıkış çözünürlüğü, RIFE seçeneği, önizleme ve karşılaştırma düğmeleri.</span><span data-lang="en" lang="en">Main window: drag-and-drop queue, shader mode, encoder, output resolution, RIFE option, preview and compare buttons.</span></figcaption>
+        <img src="/assets/img/projects/aniflow.webp" width="1164" height="781" alt="Aniflow v1.5 arayüzü: kuyruk, hazır ayar, shader modu, renk LUT'u, kodlayıcı ve 10-bit seçenekleri" fetchpriority="high">
+        <figcaption><span data-lang="tr" lang="tr">v1.5 ana pencere: boyut raporlu kuyruk, hazır ayarlar, shader modu ve Anime4K mod önerisi, yoğunluk ayarlı renk LUT'u, kodlayıcı ve 10-bit, önizleme, kare önizleme ve karşılaştırma.</span><span data-lang="en" lang="en">v1.5 main window: queue with size report, presets, shader mode with an Anime4K mode hint, colour LUT with strength, encoder and 10-bit, preview, frame preview and compare.</span></figcaption>
       </figure>
 
       <div class="case-body">
@@ -122,22 +122,24 @@
           <h2 data-no="02"><span data-lang="tr" lang="tr">Yaklaşım</span><span data-lang="en" lang="en">Approach</span></h2>
           <div data-lang="tr" lang="tr">
             <ul>
-              <li><strong>Kurulum yükü sıfır.</strong> PowerShell 5.1 + WinForms Windows'ta yerleşik; uygulama tek <code>.ps1</code>. <code>setup.ps1</code> ffmpeg'i resmî BtbN yapısından, RIFE için taşınabilir VapourSynth'i (gömülü Python + eklenti + model) uygulama klasörüne indirir. Tek satır kurulum: <code>irm … | iex</code>.</li>
+              <li><strong>Kurulum yükü sıfır.</strong> PowerShell 5.1 + WPF Windows'ta yerleşik; uygulama tek <code>.ps1</code>. <code>setup.ps1</code> ffmpeg'i resmî BtbN yapısından, RIFE için taşınabilir VapourSynth'i (gömülü Python + eklenti + model) uygulama klasörüne indirir. Tek satır kurulum: <code>irm … | iex</code>.</li>
               <li><strong>Akış sadakati.</strong> Ses, altyazı, ek dosyalar ve Dolby Vision RPU veri akışları çıktıya taşınır; mp4 hedefinde uyumsuz akışlar otomatik dönüştürülür ya da atlanır.</li>
               <li><strong>Üç işleme yolu.</strong> Shader (libplacebo, tek geçiş) · RIFE 2x (VapourSynth → ffmpeg borusu, sahne değişimi duyarlı) · Real-ESRGAN (kare çıkar → GPU'da işle → yeniden kodla).</li>
               <li><strong>Çoklu GPU.</strong> Açılışta ffmpeg'in Vulkan cihaz listesi okunur, ayrık kart otomatik seçilir; dizüstünde iGPU'ya düşme sorunu ortadan kalkar.</li>
               <li><strong>Önizleme ve karşılaştırma.</strong> Videonun ortasından 10 sn işlenir; "Karşılaştır" klasik Lanczos ile shader zincirini tek videoda yan yana koyar.</li>
-              <li><strong>Arayüz.</strong> EN/TR, ayarlar JSON'da, kuyruk sonu eylemleri (ses, uyku, kapatma), kodlama sırasında uyku engelleme, uygulama içi güncelleme kontrolü.</li>
+              <li><strong>Renk ve kare önizleme.</strong> 14 özgün parametrik renk LUT'u (üreteç betiğiyle yeniden üretilir, CI doğrular) yoğunluk ayarıyla; kare önizleme 5–10 kareyi kaydırıcılı önce/sonra ızgarasında gösterir, LUT'lar bellekte uygulandığı için listede gezinmek anlık.</li>
+              <li><strong>Arayüz.</strong> WPF, EN/TR, hazır ayarlar, uygulama kapansa da kalan kuyruk, ayarlar JSON'da, kuyruk sonu eylemleri (ses, uyku, kapatma), kodlama sırasında uyku engelleme, uygulama içi güncelleme kontrolü.</li>
             </ul>
           </div>
           <div data-lang="en" lang="en">
             <ul>
-              <li><strong>Zero install burden.</strong> PowerShell 5.1 + WinForms ship with Windows; the app is a single <code>.ps1</code>. <code>setup.ps1</code> fetches ffmpeg from the official BtbN build and a portable VapourSynth (embedded Python + plugin + model) for RIFE. One-line install: <code>irm … | iex</code>.</li>
+              <li><strong>Zero install burden.</strong> PowerShell 5.1 + WPF ship with Windows; the app is a single <code>.ps1</code>. <code>setup.ps1</code> fetches ffmpeg from the official BtbN build and a portable VapourSynth (embedded Python + plugin + model) for RIFE. One-line install: <code>irm … | iex</code>.</li>
               <li><strong>Stream fidelity.</strong> Audio, subtitles, attachments and Dolby Vision RPU data streams are carried over; incompatible streams are converted or skipped for mp4 targets.</li>
               <li><strong>Three processing paths.</strong> Shader (libplacebo, single pass) · RIFE 2x (VapourSynth → ffmpeg pipe, scene-change aware) · Real-ESRGAN (extract frames → process on GPU → re-encode).</li>
               <li><strong>Multi-GPU.</strong> ffmpeg's Vulkan device list is read at startup and the discrete card is selected automatically; no more silently running on a laptop's iGPU.</li>
               <li><strong>Preview and compare.</strong> 10 seconds from the middle of the video are processed; "Compare" puts classic Lanczos and the shader chain side by side in one video.</li>
-              <li><strong>UI.</strong> EN/TR, settings in JSON, post-queue actions (sound, sleep, shutdown), sleep inhibited while encoding, in-app update check.</li>
+              <li><strong>Colour and frame preview.</strong> 14 original parametric colour LUTs (regenerated by a generator script, verified in CI) with a strength control; frame preview shows 5–10 frames in a before/after grid with a slider, and LUTs are applied in memory so browsing the list is instant.</li>
+              <li><strong>UI.</strong> WPF, EN/TR, presets, a queue that survives restarts, settings in JSON, post-queue actions (sound, sleep, shutdown), sleep inhibited while encoding, in-app update check.</li>
             </ul>
           </div>
         </section>
@@ -145,7 +147,7 @@
         <section>
           <h2 data-no="03"><span data-lang="tr" lang="tr">Ölçülerek bulunan hatalar</span><span data-lang="en" lang="en">Bugs found by measurement</span></h2>
           <div data-lang="tr" lang="tr">
-            <p>v1.1'den v1.4'e kadar her sürüm bir saha raporu ya da denetim sonrası çıktı; düzeltmelerin her biri ölçülerek doğrulandı:</p>
+            <p>v1.1'den v1.5'e kadar her sürüm bir saha raporu ya da denetim sonrası çıktı; düzeltmelerin her biri ölçülerek doğrulandı:</p>
             <ul>
               <li><strong>Ara format PNG olmalı, JPEG değil.</strong> AI yolunda JPEG'in bt601 varsayımı, bt709 kaynaklarda mor tonları kaydırıp karanlıkta blok artifact üretiyordu. Etiketsiz HD kaynaklarda renk matrisi artık çözünürlükten tahmin ediliyor (yeşil kanalda +14'lük sapma giderildi).</li>
               <li><strong>PowerShell'de konsol genişliği çıktıyı kırpıyor.</strong> <code>2>&amp;1 | Out-String</code> 119 sütunda satır kaydırınca uzun akış satırlarında çözünürlük 0×0 ve ses kodeği kaçıyordu; tüm ffmpeg ayrıştırmalarına <code>-Width 4096</code>.</li>
@@ -155,7 +157,7 @@
             </ul>
           </div>
           <div data-lang="en" lang="en">
-            <p>Every release from v1.1 to v1.4 followed a field report or an audit, and each fix was verified by measurement:</p>
+            <p>Every release from v1.1 to v1.5 followed a field report or an audit, and each fix was verified by measurement:</p>
             <ul>
               <li><strong>The intermediate format must be PNG, not JPEG.</strong> In the AI path, JPEG's bt601 assumption shifted purples on bt709 sources and produced blocky artefacts in dark scenes. For untagged HD sources the colour matrix is now inferred from resolution (a +14 green-channel offset eliminated).</li>
               <li><strong>Console width truncates PowerShell output.</strong> <code>2>&amp;1 | Out-String</code> wrapped at 119 columns, so long stream lines lost the resolution (0×0) and the audio codec; every ffmpeg parse now uses <code>-Width 4096</code>.</li>
@@ -176,6 +178,14 @@
           </div>
         </section>
       </div>
+
+      <section class="gallery">
+        <div class="gallery-head"><span data-lang="tr" lang="tr">Diğer görünümler · büyütmek için tıklayın</span><span data-lang="en" lang="en">Other views · click to enlarge</span></div>
+        <div class="gallery-grid">
+          <a class="thumb" href="/assets/img/projects/aniflow-frames.webp" data-lightbox data-caption="Kare önizleme / Frame preview"><img src="/assets/img/projects/aniflow-frames.webp" width="1200" height="756" loading="lazy" decoding="async" alt="Kare önizleme: her kartta solda orijinal, sağda sonuç, ortak kaydırıcı"><span><span data-lang="tr" lang="tr">Kare önizleme</span><span data-lang="en" lang="en">Frame preview</span></span></a>
+          <a class="thumb" href="/assets/img/projects/aniflow-luts.webp" data-lightbox data-caption="Renk LUT'ları / Colour LUTs"><img src="/assets/img/projects/aniflow-luts.webp" width="1200" height="1233" loading="lazy" decoding="async" alt="14 renk LUT'unun sentetik test kartındaki görünümü"><span><span data-lang="tr" lang="tr">14 renk LUT'u</span><span data-lang="en" lang="en">14 colour LUTs</span></span></a>
+        </div>
+      </section>
 
       <section class="related">
         <h2 class="related-title"><span data-lang="tr" lang="tr">Diğer projeler</span><span data-lang="en" lang="en">Other projects</span></h2>
@@ -203,6 +213,12 @@
     </div>
   </article>
 </main>
+
+<dialog class="lightbox" id="lightbox">
+  <button type="button" class="lightbox-close" aria-label="Kapat / Close">×</button>
+  <img alt="" width="1200" height="756">
+  <div class="lightbox-cap"></div>
+</dialog>
 
 <!-- chrome:footer -->
 <footer class="footer">

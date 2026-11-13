@@ -159,12 +159,12 @@ window.PORTFOLIO = {
       order: 4, featured: true, cluster: 'software', status: 'active', year: '2026',
       title: { tr: 'Aniflow — Video Upscale Aracı', en: 'Aniflow — Video Upscaler' },
       summary: {
-        tr: 'Anime4K ve FSRCNNX GLSL shader zincirlerini ffmpeg libplacebo ile videoya kalıcı olarak uygulayan taşınabilir Windows aracı. Real-ESRGAN AI upscale, RIFE 2x kare ara değerleme, QSV/NVENC/AMF donanım kodlama, çoklu GPU seçimi, sürükle-bırak kuyruk ve tek satırlık kurulum betiği.',
-        en: 'Portable Windows tool that permanently applies Anime4K and FSRCNNX GLSL shader chains to video through ffmpeg libplacebo. Real-ESRGAN AI upscaling, RIFE 2x frame interpolation, QSV/NVENC/AMF hardware encoding, multi-GPU selection, drag-and-drop queue and a one-line installer.'
+        tr: 'Anime4K ve FSRCNNX GLSL shader zincirlerini ffmpeg libplacebo ile videoya kalıcı olarak uygulayan taşınabilir Windows aracı. Real-ESRGAN AI upscale, RIFE 2x kare ara değerleme, QSV/NVENC/AMF donanım kodlama, çoklu GPU seçimi, renk LUT\'ları, kare önizleme, kalıcı kuyruk ve tek satırlık kurulum betiği.',
+        en: 'Portable Windows tool that permanently applies Anime4K and FSRCNNX GLSL shader chains to video through ffmpeg libplacebo. Real-ESRGAN AI upscaling, RIFE 2x frame interpolation, QSV/NVENC/AMF hardware encoding, multi-GPU selection, colour LUTs, frame preview, a persistent queue and a one-line installer.'
       },
-      tags: ['PowerShell', 'WinForms', 'ffmpeg', 'GLSL', 'MIT'],
+      tags: ['PowerShell', 'WPF', 'ffmpeg', 'GLSL', 'MIT'],
       metrics: [
-        { value: 'v1.4', label: { tr: 'sürüm', en: 'release' } },
+        { value: 'v1.5', label: { tr: 'sürüm', en: 'release' } },
         { value: '11', label: { tr: 'shader ön ayarı', en: 'shader presets' } },
         { value: '3', label: { tr: 'GPU kodlayıcı', en: 'GPU encoders' } }
       ],
@@ -173,7 +173,7 @@ window.PORTFOLIO = {
         { kind: 'release', url: 'https://github.com/DailyDana/Aniflow/releases' }
       ],
       page: '/projeler/aniflow/',
-      image: { src: '/assets/img/projects/aniflow.webp', w: 676, h: 749, alt: { tr: 'Aniflow arayüzü', en: 'Aniflow interface' } }
+      image: { src: '/assets/img/projects/aniflow.webp', w: 1164, h: 781, alt: { tr: 'Aniflow arayüzü', en: 'Aniflow interface' } }
     },
     {
       slug: 'codecdelta',
@@ -307,7 +307,7 @@ window.PORTFOLIO = {
       blurb: { tr: 'Tekrarlanan işi test edilmiş araca dönüştürmek.', en: 'Turning repeated work into tested tools.' },
       items: [
         { name: 'Python', note: { tr: 'numpy, pandas, scipy, Streamlit; pytest, hypothesis, mypy --strict, ruff', en: 'numpy, pandas, scipy, Streamlit; pytest, hypothesis, mypy --strict, ruff' }, projects: ['spc-analyzer', 'hoffmann-line-balancing', 'fiber-composite-calculator', 'codecdelta'] },
-        { name: 'PowerShell', note: { tr: 'WinForms arayüzler, ffmpeg otomasyonu, sistem betikleri', en: 'WinForms GUIs, ffmpeg automation, system scripts' }, projects: ['aniflow'] },
+        { name: 'PowerShell', note: { tr: 'WPF/WinForms arayüzler, ffmpeg otomasyonu, sistem betikleri', en: 'WPF/WinForms GUIs, ffmpeg automation, system scripts' }, projects: ['aniflow'] },
         { name: 'ffmpeg · libplacebo · DSP', note: { tr: 'Shader zincirleri, LUT işleme, bit akışı ayrıştırma', en: 'Shader chains, LUT baking, bitstream parsing' }, projects: ['aniflow', 'codecdelta'] },
         { name: 'Git · GitHub Actions', note: { tr: 'Her depoda CI; Conventional Commits', en: 'CI on every repo; Conventional Commits' }, projects: [] },
         { name: 'Lua · HTML/CSS/JS', note: { tr: 'mpv eklentileri, kütüphanesiz statik siteler', en: 'mpv plugins, library-free static sites' }, projects: [] },
