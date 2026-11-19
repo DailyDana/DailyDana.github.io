@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-tr="SPC ve Süreç Yeterliliği Analiz Aracı · İsmail Bilgehan Kazancı" data-en="SPC &amp; Process Capability Analyzer · İsmail Bilgehan Kazancı">SPC ve Süreç Yeterliliği Analiz Aracı · İsmail Bilgehan Kazancı</title>
-  <meta name="description" content="Açık kaynak SPC aracı: X̄-R, X̄-S, I-MR kontrol grafikleri, Western Electric ve Nelson kuralları, Cp/Cpk ve Pp/Ppk, Type-1 ve Gage R&R, denetime hazır raporlar. 961 test, yayınlanmış sonuçlarla doğrulanmış, canlı demo.">
+  <meta name="description" content="Açık kaynak SPC aracı: X̄-R, X̄-S, I-MR kontrol grafikleri, Western Electric ve Nelson kuralları, Cp/Cpk ve Pp/Ppk, Type-1 ve Gage R&R, denetime hazır raporlar. 1143 test, yayınlanmış sonuçlarla doğrulanmış, canlı demo.">
   <meta name="author" content="İsmail Bilgehan Kazancı">
   <link rel="canonical" href="https://dailydana.github.io/projeler/spc-analyzer/">
   <link rel="alternate" hreflang="tr" href="https://dailydana.github.io/projeler/spc-analyzer/">
@@ -13,7 +13,7 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="İsmail Bilgehan Kazancı">
   <meta property="og:title" content="SPC & Process Capability Analyzer · vaka çalışması">
-  <meta property="og:description" content="Gage R&amp;R, kontrol grafikleri, 12 çalışma kuralı, Cp/Cpk vs Pp/Ppk; önce ölçüm sistemi ve kararlılık, sonra yeterlilik. 961 test, Apache-2.0, canlı demo.">
+  <meta property="og:description" content="Gage R&amp;R, kontrol grafikleri, 12 çalışma kuralı, Cp/Cpk vs Pp/Ppk; önce ölçüm sistemi ve kararlılık, sonra yeterlilik. 1143 test, Apache-2.0, canlı demo.">
   <meta property="og:url" content="https://dailydana.github.io/projeler/spc-analyzer/">
   <meta property="og:image" content="https://dailydana.github.io/projeler/spc-analyzer/og.png">
   <meta property="og:image:width" content="1200">
@@ -91,7 +91,7 @@
         <p class="case-lead"><span data-lang="tr" lang="tr">Üretim ölçüm verisinden savunulabilir mühendislik ifadeleri üreten açık kaynak SPC aracı: Gage R&amp;R, kontrol grafikleri, çalışma kuralları, Cp/Cpk ve Pp/Ppk, denetime hazır raporlar. Önce ölçüm sistemi, sonra kararlılık, sonra yeterlilik.</span><span data-lang="en" lang="en">An open-source SPC tool that turns production measurement data into defensible engineering statements: Gage R&amp;R, control charts, run rules, Cp/Cpk and Pp/Ppk, audit-ready reports. Measurement system first, then stability, then capability.</span></p>
         <div class="case-tags"><span class="chip">Python 3.10+</span><span class="chip">Streamlit</span><span class="chip">numpy · scipy · pandas</span><span class="chip">pytest</span><span class="chip">GitHub Actions</span><span class="chip">Apache-2.0</span></div>
         <dl class="case-metrics">
-          <div><dt><span data-lang="tr" lang="tr">Test</span><span data-lang="en" lang="en">Tests</span></dt><dd>961</dd></div>
+          <div><dt><span data-lang="tr" lang="tr">Test</span><span data-lang="en" lang="en">Tests</span></dt><dd>1143</dd></div>
           <div><dt><span data-lang="tr" lang="tr">Çalışma kuralı</span><span data-lang="en" lang="en">Run rules</span></dt><dd>4 WE + 8 Nelson</dd></div>
           <div><dt><span data-lang="tr" lang="tr">Grafik</span><span data-lang="en" lang="en">Charts</span></dt><dd>X̄-R · X̄-S · I-MR</dd></div>
           <div><dt><span data-lang="tr" lang="tr">Rapor</span><span data-lang="en" lang="en">Reports</span></dt><dd>CSV · Excel · PDF</dd></div>
@@ -176,7 +176,7 @@
                 <tr><td>Weibull PPM (iSixSigma)</td><td class="num">233244.81</td><td class="num">233244.81</td></tr>
               </tbody>
             </table>
-            <p><strong>961 test</strong> (Python 3.10 / 3.11 / 3.12, CI): her istatistiğin elle hesaplanmış bilinen cevaplarla doğrulanması, her WE/Nelson kuralı için üretilmiş deterministik diziler, Pp/Ppk'nin grup içi sigmadan etkilenemeyeceğini kanıtlayan test, uçtan uca CSV → analiz → yorum → CSV/Excel/PDF (PDF içeriği metin çıkarımıyla doğrulanır), Gage R&amp;R için bağımsız bir ANOVA uygulamasıyla (statsmodels) karşılaştırma, varyans bileşeni tahminlerinin yansızlığını sınayan Monte Carlo testi ve gerçek Streamlit sayfalarının <code>AppTest</code> ile çalıştırılması. Kapsam yüzdesi ölçülmediği için iddia edilmiyor.</p>
+            <p><strong>1143 test</strong> (Python 3.10 / 3.11 / 3.12, CI): her istatistiğin elle hesaplanmış bilinen cevaplarla doğrulanması, her WE/Nelson kuralı için üretilmiş deterministik diziler, Pp/Ppk'nin grup içi sigmadan etkilenemeyeceğini kanıtlayan test, uçtan uca CSV → analiz → yorum → CSV/Excel/PDF (PDF içeriği metin çıkarımıyla doğrulanır), Gage R&amp;R için bağımsız bir ANOVA uygulamasıyla (statsmodels) karşılaştırma, varyans bileşeni tahminlerinin yansızlığını sınayan Monte Carlo testi ve gerçek Streamlit sayfalarının <code>AppTest</code> ile çalıştırılması. Kapsam yüzdesi ölçülmediği için iddia edilmiyor.</p>
             <p>Çıktılar: tam hassasiyetli CSV, 7 sayfalı Excel çalışma kitabı, gömülü grafikli PDF raporu, PNG/SVG grafik. Streamlit arayüzünde her dışlanan satır sebebiyle listelenir; eşikler yapılandırılabilir.</p>
           </div>
           <div data-lang="en" lang="en">
@@ -203,7 +203,7 @@
                 <tr><td>Weibull PPM (iSixSigma)</td><td class="num">233244.81</td><td class="num">233244.81</td></tr>
               </tbody>
             </table>
-            <p><strong>961 tests</strong> (Python 3.10 / 3.11 / 3.12 in CI): known-answer verification of every statistic against hand-computed values, crafted deterministic sequences for every WE/Nelson rule, a test proving Pp/Ppk cannot be affected by the within-subgroup sigma, full-pipeline CSV → analysis → interpretation → CSV/Excel/PDF (PDF content verified by text extraction), a comparison of the Gage R&amp;R ANOVA with an independent implementation (statsmodels), a Monte Carlo test of the variance-component estimators' unbiasedness, and the real Streamlit pages driven through <code>AppTest</code>. No coverage percentage is claimed because coverage is not measured.</p>
+            <p><strong>1143 tests</strong> (Python 3.10 / 3.11 / 3.12 in CI): known-answer verification of every statistic against hand-computed values, crafted deterministic sequences for every WE/Nelson rule, a test proving Pp/Ppk cannot be affected by the within-subgroup sigma, full-pipeline CSV → analysis → interpretation → CSV/Excel/PDF (PDF content verified by text extraction), a comparison of the Gage R&amp;R ANOVA with an independent implementation (statsmodels), a Monte Carlo test of the variance-component estimators' unbiasedness, and the real Streamlit pages driven through <code>AppTest</code>. No coverage percentage is claimed because coverage is not measured.</p>
             <p>Outputs: full-precision CSV, a 7-sheet Excel workbook, a PDF report with embedded charts, PNG/SVG charts. The Streamlit UI lists every excluded row with its reason; thresholds are configurable.</p>
           </div>
         </section>

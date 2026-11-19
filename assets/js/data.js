@@ -93,12 +93,12 @@ window.PORTFOLIO = {
       order: 1, featured: true, cluster: 'quality', status: 'active', year: '2026',
       title: { tr: 'Süreç Yeterliliği ve SPC Analiz Aracı', en: 'Process Capability & SPC Analyzer' },
       summary: {
-        tr: 'X̄-R, X̄-S ve I-MR kontrol grafikleri; 4 Western Electric + 8 Nelson kuralı; Cp/Cpk (grup içi) ve Pp/Ppk (genel), normal olmayan veri için de; Type-1 (Cg/Cgk) ve çapraz Gage R&R (ANOVA ve AIAG ortalama-aralık). Yeterlilikten önce ölçüm sistemini ve kararlılığı denetler, yorumları kural tabanlı üretir, CSV/Excel/PDF rapor verir. Montgomery, Minitab, SAS ve Bosch\'un yayınlanmış sonuçlarına karşı doğrulandı.',
-        en: 'X̄-R, X̄-S and I-MR control charts; 4 Western Electric + 8 Nelson rules; Cp/Cpk (within) and Pp/Ppk (overall), also for non-normal data; Type-1 (Cg/Cgk) and crossed Gage R&R (ANOVA and AIAG Average & Range). Checks the measurement system and stability before capability, produces rule-based interpretations and CSV/Excel/PDF reports. Validated against published Montgomery, Minitab, SAS and Bosch results.'
+        tr: 'X̄-R, X̄-S, I-MR ve nitelik (p, np, c, u) kontrol grafikleri; Faz I / Faz II limitleri; 4 Western Electric + 8 Nelson kuralı; Cp/Cpk (grup içi) ve Pp/Ppk (genel), normal olmayan veri için de; Type-1 (Cg/Cgk) ve çapraz Gage R&R (ANOVA ve AIAG ortalama-aralık). Yeterlilikten önce ölçüm sistemini ve kararlılığı denetler, yorumları kural tabanlı üretir, CSV/Excel/PDF rapor verir. Montgomery, Minitab, SAS ve Bosch\'un yayınlanmış sonuçlarına karşı doğrulandı.',
+        en: 'X̄-R, X̄-S, I-MR and attribute (p, np, c, u) control charts; Phase I / Phase II limits; 4 Western Electric + 8 Nelson rules; Cp/Cpk (within) and Pp/Ppk (overall), also for non-normal data; Type-1 (Cg/Cgk) and crossed Gage R&R (ANOVA and AIAG Average & Range). Checks the measurement system and stability before capability, produces rule-based interpretations and CSV/Excel/PDF reports. Validated against published Montgomery, Minitab, SAS and Bosch results.'
       },
       tags: ['Python', 'Streamlit', 'SPC', 'pytest', 'Apache-2.0'],
       metrics: [
-        { value: '961', label: { tr: 'test', en: 'tests' } },
+        { value: '1143', label: { tr: 'test', en: 'tests' } },
         { value: '12', label: { tr: 'çalışma kuralı', en: 'run rules' } },
         { value: '3', label: { tr: 'grafik tipi', en: 'chart types' } }
       ],
