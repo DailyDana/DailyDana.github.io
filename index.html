@@ -92,7 +92,7 @@
     <div class="sheet-frame" aria-hidden="true"><div class="sheet-top"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></div><div class="sheet-left"><i>A</i><i>B</i><i>C</i><i>D</i><i>E</i></div><div class="cad"><div class="cad-grid"></div><i class="cad-x"></i><i class="cad-y"></i></div></div>
     <div class="wrap sheet-grid">
       <div>
-        <div class="dimline" aria-label="Özet sayılar" data-aria="aria.metrics"><span><span data-lang="tr" lang="tr">1143 TEST · 10 AÇIK KAYNAK DEPO · 3 CANLI DEMO</span><span data-lang="en" lang="en">1143 TESTS · 10 OPEN-SOURCE REPOS · 3 LIVE DEMOS</span></span></div>
+        <div class="dimline" aria-label="Özet sayılar" data-aria="aria.metrics"><span><span data-lang="tr" lang="tr">1143 TEST · 13 AÇIK KAYNAK DEPO · 4 CANLI DEMO</span><span data-lang="en" lang="en">1143 TESTS · 13 OPEN-SOURCE REPOS · 4 LIVE DEMOS</span></span></div>
         <div class="sheet-label"><span data-lang="tr" lang="tr">İMALAT MÜHENDİSLİĞİ · BURSA / ANKARA</span><span data-lang="en" lang="en">MANUFACTURING ENGINEERING · BURSA / ANKARA</span></div>
         <h1 class="sheet-name" lang="tr">İSMAİL BİLGEHAN<br>KAZANCI</h1>
         <p class="sheet-lead">
@@ -227,6 +227,22 @@
         <p class="reveal"><span data-lang="tr" lang="tr">Çoğu bir sorunu teşhis etmek için başladı.</span><span data-lang="en" lang="en">Most of them started as a way to diagnose a problem.</span></p>
       </div>
       <div class="tools" id="tools"><!-- static:tools --><article class="tool">
+                <div>
+          <h3><span data-lang="tr" lang="tr">Delta PLC simülatörü</span><span data-lang="en" lang="en">Delta PLC simulator</span></h3>
+          <p><span data-lang="tr" lang="tr">PLC dersine çalışırken yazdığım, tarayıcıda çalışan Delta DVP tarzı ladder simülatörü. Devre sürükleyerek kurulur, ladder ile IL arasında iki yönlü çevrilir, tarama tarama çalıştırılır. Zamanlayıcı ve sayıcı tabloları Delta ES2/EH3 kılavuzlarından sayfa numarasıyla alındı. Kurulum gerekmez, çevrimdışı tek dosyalık sürümü de var.</span><span data-lang="en" lang="en">Browser-based ladder simulator in the style of Delta DVP PLCs, written while studying for a PLC course. Circuits are built by drag and drop, converted both ways between ladder and IL, and run scan by scan. Timer and counter tables come from the Delta ES2/EH3 manuals, with page references. Nothing to install; a single-file offline build is available.</span></p>
+          <div class="tool-tech"><span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Delta DVP</span></div>
+        </div>
+        <div class="tool-links"><a class="link-arrow" href="https://delta-plc-sim.delidana-lab.workers.dev" target="_blank" rel="noopener"><span data-lang="tr" lang="tr">Canlı demo</span><span data-lang="en" lang="en">Live demo</span></a><a class="link-arrow" href="https://github.com/DailyDana/delta-plc-sim" target="_blank" rel="noopener"><span data-lang="tr" lang="tr">Kaynak kod</span><span data-lang="en" lang="en">Source code</span></a></div>
+      </article>
+      <article class="tool">
+                <div>
+          <h3>Ses-Yazıcı</h3>
+          <p><span data-lang="tr" lang="tr">Seçilen uygulamanın sesini dinleyip konuşmaları canlı olarak yazıya döken Windows aracı. Whisper modeli bilgisayarda çalışır, ses dışarı gönderilmez; NVIDIA kartta CUDA, Intel kartta OpenVINO kullanır. Tek tıkla kurulur ve kendini günceller.</span><span data-lang="en" lang="en">Windows tool that listens to a chosen application and transcribes speech live. The Whisper model runs locally and no audio leaves the machine; it uses CUDA on NVIDIA GPUs and OpenVINO on Intel. One-click setup with automatic updates.</span></p>
+          <div class="tool-tech"><span class="chip">Python</span><span class="chip">faster-whisper</span><span class="chip">OpenVINO</span></div>
+        </div>
+        <div class="tool-links"><a class="link-arrow" href="https://github.com/DailyDana/ses-yazici" target="_blank" rel="noopener"><span data-lang="tr" lang="tr">Kaynak kod</span><span data-lang="en" lang="en">Source code</span></a><a class="link-arrow" href="https://github.com/DailyDana/ses-yazici/releases" target="_blank" rel="noopener"><span data-lang="tr" lang="tr">Sürümler</span><span data-lang="en" lang="en">Releases</span></a></div>
+      </article>
+      <article class="tool">
                 <div>
           <h3>ccusage Status Bar</h3>
           <p><span data-lang="tr" lang="tr">Claude Code kullanımını VS Code durum çubuğunda gösteren eklenti: etkin 5 saatlik bloğun maliyeti ve kalan süresi, günlük toplam; araç ipucunda harcama hızı ve model bazında döküm. Yalnız yerel kayıtları okur, dışarı veri göndermez.</span><span data-lang="en" lang="en">VS Code extension that shows Claude Code usage in the status bar: cost and time left in the active 5-hour block and today's total; the tooltip adds burn rate and a per-model breakdown. Reads local logs only and sends nothing anywhere.</span></p>

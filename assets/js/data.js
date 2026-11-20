@@ -222,6 +222,30 @@ window.PORTFOLIO = {
 
   tools: [
     {
+      name: { tr: 'Delta PLC simülatörü', en: 'Delta PLC simulator' },
+      desc: {
+        tr: 'PLC dersine çalışırken yazdığım, tarayıcıda çalışan Delta DVP tarzı ladder simülatörü. Devre sürükleyerek kurulur, ladder ile IL arasında iki yönlü çevrilir, tarama tarama çalıştırılır. Zamanlayıcı ve sayıcı tabloları Delta ES2/EH3 kılavuzlarından sayfa numarasıyla alındı. Kurulum gerekmez, çevrimdışı tek dosyalık sürümü de var.',
+        en: 'Browser-based ladder simulator in the style of Delta DVP PLCs, written while studying for a PLC course. Circuits are built by drag and drop, converted both ways between ladder and IL, and run scan by scan. Timer and counter tables come from the Delta ES2/EH3 manuals, with page references. Nothing to install; a single-file offline build is available.'
+      },
+      tech: ['TypeScript', 'React', 'Delta DVP'],
+      links: [
+        { kind: 'demo', url: 'https://delta-plc-sim.delidana-lab.workers.dev' },
+        { kind: 'repo', url: 'https://github.com/DailyDana/delta-plc-sim' }
+      ]
+    },
+    {
+      name: 'Ses-Yazıcı',
+      desc: {
+        tr: 'Seçilen uygulamanın sesini dinleyip konuşmaları canlı olarak yazıya döken Windows aracı. Whisper modeli bilgisayarda çalışır, ses dışarı gönderilmez; NVIDIA kartta CUDA, Intel kartta OpenVINO kullanır. Tek tıkla kurulur ve kendini günceller.',
+        en: 'Windows tool that listens to a chosen application and transcribes speech live. The Whisper model runs locally and no audio leaves the machine; it uses CUDA on NVIDIA GPUs and OpenVINO on Intel. One-click setup with automatic updates.'
+      },
+      tech: ['Python', 'faster-whisper', 'OpenVINO'],
+      links: [
+        { kind: 'repo', url: 'https://github.com/DailyDana/ses-yazici' },
+        { kind: 'release', url: 'https://github.com/DailyDana/ses-yazici/releases' }
+      ]
+    },
+    {
       name: 'ccusage Status Bar',
       desc: {
         tr: 'Claude Code kullanımını VS Code durum çubuğunda gösteren eklenti: etkin 5 saatlik bloğun maliyeti ve kalan süresi, günlük toplam; araç ipucunda harcama hızı ve model bazında döküm. Yalnız yerel kayıtları okur, dışarı veri göndermez.',
