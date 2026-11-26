@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-tr="Kontrol ve Yerleştirme Fikstürü Doğrulama · İsmail Bilgehan Kazancı" data-en="Checking &amp; Locating Fixture Verification · İsmail Bilgehan Kazancı">Kontrol ve Yerleştirme Fikstürü Doğrulama · İsmail Bilgehan Kazancı</title>
+  <meta name="description" content="Fikstür CAD modelindeki işlevsel hataları otomatik bulan Python paketi: 3-2-1 datumlar, ISO 286 pim boşlukları, klemp yerleşimi ve açılması, parça çıkarma ve GEÇER/GEÇMEZ mastar yolu. build123d ve cad-khana üzerinde, 101 test.">
+  <meta name="author" content="İsmail Bilgehan Kazancı">
+  <link rel="canonical" href="https://dailydana.github.io/projeler/fikstur-kontrol/">
+  <link rel="alternate" hreflang="tr" href="https://dailydana.github.io/projeler/fikstur-kontrol/">
+  <link rel="alternate" hreflang="en" href="https://dailydana.github.io/projeler/fikstur-kontrol/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://dailydana.github.io/projeler/fikstur-kontrol/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="İsmail Bilgehan Kazancı">
+  <meta property="og:title" content="Fixture verification · vaka çalışması">
+  <meta property="og:description" content="Bir fikstürün CAD modelinde çakışma kontrolünden kaçan hataları bulur: yanlış dönmüş elmas pim, desteksiz yere basan klemp, açılırken çarpan kol, havada kalan blok. 101 test.">
+  <meta property="og:url" content="https://dailydana.github.io/projeler/fikstur-kontrol/">
+  <meta property="og:image" content="https://dailydana.github.io/projeler/fikstur-kontrol/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Kontrol ve Yerleştirme Fikstürü Doğrulama">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#FCFCFA">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    (function(){var d=document.documentElement;d.classList.add('js');try{var q=new URLSearchParams(location.search).get('lang'),l=q||localStorage.getItem('lang');if(l==='en'||l==='tr'){d.lang=l;if(q)localStorage.setItem('lang',l);}var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.dataset.theme=t;}catch(e){d.dataset.theme='light';}})();
+  </script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "fikstur-kontrol (fixture-check)",
+    "description": "Functional verification for checking and locating fixtures: 3-2-1 datums, ISO 286 pin fits, clamp placement and opening, part removal and GO/NO-GO gauge paths, on top of cad-khana and build123d.",
+    "codeRepository": "https://github.com/DailyDana/fikstur-kontrol",
+    "programmingLanguage": "Python",
+    "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+    "softwareVersion": "0.1.0",
+    "url": "https://dailydana.github.io/projeler/fikstur-kontrol/",
+    "image": "https://dailydana.github.io/projeler/fikstur-kontrol/og.png",
+    "author": { "@type": "Person", "name": "İsmail Bilgehan Kazancı", "url": "https://dailydana.github.io/" }
+  }
+  </script>
+</head>
+<body>
+
+<a class="skip" href="#icerik"><span data-lang="tr" lang="tr">İçeriğe geç</span><span data-lang="en" lang="en">Skip to content</span></a>
+
+<!-- chrome:nav -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="brand" aria-label="İsmail Bilgehan Kazancı · ana sayfa" data-aria="aria.brand">
+      <span class="brand-name">İsmail Bilgehan Kazancı</span>
+    </a>
+    <div class="nav-right">
+      <nav class="nav-links" id="navLinks" aria-label="Ana menü" data-aria="aria.menu">
+        <a href="/#hakkimda" data-nav><span data-lang="tr" lang="tr">Hakkımda</span><span data-lang="en" lang="en">About</span></a>
+        <a href="/#projeler" data-nav><span data-lang="tr" lang="tr">Projeler</span><span data-lang="en" lang="en">Projects</span></a>
+        <a href="/#beceriler" data-nav><span data-lang="tr" lang="tr">Beceriler</span><span data-lang="en" lang="en">Skills</span></a>
+        <a href="/#deneyim" data-nav><span data-lang="tr" lang="tr">Deneyim</span><span data-lang="en" lang="en">Experience</span></a>
+        <a href="/#iletisim" data-nav><span data-lang="tr" lang="tr">İletişim</span><span data-lang="en" lang="en">Contact</span></a>
+      </nav>
+      <div class="toggles">
+        <div class="lang" role="group" aria-label="Dil / Language">
+          <button type="button" data-lang-set="tr" aria-pressed="true" lang="tr">TR</button>
+          <button type="button" data-lang-set="en" aria-pressed="false" lang="en">EN</button>
+        </div>
+        <button type="button" class="theme" id="themeToggle" aria-pressed="false" aria-label="Koyu temaya geç">
+          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menüyü aç" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<!-- /chrome:nav -->
+
+<main id="icerik">
+  <article class="case">
+    <div class="wrap">
+      <nav class="crumb" aria-label="Sayfa yolu" data-aria="aria.crumb"><a href="/#projeler"><span data-lang="tr" lang="tr">Tüm projeler</span><span data-lang="en" lang="en">All projects</span></a></nav>
+
+      <header class="case-head">
+        <h1 class="case-title"><span data-lang="tr" lang="tr">Kontrol ve Yerleştirme Fikstürü Doğrulama</span><span data-lang="en" lang="en">Checking &amp; Locating Fixture Verification</span></h1>
+        <p class="case-lead"><span data-lang="tr" lang="tr">Bir fikstürün CAD modelini alıp "parça gerçekten yerine oturur mu, klemp doğru yere basar mı, parça sonra çıkarılabilir mi" sorularını otomatik yanıtlayan bir Python paketi. Fikstürdeki her gövdenin rolünü bildirirsiniz (parça, datum pedi, pim, klemp, kontur bloğu, mastar); paket geometriden ölçüp her kontrol için geçti/kaldı raporu verir.</span><span data-lang="en" lang="en">A Python package that takes a fixture CAD model and answers, automatically, "does the part really seat, does the clamp press in the right place, can the part be taken out again". You declare the role of each body in the fixture (part, datum pad, pin, clamp, contour block, gauge); the package measures the geometry and reports pass or fail for every check.</span></p>
+        <div class="case-tags"><span class="chip">Python 3.13</span><span class="chip">build123d</span><span class="chip">cad-khana</span><span class="chip">ISO 286</span><span class="chip">pytest</span><span class="chip">AGPL-3.0</span></div>
+        <dl class="case-metrics">
+          <div><dt><span data-lang="tr" lang="tr">Test</span><span data-lang="en" lang="en">Tests</span></dt><dd>101</dd></div>
+          <div><dt><span data-lang="tr" lang="tr">Sürüm</span><span data-lang="en" lang="en">Version</span></dt><dd>0.1.0</dd></div>
+          <div><dt><span data-lang="tr" lang="tr">Örnek fikstür</span><span data-lang="en" lang="en">Example fixtures</span></dt><dd>2</dd></div>
+          <div><dt><span data-lang="tr" lang="tr">Hatalı varyant</span><span data-lang="en" lang="en">Fault variants</span></dt><dd>9</dd></div>
+        </dl>
+        <div class="case-actions">
+          <a class="btn btn-accent" href="https://github.com/DailyDana/fikstur-kontrol" target="_blank" rel="noopener"><span data-lang="tr" lang="tr">Kaynak kod</span><span data-lang="en" lang="en">Source code</span></a>
+        </div>
+      </header>
+
+      <figure class="case-hero">
+        <img src="/assets/img/projects/fikstur-kontrol.webp" width="1000" height="660" alt="NIST FTC-08 tepsisi için kontrol fikstürü: taban plakası, A datum pedleri, B ve C pimleri, üç klemp ve mastar bloğu" fetchpriority="high">
+        <figcaption><span data-lang="tr" lang="tr">NIST'in yayımladığı gerçek bir işlenmiş parça (FTC-08, 311 × 223 × 48 mm tepsi) için kodla kurulan kontrol fikstürü. Datumlar ve delik toleransları NIST teknik resminden alındı.</span><span data-lang="en" lang="en">A checking fixture built in code around a real machined part published by NIST (FTC-08, a 311 × 223 × 48 mm tray). Datums and hole tolerances come from the NIST drawing.</span></figcaption>
+      </figure>
+
+      <div class="case-body">
+        <section>
+          <h2 data-no="01"><span data-lang="tr" lang="tr">Problem</span><span data-lang="en" lang="en">Problem</span></h2>
+          <div data-lang="tr" lang="tr">
+            <p>CAD programının söylediği "katı geçerli, çakışma yok" bilgisi bir fikstürün işe yaradığını göstermez. Elmas pim 90° dönük modellenmiş olabilir, klemp altında ped olmayan ince sacı bastırabilir, bir blok tabana değmeden havada durabilir, pim en kötü tolerans durumunda deliğe girmeyebilir ya da parça yerine konduktan sonra hiçbir yönden çıkarılamayabilir. Bunların hiçbiri çakışma kontrolünde görünmez.</p>
+            <p>Fikstürü bir insan da bir yapay zekâ ajanı da tasarlasa bu hataların modelden, üretime geçmeden yakalanması gerekiyor. Hedef, bunları tek tek gözle aramak yerine tekrar çalıştırılabilir bir kontrol listesine çevirmekti.</p>
+          </div>
+          <div data-lang="en" lang="en">
+            <p>"Valid solid, no interference" from the CAD program does not show that a fixture works. A diamond pin can be modelled rotated 90°, a clamp can press thin sheet with no pad under it, a block can float above the base, a pin may not fit the hole at worst-case tolerance, or the part may have no direction to come out once it is loaded. None of these show up in an interference check.</p>
+            <p>Whether a person or an AI agent designs the fixture, these errors need to be caught in the model, before anything is made. The goal was to turn them into a check list that can be run again, instead of hunting for them by eye.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2 data-no="02"><span data-lang="tr" lang="tr">Yaklaşım</span><span data-lang="en" lang="en">Approach</span></h2>
+          <div data-lang="tr" lang="tr">
+            <ul>
+              <li><strong>Rolleri bildir, gerisini paket ölçer.</strong> Fikstür bir STEP montajından ya da build123d gövdelerinden yüklenir. Kullanıcı yalnızca hangi gövdenin A datum pedi, yuvarlak pim, elmas pim, klemp, kontur bloğu ya da mastar olduğunu ve deliklerin toleranslarını yazar.</li>
+              <li><strong>Geometriden ölçüm.</strong> Temas yüzeyleri, pim kesitleri, klempin bastığı noktanın pede izdüşümü ve gövdelerin birbirine bağlantısı doğrudan modelden çıkarılır; elle girilen ölçü yok.</li>
+              <li><strong>Hareket kontrolleri.</strong> Klemp kolu mafsal ekseni çevresinde 1° adımlarla açılır ve her adımda çarpma aranır. Parça, açık konumdaki klemplere karşı belirtilen yönde süpürülerek çıkarılır. GEÇER/GEÇMEZ mastarı burç içinden deliğe kadar sürülür.</li>
+              <li><strong>Mevcut araç üstünde ince katman.</strong> Paket kendi hesaplarını <a href="https://github.com/cyberchitta/cad-khana" target="_blank" rel="noopener">cad-khana</a>'nın iddia sistemine ekler; çıktı bir cad-khana montajı olduğu için <code>khana check</code> ve <code>khana show</code> doğrudan çalışır.</li>
+            </ul>
+          </div>
+          <div data-lang="en" lang="en">
+            <ul>
+              <li><strong>Declare roles, the package measures the rest.</strong> The fixture is loaded from a STEP assembly or from build123d bodies. You only write which body is a datum A pad, round pin, diamond pin, clamp, contour block or gauge, and the hole tolerances.</li>
+              <li><strong>Measured from geometry.</strong> Contact patches, pin cross-sections, where the clamp's pressure falls on a pad, and how the bodies connect to each other are all taken from the model; no dimensions are typed in by hand.</li>
+              <li><strong>Motion checks.</strong> The clamp arm opens around its pivot in 1° steps, looking for a collision at each step. The part is swept out in the given direction against the clamps in their open positions. The GO/NO-GO gauge is driven through its bushing into the hole.</li>
+              <li><strong>A thin layer on an existing tool.</strong> The package adds its own checks to <a href="https://github.com/cyberchitta/cad-khana" target="_blank" rel="noopener">cad-khana</a>'s assertion system; the output is a cad-khana assembly, so <code>khana check</code> and <code>khana show</code> work directly.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2 data-no="03"><span data-lang="tr" lang="tr">Neyi denetliyor</span><span data-lang="en" lang="en">What it checks</span></h2>
+          <div data-lang="tr" lang="tr">
+            <table class="prose">
+              <thead><tr><th>Kontrol</th><th>Ne arar</th></tr></thead>
+              <tbody>
+                <tr><td>3-2-1 yerleştirme</td><td>Tam üç ped temasta ve aynı düzlemde mi; destek üçgeni yeterince geniş mi; kısıtlanan serbestlik derecesi tam 6 mı</td></tr>
+                <tr><td>Pimler</td><td>ISO 286'ya göre en kötü durum boşluğu, CAD ekseni kaçıklığı düşülmüş boşluk, datum kayması; elmas pimin rahatlatması B→C doğrultusunda mı</td></tr>
+                <tr><td>Klempler</td><td>Basma noktası bir pedin üstüne mi düşüyor, arada dolu malzeme var mı; kol açılırken parçaya ya da sabit gövdelere çarpıyor mu</td></tr>
+                <tr><td>Bağlantı</td><td>Her fikstür gövdesi tabana temasla bağlı mı (havada kalan blok yok)</td></tr>
+                <tr><td>Parça çıkarma</td><td>Parça, klempler açıkken belirtilen yönde engelsiz çıkabiliyor ve fikstürün tamamen dışına geçebiliyor mu</td></tr>
+                <tr><td>Mastar</td><td>GEÇER çapı sanal durumda, GEÇMEZ çapı en az malzeme durumunda mı; yol burç ve parça dahil açık mı; burç eş eksenli ve L/D yeterli mi</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div data-lang="en" lang="en">
+            <table class="prose">
+              <thead><tr><th>Check</th><th>What it looks for</th></tr></thead>
+              <tbody>
+                <tr><td>3-2-1 location</td><td>Exactly three pads in contact and coplanar; a wide enough support triangle; exactly 6 degrees of freedom constrained</td></tr>
+                <tr><td>Pins</td><td>Worst-case clearance per ISO 286, clearance with the CAD axis offset deducted, datum shift; diamond pin relieved along B→C</td></tr>
+                <tr><td>Clamps</td><td>Pressure point lands on a pad with solid material in between; the arm does not hit the part or fixed bodies while opening</td></tr>
+                <tr><td>Connection</td><td>Every fixture body is connected to the base by contact (no floating blocks)</td></tr>
+                <tr><td>Part removal</td><td>With the clamps open, the part can leave in the given direction unobstructed and get clear of the whole fixture</td></tr>
+                <tr><td>Gauge</td><td>GO diameter at virtual condition, NO-GO at least material condition; clear path through bushing and part; bushing coaxial with enough L/D</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section>
+          <h2 data-no="04"><span data-lang="tr" lang="tr">Doğrulama</span><span data-lang="en" lang="en">Verification</span></h2>
+          <div data-lang="tr" lang="tr">
+            <p>İki örnek fikstür var: STEP'ten yüklenen 28 gövdeli bir sac braket kontrol fikstürü (üç mandallı klemp, kontur blokları, burç kılavuzlu mastar) ve NIST FTC-08 parçası için kodla kurulan fikstür. Her ikisi de temiz hâlde tüm kontrollerden geçiyor; ardından bilerek bozulmuş varyantların her biri belirli bir kontrolde kalmak zorunda:</p>
+            <table class="prose">
+              <thead><tr><th>Bozulma</th><th>Yakalayan kontrol</th></tr></thead>
+              <tbody>
+                <tr><td>Elmas pim 90° döndürülmüş</td><td>Elmas pim yönü</td></tr>
+                <tr><td>Elmas pim hiç konmamış</td><td>Serbestlik derecesi (5/6)</td></tr>
+                <tr><td>Pim Ø9 js6 seçilmiş</td><td>En kötü durum boşluğu</td></tr>
+                <tr><td>Klemp pabucu 14 mm öne kaymış</td><td>Klemp ped üstünde değil</td></tr>
+                <tr><td>Burç kulesi 5 mm yüksek</td><td>Tabana bağlantı</td></tr>
+                <tr><td>Burç ve mastar 1 mm sola kaymış</td><td>Mastar yolu</td></tr>
+                <tr><td>Kontur bloğu parçanın üstüne uzanmış</td><td>Parça çıkarma, boşluk</td></tr>
+                <tr><td>FTC-08: klemp mafsalı ucun üstünde</td><td>Klemp açılması</td></tr>
+                <tr><td>FTC-08: gevşek yerleştirme pimi</td><td>Datum kayması</td></tr>
+              </tbody>
+            </table>
+            <p><strong>101 test</strong> her kontrol için geçen ve kalan durumları, ISO 286 tablo değerlerini ve dokuz hatalı varyantı kapsıyor; GitHub Actions her değişiklikte çalıştırıyor.</p>
+          </div>
+          <div data-lang="en" lang="en">
+            <p>There are two example fixtures: a 28-body sheet-metal bracket checking fixture loaded from STEP (three toggle clamps, contour blocks, a bushing-guided gauge) and a fixture built in code for the NIST FTC-08 part. Both pass every check when clean; then each deliberately broken variant has to fail on a specific check:</p>
+            <table class="prose">
+              <thead><tr><th>Fault</th><th>Caught by</th></tr></thead>
+              <tbody>
+                <tr><td>Diamond pin rotated 90°</td><td>Diamond pin orientation</td></tr>
+                <tr><td>Diamond pin left out</td><td>Degrees of freedom (5/6)</td></tr>
+                <tr><td>Pin specified Ø9 js6</td><td>Worst-case clearance</td></tr>
+                <tr><td>Clamp pad shifted 14 mm forward</td><td>Clamp not over a pad</td></tr>
+                <tr><td>Bushing tower 5 mm too high</td><td>Connection to base</td></tr>
+                <tr><td>Bushing and gauge shifted 1 mm left</td><td>Gauge path</td></tr>
+                <tr><td>Contour block reaching over the part</td><td>Part removal, clearance</td></tr>
+                <tr><td>FTC-08: clamp pivot above the tip</td><td>Clamp opening</td></tr>
+                <tr><td>FTC-08: loose locating pin</td><td>Datum shift</td></tr>
+              </tbody>
+            </table>
+            <p>The <strong>101 tests</strong> cover passing and failing cases for every check, ISO 286 table values and the nine fault variants; GitHub Actions runs them on every change.</p>
+          </div>
+        </section>
+
+        <section>
+          <h2 data-no="05"><span data-lang="tr" lang="tr">Sınırlar</span><span data-lang="en" lang="en">Limits</span></h2>
+          <div data-lang="tr" lang="tr">
+            <p>Nominal geometri denetlenir; toleranslar yalnızca pim-delik geçmelerinde ve mastar çaplarında hesaba girer, tolerans zinciri analizi yok. Kuvvet analizi, operatör erişimi ve imal edilebilirlik kapsam dışı. Klemp açılması 1° adımlarla örneklendiği için iki adım arasındaki çok ince bir engel kaçabilir.</p>
+          </div>
+          <div data-lang="en" lang="en">
+            <p>Nominal geometry is checked; tolerances enter only in pin-hole fits and gauge diameters, and there is no tolerance stack-up. Force analysis, operator access and manufacturability are out of scope. Clamp opening is sampled in 1° steps, so a very thin obstacle between two steps could be missed.</p>
+          </div>
+        </section>
+      </div>
+
+      <section class="related">
+        <h2 class="related-title"><span data-lang="tr" lang="tr">Diğer projeler</span><span data-lang="en" lang="en">Other projects</span></h2>
+        <div class="projects-grid-2" id="related" data-exclude="fikstur-kontrol"><!-- static:related --><article class="card card-medium" id="p-spc-analyzer">
+        <div class="card-media"><img src="/assets/img/projects/spc-analyzer.webp" width="1200" height="898" loading="lazy" decoding="async" alt="I-MR kontrol grafiği çıktısı" data-alt-tr="I-MR kontrol grafiği çıktısı" data-alt-en="I-MR control chart output"></div>
+        <div class="card-body">
+          <h3><a href="/projeler/spc-analyzer/"><span data-lang="tr" lang="tr">Süreç Yeterliliği ve SPC Analiz Aracı</span><span data-lang="en" lang="en">Process Capability &amp; SPC Analyzer</span></a></h3>
+          <p><span data-lang="tr" lang="tr">X̄-R, X̄-S, I-MR ve nitelik (p, np, c, u) kontrol grafikleri; Faz I / Faz II limitleri; 4 Western Electric + 8 Nelson kuralı; Cp/Cpk (grup içi) ve Pp/Ppk (genel), normal olmayan veri için de; Type-1 (Cg/Cgk) ve çapraz Gage R&amp;R (ANOVA ve AIAG ortalama-aralık). Yeterlilikten önce ölçüm sistemini ve kararlılığı denetler, yorumları kural tabanlı üretir, CSV/Excel/PDF rapor verir. Montgomery, Minitab, SAS ve Bosch'un yayınlanmış sonuçlarına karşı doğrulandı.</span><span data-lang="en" lang="en">X̄-R, X̄-S, I-MR and attribute (p, np, c, u) control charts; Phase I / Phase II limits; 4 Western Electric + 8 Nelson rules; Cp/Cpk (within) and Pp/Ppk (overall), also for non-normal data; Type-1 (Cg/Cgk) and crossed Gage R&amp;R (ANOVA and AIAG Average &amp; Range). Checks the measurement system and stability before capability, produces rule-based interpretations and CSV/Excel/PDF reports. Validated against published Montgomery, Minitab, SAS and Bosch results.</span></p>
+          <div class="card-metrics"><span class="metric"><b>1143</b><span data-lang="tr" lang="tr">test</span><span data-lang="en" lang="en">tests</span></span><span class="metric"><b>12</b><span data-lang="tr" lang="tr">çalışma kuralı</span><span data-lang="en" lang="en">run rules</span></span><span class="metric"><b>3</b><span data-lang="tr" lang="tr">grafik tipi</span><span data-lang="en" lang="en">chart types</span></span></div>
+          <div class="card-tags"><span class="chip">Python</span><span class="chip">Streamlit</span><span class="chip">SPC</span><span class="chip">pytest</span><span class="chip">Apache-2.0</span></div>
+          <div class="card-links"><a class="is-muted" href="/projeler/spc-analyzer/"><span data-lang="tr" lang="tr">Vaka çalışması</span><span data-lang="en" lang="en">Case study</span></a><a href="https://spc-analyzer.streamlit.app/" target="_blank" rel="noopener"><span data-lang="tr" lang="tr">Canlı demo</span><span data-lang="en" lang="en">Live demo</span></a><a href="https://github.com/DailyDana/process-capability-analyzer" target="_blank" rel="noopener"><span data-lang="tr" lang="tr">Kaynak kod</span><span data-lang="en" lang="en">Source code</span></a></div>
+        </div>
+      </article>
+      <article class="card card-medium" id="p-hoffmann-line-balancing">
+        <div class="card-media"><img src="/assets/img/projects/hoffmann-line-balancing.webp" width="1200" height="1520" loading="lazy" decoding="async" alt="Hat dengeleme Streamlit arayüzü" data-alt-tr="Hat dengeleme Streamlit arayüzü" data-alt-en="Line balancing Streamlit interface"></div>
+        <div class="card-body">
+          <h3><a href="/projeler/hoffmann-line-balancing/"><span data-lang="tr" lang="tr">Hoffmann Montaj Hattı Dengeleme</span><span data-lang="en" lang="en">Hoffmann Assembly Line Balancing</span></a></h3>
+          <p><span data-lang="tr" lang="tr">SALBP-1 için Hoffmann (1963) öncelik matrisi yöntemi: her istasyon için uygun tüm alt kümeleri sayar. Komut satırı + beş dilli Streamlit arayüzü, çevrim süresi taraması. Brute-force ve bitmask-DP çözücülerle çapraz doğrulandı; ders ödevi olarak başlayan kodun aslında first-fit olduğu görülünce sıfırdan yazıldı.</span><span data-lang="en" lang="en">Hoffmann's (1963) precedence-matrix method for SALBP-1: enumerates every feasible subset per station. CLI + five-language Streamlit UI, cycle-time sweep. Cross-checked against brute-force and bitmask-DP solvers; rewritten from scratch after a review showed the original coursework code was first-fit, not Hoffmann.</span></p>
+          <div class="card-metrics"><span class="metric"><b>127</b><span data-lang="tr" lang="tr">test</span><span data-lang="en" lang="en">tests</span></span><span class="metric"><b>5</b><span data-lang="tr" lang="tr">arayüz dili</span><span data-lang="en" lang="en">UI languages</span></span><span class="metric"><b>2</b><span data-lang="tr" lang="tr">doğrulama çözücüsü</span><span data-lang="en" lang="en">oracle solvers</span></span></div>
+          <div class="card-tags"><span class="chip">Python</span><span class="chip">Streamlit</span><span class="chip"><span data-lang="tr" lang="tr">Yöneylem</span><span data-lang="en" lang="en">Operations research</span></span><span class="chip">hypothesis</span><span class="chip">Apache-2.0</span></div>
+          <div class="card-links"><a class="is-muted" href="/projeler/hoffmann-line-balancing/"><span data-lang="tr" lang="tr">Vaka çalışması</span><span data-lang="en" lang="en">Case study</span></a><a href="https://hoffmann-line-balancing.streamlit.app/" target="_blank" rel="noopener"><span data-lang="tr" lang="tr">Canlı demo</span><span data-lang="en" lang="en">Live demo</span></a><a href="https://github.com/DailyDana/hoffmann-line-balancing" target="_blank" rel="noopener"><span data-lang="tr" lang="tr">Kaynak kod</span><span data-lang="en" lang="en">Source code</span></a></div>
+        </div>
+      </article><!-- /static:related --></div>
+      </section>
+    </div>
+  </article>
+</main>
+
+<dialog class="lightbox" id="lightbox">
+  <button type="button" class="lightbox-close" aria-label="Kapat / Close">×</button>
+  <img alt="" width="1000" height="660">
+  <div class="lightbox-cap"></div>
+</dialog>
+
+<!-- chrome:footer -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>İsmail Bilgehan Kazancı, Bursa ve Ankara. © <span id="year">2026</span></span>
+    <span class="footer-links">
+      <a href="https://www.linkedin.com/in/ismailbilgehankazanci" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/DailyDana" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/DailyDana/DailyDana.github.io" target="_blank" rel="noopener"><span data-lang="tr" lang="tr">Sitenin kaynağı</span><span data-lang="en" lang="en">Site source</span></a>
+    </span>
+  </div>
+</footer>
+<!-- /chrome:footer -->
+
+<script src="/assets/js/data.js"></script>
+<script src="/assets/js/main.js"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "fa9ce7c9204f44c0bb32274c1430b982"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

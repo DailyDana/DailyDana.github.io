@@ -42,11 +42,18 @@ OG_PAGES: list[tuple[Path, dict[str, str]]] = [
         "m1": "334 test", "m2": "TR + EN", "m3": "Streamlit canlı demo",
         "url": "dailydana.github.io/projeler/fiber-composite-calculator",
     }),
+    (ROOT / "projeler" / "fikstur-kontrol" / "og.png", {
+        "kicker": "Vaka çalışması · Fikstür tasarımı",
+        "title": "Fikstür CAD modelini *otomatik* doğrulama", "sheet": "05",
+        "sub": "3-2-1 datumlar, ISO 286 pim boşlukları, klemp yerleşimi ve açılması, parça çıkarma, GEÇER/GEÇMEZ mastar yolu. build123d + cad-khana.",
+        "m1": "101 test", "m2": "9 hatalı varyant", "m3": "NIST FTC-08",
+        "url": "dailydana.github.io/projeler/fikstur-kontrol",
+    }),
     (ROOT / "projeler" / "aniflow" / "og.png", {
         "kicker": "Vaka çalışması · Yazılım ve otomasyon",
         "title": "Aniflow: *shader tabanlı* video upscale", "sheet": "04",
         "sub": "Anime4K/FSRCNNX shader zincirlerini ffmpeg libplacebo ile videoya kalıcı işler; RIFE, Real-ESRGAN, donanım kodlama, tek satır kurulum.",
-        "m1": "v1.4 sürüm", "m2": "11 shader ön ayarı", "m3": "MIT lisans",
+        "m1": "v1.5 sürüm", "m2": "11 shader ön ayarı", "m3": "MIT lisans",
         "url": "dailydana.github.io/projeler/aniflow",
     }),
     (ROOT / "projeler" / "codecdelta" / "og.png", {

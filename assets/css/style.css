@@ -458,6 +458,8 @@ code { font-family: var(--mono); font-size: .8em; }
 .case-body td:not(:first-child), .case-body th:not(:first-child) { text-align: right; padding-right: 0; padding-left: 14px; white-space: nowrap; }
 .case-body td.num { font-size: 16.5px; }
 .case-body td b { color: var(--link); font-weight: 600; }
+.case-body table.prose td, .case-body table.prose th { white-space: normal; text-align: left; }
+.case-body table.prose td:first-child { white-space: nowrap; color: var(--ink); }
 .case-body pre { margin-top: 22px; padding: 18px 20px; background: var(--bg-2); border-left: 2px solid var(--ink); color: var(--ink); font: 400 13.5px/1.6 var(--mono); overflow-x: auto; }
 .gallery { margin-top: 64px; }
 .gallery-head { font-size: 20px; color: var(--mute); margin-bottom: 16px; }

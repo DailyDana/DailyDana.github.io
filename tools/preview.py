@@ -29,6 +29,8 @@ SHOTS = [
     ("codecdelta-1440-light-tr", "/projeler/codecdelta/", 1440, "light", "tr"),
     ("cad-1440-light-tr", "/projeler/cad-calismalari/", 1440, "light", "tr"),
     ("cad-360-dark-en", "/projeler/cad-calismalari/?lang=en", 360, "dark", "en"),
+    ("fikstur-1440-dark-tr", "/projeler/fikstur-kontrol/", 1440, "dark", "tr"),
+    ("fikstur-360-light-en", "/projeler/fikstur-kontrol/?lang=en", 360, "light", "en"),
     ("fiber-1440-light-tr", "/projeler/fiber-composite-calculator/", 1440, "light", "tr"),
     ("fiber-360-dark-en", "/projeler/fiber-composite-calculator/?lang=en", 360, "dark", "en"),
 ]

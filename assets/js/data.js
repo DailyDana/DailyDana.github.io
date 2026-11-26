@@ -7,7 +7,7 @@ window.PORTFOLIO = {
   meta: {
     name: 'İsmail Bilgehan Kazancı',
     location: 'Bursa · Ankara',
-    updated: '2026-11-02',
+    updated: '2026-11-27',
     links: {
       github: 'https://github.com/DailyDana',
       linkedin: 'https://www.linkedin.com/in/ismailbilgehankazanci',
@@ -132,9 +132,30 @@ window.PORTFOLIO = {
       image: { src: '/assets/img/projects/hoffmann-line-balancing.webp', w: 1200, h: 1520, alt: { tr: 'Hat dengeleme Streamlit arayüzü', en: 'Line balancing Streamlit interface' } }
     },
     {
+      slug: 'fikstur-kontrol',
+      repo: 'fikstur-kontrol',
+      order: 3, featured: true, cluster: 'cad', status: 'active', year: '2026',
+      title: { tr: 'Kontrol ve Yerleştirme Fikstürü Doğrulama', en: 'Checking & Locating Fixture Verification' },
+      summary: {
+        tr: 'Bir fikstürün CAD modelinde "katı geçerli, çakışma yok" kontrolünden kaçan işlevsel hataları otomatik bulan Python paketi: 3-2-1 datum pedleri, yuvarlak ve elmas pim (ISO 286 en kötü durum boşluğu), parçayı desteksiz yerden bastıran klemp, açılırken çarpan klemp kolu, havada kalan blok, parçanın çıkarılabilirliği ve GEÇER/GEÇMEZ mastar yolu. cad-khana ve build123d üzerine kurulu; bir sac braket fikstürü ve NIST FTC-08 gerçek işlenmiş parça fikstürü, bilerek bozulmuş varyantlarıyla test ediliyor.',
+        en: 'A Python package that automatically finds the functional errors in a fixture CAD model that slip past "valid solid, no interference": 3-2-1 datum pads, round and diamond pins (ISO 286 worst-case clearance), a clamp pressing unsupported material, a clamp arm that collides while opening, a floating block, whether the part can be removed, and the GO/NO-GO gauge path. Built on cad-khana and build123d; tested on a sheet-metal bracket fixture and a fixture for the NIST FTC-08 machined part, each with deliberately broken variants.'
+      },
+      tags: ['Python', 'build123d', 'cad-khana', { tr: 'Fikstür tasarımı', en: 'Fixture design' }, 'AGPL-3.0'],
+      metrics: [
+        { value: '101', label: { tr: 'test', en: 'tests' } },
+        { value: '9', label: { tr: 'hatalı varyant', en: 'fault variants' } },
+        { value: '2', label: { tr: 'örnek fikstür', en: 'example fixtures' } }
+      ],
+      links: [
+        { kind: 'repo', url: 'https://github.com/DailyDana/fikstur-kontrol' }
+      ],
+      page: '/projeler/fikstur-kontrol/',
+      image: { src: '/assets/img/projects/fikstur-kontrol.webp', w: 1000, h: 660, alt: { tr: 'NIST FTC-08 parçası için kontrol fikstürü: taban plakası, pimler, klempler', en: 'Checking fixture for the NIST FTC-08 part: base plate, pins, clamps' } }
+    },
+    {
       slug: 'fiber-composite-calculator',
       repo: 'fiber-composite-calculator',
-      order: 3, featured: true, cluster: 'materials', status: 'active', year: '2026',
+      order: 4, featured: true, cluster: 'materials', status: 'active', year: '2026',
       title: { tr: 'Elyaf Takviyeli Kompozit Hesaplayıcı', en: 'Fiber Composite Calculator' },
       summary: {
         tr: 'Callister Bölüm 16 bağıntılarıyla elyaf takviyeli kompozitleri hesaplayan ve karşılaştıran araç: sürekli ve süreksiz elyaf, kritik elyaf boyu, yönlenme verimi, parçacık kompozit sınırları. Kompozitleri elyaf yönündeki dayanıma göre sıralar, sıralamanın matris dayanımına karşı ne kadar sağlam olduğunu hesaplar ve her adımın formülünü gösteren PDF rapor yazar. Ders kitabının çözümlü örnekleri testle sabitlendi.',
@@ -156,7 +177,7 @@ window.PORTFOLIO = {
     {
       slug: 'aniflow',
       repo: 'Aniflow',
-      order: 4, featured: true, cluster: 'software', status: 'active', year: '2026',
+      order: 5, featured: true, cluster: 'software', status: 'active', year: '2026',
       title: { tr: 'Aniflow — Video Upscale Aracı', en: 'Aniflow — Video Upscaler' },
       summary: {
         tr: 'Anime4K ve FSRCNNX GLSL shader zincirlerini ffmpeg libplacebo ile videoya kalıcı olarak uygulayan taşınabilir Windows aracı. Real-ESRGAN AI upscale, RIFE 2x kare ara değerleme, QSV/NVENC/AMF donanım kodlama, çoklu GPU seçimi, renk LUT\'ları, kare önizleme, kalıcı kuyruk ve tek satırlık kurulum betiği.',
@@ -178,7 +199,7 @@ window.PORTFOLIO = {
     {
       slug: 'codecdelta',
       repo: 'CodecDelta',
-      order: 5, featured: false, cluster: 'software', status: 'active', year: '2026',
+      order: 6, featured: false, cluster: 'software', status: 'active', year: '2026',
       title: { tr: 'CodecDelta — Ses Kodlama Farkı Analizi', en: 'CodecDelta — Audio Codec Delta Analysis' },
       summary: {
         tr: 'Kayıplı bir kodlayıcının kayda ne yaptığını ölçen Windows uygulaması: örnek-altı hizalama, bant bant S/N, kör ABX testi, 12 kodlayıcıyla kodlama ve bit hızı taraması, kütüphane taraması, kişisel veriden arındırılmış HTML rapor. Her tasarım kararı ölçülerek verildi ve belgelendi.',
@@ -199,7 +220,7 @@ window.PORTFOLIO = {
     {
       slug: 'cad-calismalari',
       repo: 'cannon-model',
-      order: 6, featured: false, cluster: 'cad', status: 'done', year: '2026',
+      order: 7, featured: false, cluster: 'cad', status: 'done', year: '2026',
       title: { tr: 'CAD Çalışmaları — Donanma Topu ve Napoleon Sahra Topu', en: 'CAD Work — Naval Cannon & Napoleon Field Gun' },
       summary: {
         tr: 'SolidWorks\'te sekiz parça, iki montaj ve teknik resimleriyle bir donanma topu; Siemens NX\'te 19 parçalı Napoleon 12\'lik sahra topu montajı ve montaj resmi. Parça modelleme, montaj kısıtları ve teknik resim standartları üzerine çalışma.',

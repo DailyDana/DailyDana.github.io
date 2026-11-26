@@ -27,6 +27,7 @@ MANIFEST: dict[str, str] = {
     "hoffmann-line-balancing": "https://raw.githubusercontent.com/DailyDana/hoffmann-line-balancing/main/docs/images/streamlit_app.png",
     "fiber-composite-calculator": "https://raw.githubusercontent.com/DailyDana/fiber-composite-calculator/main/docs/images/app_compare.png",
     "fiber-composite-continuous": "https://raw.githubusercontent.com/DailyDana/fiber-composite-calculator/main/docs/images/app_continuous.png",
+    "fikstur-kontrol": "https://raw.githubusercontent.com/DailyDana/fikstur-kontrol/main/docs/nist_ftc08_fixture.png",
     "fiber-composite-report": "https://raw.githubusercontent.com/DailyDana/fiber-composite-calculator/main/docs/images/report_verification.png",
 }
 
